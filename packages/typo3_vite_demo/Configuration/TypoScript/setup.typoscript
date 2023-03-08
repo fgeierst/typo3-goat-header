@@ -161,7 +161,7 @@ page {
     }
 
     includeJSFooter {
-        
+
     }
 }
 
@@ -169,15 +169,15 @@ page {
 [applicationContext == "Development/Local"]
     page.headerData {
         10 = TEXT
-        10.value = <script type="module" src="https://typo3-vite-demo.ddev.site:5173/@vite/client"></script>
+        10.value = <script type="module" src="https://typo3-goat-header.ddev.site:5173/@vite/client"></script>
         20 = TEXT
-        20.value = <script type="module" src="https://typo3-vite-demo.ddev.site:5173/packages/typo3_vite_demo/Resources/Private/JavaScript/main.js"></script>
+        20.value = <script type="module" src="https://typo3-goat-header.ddev.site:5173/packages/typo3_vite_demo/Resources/Private/JavaScript/main.js"></script>
     }
 [END]
 
 # In production mode read the hashed JS and CSS file names from Vite generated manifest.json.
 [applicationContext == "Production/Staging"]
-    page.headerData { 
+    page.headerData {
         10 = USER_INT
         10 {
             userFunc = FlorianGeierstanger\Typo3ViteDemo\UserFunctions\InsertViteAssets->getScriptTags
