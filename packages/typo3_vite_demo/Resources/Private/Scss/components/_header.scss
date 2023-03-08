@@ -1,12 +1,14 @@
 .header {
   --header-color-background: hsl(196, 100%, 95%);
   --header-height: var(--space-300);
+  --header-button-width: var(--min-tap-target-size);
 
-  background-color: var(--header-color-background);
   height: var(--header-height);
-
   display: flex;
-  gap: var(--space-100);
-  justify-content: space-between;
-  align-items: center;
+
+  > *:not(.main-nav) {
+    background-color: var(--header-color-background);
+    flex-grow: 1;
+    z-index: 2;
+  }
 }
