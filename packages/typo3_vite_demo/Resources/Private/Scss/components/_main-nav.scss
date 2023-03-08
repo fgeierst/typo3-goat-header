@@ -1,0 +1,10 @@
+.main-nav {
+  &__list {
+    display: flex;
+    list-style: none;
+    gap: var(--space-100);
+    padding-inline-start: 0;
+    margin-block-start: 0;
+    margin-block-end: 0;
+  }
+}

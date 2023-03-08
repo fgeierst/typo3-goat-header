@@ -1,4 +1,12 @@
 .header {
   --header-color-background: hsl(196, 100%, 95%);
+  --header-height: var(--space-300);
+
   background-color: var(--header-color-background);
+  height: var(--header-height);
+
+  display: flex;
+  gap: var(--space-100);
+  justify-content: space-between;
+  align-items: center;
 }
