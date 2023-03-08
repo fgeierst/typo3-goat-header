@@ -1,8 +1,9 @@
-@use 'colors';
+@use 'base/colors';
+@use 'components/header';
 
 /* Base */
 body {
 	font-family: system-ui;
-	background-color: colors.$background;
-	color: colors.$text;
+	background-color: var(--color-background);
+	color: var(--color-text);
 }
