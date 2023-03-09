@@ -10,3 +10,7 @@ a {
   outline: 3px solid var(--color-focus, blue);
   outline-offset: 3px;
 }
+
+.preload {
+  transition: none !important;
+}
