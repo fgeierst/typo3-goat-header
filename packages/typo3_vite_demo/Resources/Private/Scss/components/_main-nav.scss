@@ -18,6 +18,7 @@
     @media (min-width: $breakpoint) {
       visibility: visible;
       position: static;
+      overflow: unset;
     }
   }
 
