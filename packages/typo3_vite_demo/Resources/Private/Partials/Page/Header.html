@@ -7,8 +7,14 @@
         </a>
     </div>
 
+    <div class="meta-nav meta-nav--mobile">
+        <f:render partial="MetaNav" arguments="{_all}" />
+    </div>
+
     <f:render partial="MainNav" arguments="{_all}" />
 
-    <div class="header__meta-nav">Meta Navigation</div>
+    <div class="meta-nav meta-nav--desktop">
+        <f:render partial="MetaNav" arguments="{_all}" />
+    </div>
 
 </header>

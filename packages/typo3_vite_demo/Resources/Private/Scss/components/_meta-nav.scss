@@ -1,0 +1,17 @@
+.meta-nav {
+  $breakpoint: 30em;
+
+  &--mobile {
+    @media (min-width: $breakpoint) {
+      display: none;
+    }
+  }
+
+  &--desktop {
+    display: none;
+
+    @media (min-width: $breakpoint) {
+      display: block;
+    }
+  }
+}

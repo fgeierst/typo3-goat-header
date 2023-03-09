@@ -56,9 +56,6 @@
     justify-content: center;
     width: var(--header-button-width);
     height: var(--header-height);
-    position: fixed;
-    top: var(--page-margin);
-    right: var(--page-margin);
 
     @media (min-width: $breakpoint) {
       display: none;
