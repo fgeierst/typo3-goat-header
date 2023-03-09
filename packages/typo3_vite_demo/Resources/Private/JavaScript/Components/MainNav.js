@@ -29,7 +29,7 @@ export function MainNav()  {
     if (e.code === "Escape") {
       header.setAttribute("data-nav-expanded", false);
       button.setAttribute("aria-expanded", false);
-      mainNav.removeEventListener('keydown', handleTabEvent);
+      mainNav.removeEventListener('keydown', trapFocus);
     }
   });
 
