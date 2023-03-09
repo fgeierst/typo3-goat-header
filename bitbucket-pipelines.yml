@@ -10,7 +10,7 @@ definitions:
         - parallel: &testAndBuild
               - step:
                   name: Test & Build (Composer)
-                  image: kanti/buildy:7.4
+                  image: kanti/buildy:8.1
                   caches:
                       - composer
                   services:
