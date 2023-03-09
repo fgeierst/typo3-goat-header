@@ -6,7 +6,7 @@
         </svg>
     </button>
     <div class="main-nav__container">
-        <ul class="main-nav__list">
+        <ul class="main-nav__list preload">
             <f:for each="{mainnavigation}" as="mainnavigationItem">
                 <li class="{f:if(condition: mainnavigationItem.active, then:'active')}">
                     <a href="{mainnavigationItem.link}" target="{mainnavigationItem.target}" title="{mainnavigationItem.title}">

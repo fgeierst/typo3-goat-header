@@ -1,10 +1,14 @@
-export const MainNav = () => {
+/**
+* Main Nav
+* Event listeners to toggle the main nav on mobile
+*/
+export function MainNav()  {
   const button = document.querySelector(".main-nav__button");
   const header = document.querySelector(".header");
 
-  // Toggle aria-expanded attribute
+  // Toggle data-nav-expanded attribute
   button.addEventListener("click", (e) => {
-    // aria-expanded="true" signals that the menu is currently open
+    // data-nav-expanded="true" signals that the menu is currently open
     const isOpen = header.getAttribute("data-nav-expanded") === "true";
     header.setAttribute("data-nav-expanded", !isOpen);
     button.setAttribute("aria-expanded", !isOpen);
@@ -20,3 +24,5 @@ export const MainNav = () => {
   });
 
 }
+
+
