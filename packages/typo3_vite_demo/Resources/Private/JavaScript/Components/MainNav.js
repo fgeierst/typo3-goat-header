@@ -25,6 +25,6 @@ export const MainNav = () => {
   });
 
   // Add the button to the page
-  container.insertBefore(burgerClone, list);
+  nav.insertBefore(burgerClone, container);
 
 }
