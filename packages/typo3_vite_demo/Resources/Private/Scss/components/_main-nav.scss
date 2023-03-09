@@ -10,7 +10,7 @@
     transition: visibility 0.2s linear;
 
     @media (max-width: $breakpoint) {
-      [aria-expanded="false"] + & {
+      [data-nav-expanded="false"] & {
         visibility: hidden;
       }
     }
@@ -32,10 +32,13 @@
     background-color: var(--header-color-background);
     transition: opacity 0.2s linear, transform 0.2s linear;
 
-    @media (max-width: $breakpoint) {
-      [aria-expanded="false"] + .main-nav__container > & {
-        opacity: 0;
-        transform: translateY(-100%);
+    [data-nav-expanded="false"] & {
+      opacity: 0;
+      transform: translateY(-100%);
+
+      @media (min-width: $breakpoint) {
+        opacity: 1;
+        transform: translateY(0);
       }
     }
 

@@ -1,4 +1,10 @@
 <nav id="mainnav" class="main-nav">
+    <button type="button" aria-expanded="false" aria-controls="mainnav" class="main-nav__button">
+        <svg width="24" height="24">
+          <title>Hauptnavigation</title>
+          <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z" />
+        </svg>
+    </button>
     <div class="main-nav__container">
         <ul class="main-nav__list">
             <f:for each="{mainnavigation}" as="mainnavigationItem">
@@ -21,13 +27,4 @@
             </f:for>
         </ul>
     </div>
-
-    <template id="burger-template">
-        <button type="button" aria-expanded="false" aria-controls="mainnav" class="main-nav__button">
-          <svg width="24" height="24">
-            <title>Hauptnavigation</title>
-            <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z" />
-          </svg>
-        </button>
-    </template>
 </nav>

@@ -1,30 +1,22 @@
 export const MainNav = () => {
-  console.log('MainNav');
-
-  const nav = document.querySelector("#mainnav");
-  const container = document.querySelector(".main-nav__container");
-  const list = nav.querySelector(".main-nav__list");
-  const burgerClone = document
-    .querySelector("#burger-template")
-    .content.cloneNode(true);
-  const button = burgerClone.querySelector("button");
+  const button = document.querySelector(".main-nav__button");
+  const header = document.querySelector(".header");
 
   // Toggle aria-expanded attribute
   button.addEventListener("click", (e) => {
     // aria-expanded="true" signals that the menu is currently open
-    const isOpen = button.getAttribute("aria-expanded") === "true";
+    const isOpen = header.getAttribute("data-nav-expanded") === "true";
+    header.setAttribute("data-nav-expanded", !isOpen);
     button.setAttribute("aria-expanded", !isOpen);
   });
 
   // Hide list on keydown Escape
-  nav.addEventListener("keyup", (e) => {
+  button.addEventListener("keyup", (e) => {
     console.log("keyup", e);
     if (e.code === "Escape") {
+      header.setAttribute("data-nav-expanded", false);
       button.setAttribute("aria-expanded", false);
     }
   });
-
-  // Add the button to the page
-  nav.insertBefore(burgerClone, container);
 
 }
