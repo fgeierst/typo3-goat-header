@@ -1,6 +1,6 @@
-# TYPO3 Goat Header
+# TYPO3 Laboratory
 
-This project shows a generic header navigation for TYPO3.
+This project is MUC Labotatory, it's about developing and building prototypes in BE and FE for TYPO3.
 
 
 ## Based on
@@ -18,14 +18,14 @@ This project shows a generic header navigation for TYPO3.
 
 ## Local installation guide
 
-	git clone https://github.com/fgeierst/typo3-goat-header.git
-	cd typo3-goat-header
+	git clone git@bitbucket.org:pluswerk/pwmuc-typo3-lab.git
+	cd pwmuc-typo3-lab
 	ddev start
 	ddev exec cp .env.example .env
 	ddev composer install
 	ddev snapshot restore --latest
 
-Login via https://typo3-goat-header.ddev.site/typo3 using these credentials:
+Login using these credentials:
 
 - Username: `admin`
 - Password: `oZim4R7eLEWzzL`
