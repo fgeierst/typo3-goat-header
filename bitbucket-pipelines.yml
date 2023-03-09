@@ -29,8 +29,8 @@ definitions:
                   name: Node Build
                   image: node:18
                   script:
-                      - pnpm i
-                      - npm run build
+                      - npm i
+                      - pnpm run build
                   artifacts:
         - step: &deployStaging
               name: Deploy to staging
