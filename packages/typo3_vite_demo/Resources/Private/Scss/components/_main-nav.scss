@@ -49,20 +49,58 @@
   }
 
   &__button {
-    border-width: 0;
+    height: 48px;
+    width: 48px;
+    position: relative;
+    appearance: none;
+    border: none;
     background-color: transparent;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    border-width: 0;
     width: var(--header-button-width);
-    height: var(--header-height);
+    height: var(--header-button-width);
 
     @media (min-width: $breakpoint) {
       display: none;
     }
 
+    &::before,
+    &::after {
+      content: "";
+      display: block;
+      width: 24px;
+      height: 3px;
+      position: absolute;
+      left: 12px;
+      background-color: var(--color-text);
+      transition: 0.2s;
+      }
+
+    &::before {
+      top: 18px;
+    }
+
+    &::after {
+      bottom: 18px;
+    }
+
+    [data-nav-expanded="true"] & {
+      &::before {
+        top: calc(50% - 3px / 2);
+        transform: rotate(-45deg);
+      }
+
+      &::after {
+        top: calc(50% - 3px / 2);
+        transform: rotate(45deg);
+      }
+    }
+
     &:focus-visible {
       outline-offset: -3px;
+    }
+
+    span {
+      visibility: hidden;
     }
   }
 }
