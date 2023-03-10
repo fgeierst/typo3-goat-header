@@ -7,13 +7,13 @@
         </a>
     </div>
 
-    <div class="meta-nav meta-nav--tablet">
+    <div class="meta-nav lg:none">
         <f:render partial="MetaNav" arguments="{_all}" />
     </div>
 
     <f:render partial="MainNav" section="LevelOne" arguments="{_all}" />
 
-    <div class="meta-nav meta-nav--desktop">
+    <div class="meta-nav sm:none lg:block">
         <f:render partial="MetaNav" arguments="{_all}" />
     </div>
 

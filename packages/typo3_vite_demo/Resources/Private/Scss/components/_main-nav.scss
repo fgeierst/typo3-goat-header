@@ -1,6 +1,9 @@
+@use '../base/breakpoints';
+
+//
+// Main Nav
+//
 .main-nav {
-  $breakpoint-mobile: 30rem;
-  $breakpoint-tablet: 50rem;
 
   --main-nav-animation-timing: var(--animation-timing, .2s);
 
@@ -15,18 +18,18 @@
     overflow: hidden;
     transition: visibility var(--main-nav-animation-timing) linear;
 
-    @media (min-width: $breakpoint-mobile) {
+    @media (min-width: breakpoints.$sm) {
       width: 300px;
       left: unset;
     }
 
-    @media (min-width: $breakpoint-tablet) {
+    @media (min-width: breakpoints.$md) {
       visibility: visible;
       position: static;
       overflow: unset;
     }
 
-    @media (max-width: $breakpoint-tablet) {
+    @media (max-width: breakpoints.$md) {
       [data-nav-expanded="false"] & {
         visibility: hidden;
       }
@@ -48,76 +51,93 @@
       opacity: 0;
       transform: translate(0, -100%);
 
-      @media (min-width: $breakpoint-mobile) {
+      @media (min-width: breakpoints.$sm) {
         opacity: 1;
         transform: translate(100%, 0) ;
       }
 
-      @media (min-width: $breakpoint-tablet) {
+      @media (min-width: breakpoints.$md) {
         opacity: 1;
-        transform: translate(0, 0);
+        transform: unset;
       }
     }
 
-    @media (min-width: $breakpoint-tablet) {
+    @media (min-width: breakpoints.$md) {
       padding: 0;
       flex-direction: row;
     }
   }
 
-  // Hamburger Button.
-  &__button {
-    position: relative;
-    appearance: none;
-    border: none;
-    background-color: transparent;
-    border-width: 0;
-    width: var(--header-button-width);
-    height: var(--header-button-width);
+}
 
-    @media (min-width: $breakpoint-tablet) {
-      display: none;
+//
+// Main Nav Toggle Button
+//
+.main-nav-toggle {
+  position: relative;
+  appearance: none;
+  border: none;
+  background-color: transparent;
+  border-width: 0;
+  width: var(--header-button-width);
+  height: var(--header-button-width);
+
+  @media (min-width: breakpoints.$md) {
+    display: none;
+  }
+
+  /* @TODO: Convert pixel values to rem. */
+  &::before,
+  &::after {
+    content: "";
+    display: block;
+    width: 24px;
+    height: 3px;
+    position: absolute;
+    left: 12px;
+    background-color: var(--color-text);
+    transition: 0.2s;
     }
 
-    /* @TODO: Convert pixel values to rem. */
-    &::before,
-    &::after {
-      content: "";
-      display: block;
-      width: 24px;
-      height: 3px;
-      position: absolute;
-      left: 12px;
-      background-color: var(--color-text);
-      transition: 0.2s;
-      }
+  &::before {
+    top: 18px;
+  }
 
+  &::after {
+    bottom: 18px;
+  }
+
+  [data-nav-expanded="true"] & {
     &::before {
-      top: 18px;
+      top: calc(50% - 3px / 2);
+      transform: rotate(-45deg);
     }
 
     &::after {
-      bottom: 18px;
+      top: calc(50% - 3px / 2);
+      transform: rotate(45deg);
     }
+  }
 
-    [data-nav-expanded="true"] & {
-      &::before {
-        top: calc(50% - 3px / 2);
-        transform: rotate(-45deg);
-      }
+  &:focus-visible {
+    outline-offset: -3px;
+  }
 
-      &::after {
-        top: calc(50% - 3px / 2);
-        transform: rotate(45deg);
-      }
-    }
+  span {
+    visibility: hidden;
+  }
+}
 
-    &:focus-visible {
-      outline-offset: -3px;
-    }
 
-    span {
-      visibility: hidden;
-    }
+//
+// Level Two Nav
+//
+.level-two-nav {
+  &__container {
+    position: fixed;
+    top: calc(var(--header-height) + var(--page-margin));
+    left: 0;
+    right: 0;
+    background-color: pink;
   }
 }

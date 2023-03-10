@@ -5,7 +5,7 @@ import { trapFocus } from '../Utilities/trapFocus.js';
 * Add event listeners that toggle the main nav on mobile.
 */
 export function MainNav()  {
-  const button = document.querySelector(".main-nav__button");
+  const button = document.querySelector(".main-nav-toggle");
   const mainNav = document.querySelector(".main-nav");
   const header = document.querySelector(".header");
 

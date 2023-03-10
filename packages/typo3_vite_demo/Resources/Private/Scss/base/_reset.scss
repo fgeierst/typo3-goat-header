@@ -9,18 +9,18 @@ a {
   color: inherit;
 }
 
-/**
-* Focused state
-*/
+//
+// Focused state
+//
 :focus-visible {
   outline: 3px solid var(--color-focus);
   outline-offset: 3px;
 }
 
-/**
-* .preload will be removed with JavaScript after page has loaded.
-* This prevents unwanted CSS transitions firing on page load.
-*/
+//
+// .preload will be removed with JavaScript after page has loaded.
+// This prevents unwanted CSS transitions firing on page load.
+//
 .preload {
   transition: none !important;
 }
