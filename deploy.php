@@ -118,9 +118,7 @@ task('pluswerk:finalize', function () {
     run('TYPO3_CONTEXT={{typo3_context}} {{php_cli}} {{typo3_console_path}} database:updateschema safe');
     run('TYPO3_CONTEXT={{typo3_context}} {{php_cli}} {{typo3_console_path}} install:fixfolderstructure');
     run('TYPO3_CONTEXT={{typo3_context}} {{php_cli}} {{typo3_console_path}} install:extensionsetupifpossible');
-//    run('TYPO3_CONTEXT={{typo3_context}} {{php_cli}} {{typo3_console_path}} language:update de');
     run('TYPO3_CONTEXT={{typo3_context}} {{php_cli}} {{typo3_console_path}} cache:flush');
-    run('TYPO3_CONTEXT={{typo3_context}} {{php_cli}} {{typo3_console_path}} bepermission:deploy');
     run('curl -L {{base_url}}clear_opcache.php');
     run('rm -f public/clear_opcache.php');
 })->desc('finalize');
