@@ -1,28 +1,28 @@
 <nav id="mainnav" class="main-nav">
     <button type="button" aria-expanded="false" aria-controls="mainnav" class="main-nav__button">
-        <svg width="24" height="24">
-          <title>Hauptnavigation</title>
-          <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z" />
-        </svg>
+        <span>Menu</span>
     </button>
     <div class="main-nav__container">
-        <ul class="main-nav__list">
+        <ul class="main-nav__list preload">
             <f:for each="{mainnavigation}" as="mainnavigationItem">
-                <li class="{f:if(condition: mainnavigationItem.active, then:'active')}">
-                    <a href="{mainnavigationItem.link}" target="{mainnavigationItem.target}" title="{mainnavigationItem.title}">
+                <li class="main-nav__item {f:if(condition: mainnavigationItem.active, then:'active')}">
+                    <a href="{mainnavigationItem.link}" class="main-nav__link">
                         {mainnavigationItem.title}
                     </a>
-                    <f:if condition="{mainnavigationItem.children}">
-                        <ul>
-                            <f:for each="{mainnavigationItem.children}" as="child">
-                                <li class="{f:if(condition: child.active, then:'active')}">
-                                    <a href="{child.link}" target="{child.target}" title="{child.title}">
-                                        {child.title}
-                                    </a>
-                                </li>
-                            </f:for>
-                        </ul>
-                    </f:if>
+                    <f:comment>
+                        <!-- @todo: handle subnavigation -->
+                        <!-- <f:if condition="{mainnavigationItem.children}">
+                            <ul>
+                                <f:for each="{mainnavigationItem.children}" as="child">
+                                    <li class="{f:if(condition: child.active, then:'active')}">
+                                        <a href="{child.link}" target="{child.target}" title="{child.title}">
+                                            {child.title}
+                                        </a>
+                                    </li>
+                                </f:for>
+                            </ul>
+                        </f:if> -->
+                    </f:comment>
                 </li>
             </f:for>
         </ul>
