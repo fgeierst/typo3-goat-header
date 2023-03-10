@@ -48,7 +48,7 @@ definitions:
                   - export KEEP_RELEASES=3
                   - export PHP_CLI=php
                   - export TYPO3_CONTEXT=Development/Staging
-                  - export BASE_URL=
+                  - export BASE_URL= http://***REMOVED***
                   - dep -vvv pluswerk:deploy
         - step: &deployStagingManual
               name: Deploy to staging
