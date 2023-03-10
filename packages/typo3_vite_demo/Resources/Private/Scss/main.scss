@@ -5,9 +5,3 @@
 @use 'components/meta-nav';
 @use 'components/main-nav';
 
-/* Base */
-body {
-	font-family: system-ui;
-	background-color: var(--color-background);
-	color: var(--color-text);
-}

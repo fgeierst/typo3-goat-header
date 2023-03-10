@@ -1,7 +1,7 @@
 .meta-nav {
-  $breakpoint: 30em;
+  $breakpoint: 50em;
 
-  &--mobile {
+  &--tablet {
     @media (min-width: $breakpoint) {
       display: none;
     }

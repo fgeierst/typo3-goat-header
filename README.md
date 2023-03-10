@@ -1,12 +1,9 @@
-# TYPO3 Laboratory
+# PWMUC TYPO3 Lab
 
-This project is MUC Labotatory, it's about developing and building prototypes in BE and FE for TYPO3.
-
-
-## Based on
-
-- https://codepen.io/fgeierst/pen/poOWVeO
-- https://codepen.io/fgeierst/pen/xxaXjqK
+- **Goat Header**. Reference implementation of a generic header and navigation component. Work in progress.
+  - https://xd.adobe.com/view/2f29c044-d202-4082-8190-2990ef9260a5-7a7a/
+  - https://codepen.io/fgeierst/pen/poOWVeO
+  - https://codepen.io/bahr-lukas/pen/LYJzNYL
 
 
 ## Prerequisites

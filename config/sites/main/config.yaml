@@ -23,6 +23,6 @@ languages:
     hreflang: en-us
     direction: ltr
     flag: us
-websiteTitle: 'MUC developm,ent Lab'
+websiteTitle: 'PWMUC Lab'
 rootPageId: 1
 routes: {  }

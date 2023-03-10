@@ -1,4 +1,7 @@
 body {
+	font-family: system-ui;
+	background-color: var(--color-background);
+	color: var(--color-text);
   margin: var(--space-100);
 }
 
@@ -6,11 +9,18 @@ a {
   color: inherit;
 }
 
+/**
+* Focused state
+*/
 :focus-visible {
-  outline: 3px solid var(--color-focus, blue);
+  outline: 3px solid var(--color-focus);
   outline-offset: 3px;
 }
 
+/**
+* .preload will be removed with JavaScript after page has loaded.
+* This prevents unwanted CSS transitions firing on page load.
+*/
 .preload {
   transition: none !important;
 }
