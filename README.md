@@ -30,7 +30,12 @@ Login using these credentials:
 - Username: `admin`
 - Password: `oZim4R7eLEWzzL`
 
+## Installing needed tools for FE developemnt
 
+Installing all the needed prerequisites for FE development
+
+	ddev npm i
+    ddev pnpm install
 ## Vite development server
 
 The development server is already running in the background (started by `ddev start`). You can control it with

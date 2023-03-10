@@ -44,7 +44,7 @@ definitions:
                   - export DIRECTORY_PERMISSION=775
                   - export HTTP_USER=www-data
                   - export HTTP_GROUP=www-data
-                  - export DEPLOY_PATH=/var/www/html/deploy
+                  - export DEPLOY_PATH=/home/www/***REMOVED***/html
                   - export KEEP_RELEASES=3
                   - export PHP_CLI=php
                   - export TYPO3_CONTEXT=Development/Staging
