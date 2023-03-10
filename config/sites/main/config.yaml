@@ -1,10 +1,10 @@
-base: http://***REMOVED***/
+base: /
 baseVariants:
   -
     base: https://typo3-goat-header.ddev.sit
     condition: 'applicationContext == "Development"'
   -
-    base: http://***REMOVED***/
+    base: ***REMOVED***
     condition: 'applicationContext == "Production/Staging"'
 errorHandling:
   - errorCode: 404
