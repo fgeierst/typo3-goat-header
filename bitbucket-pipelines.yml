@@ -47,7 +47,7 @@ definitions:
                   - export DEPLOY_PATH=/home/www/***REMOVED***/html
                   - export KEEP_RELEASES=3
                   - export PHP_CLI=php
-                  - export TYPO3_CONTEXT=Development/Staging
+                  - export TYPO3_CONTEXT=Production/Staging
                   - export BASE_URL= http://***REMOVED***
                   - dep -vvv pluswerk:deploy
         - step: &deployStagingManual
