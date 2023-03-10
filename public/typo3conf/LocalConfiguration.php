@@ -12,8 +12,12 @@ return [
     'DB' => [
         'Connections' => [
             'Default' => [
-                'charset' => 'utf8',
+                'dbname' => 'usr_***REMOVED***_1',
                 'driver' => 'mysqli',
+                'host' => 'db1549.mydbserver.com',
+                'password' => 'u6.vCe6*uzgchr',
+                'port' => '3306',
+                'user' => '***REMOVED***',
             ],
         ],
     ],

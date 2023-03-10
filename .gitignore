@@ -8,6 +8,7 @@ nbproject
 !/var/labels
 /vendor
 /public/*
+!/public/clear_opcache.php
 !/public/.htaccess
 !/public/typo3conf
 /public/typo3conf/*

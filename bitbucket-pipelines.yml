@@ -1,0 +1,75 @@
+definitions:
+    options:
+        docker: true
+    services:
+        mysql:
+            image: mariadb:10.3
+            variables:
+                MARIADB_ROOT_PASSWORD: ***REMOVED***
+    steps:
+        - parallel: &testAndBuild
+              - step:
+                  name: Test & Build (Composer)
+                  image: kanti/buildy:8.1
+                  caches:
+                      - composer
+                  services:
+                      - mysql
+                  script:
+                      - composer install -o --no-progress --no-ansi --no-interaction --classmap-authoritative
+                      - echo 'memory_limit=-1' > /usr/local/etc/php/conf.d/docker-php-memlimit.ini
+                      - rm -f .env
+                      - export TYPO3_CONTEXT=Testing
+                  artifacts:
+                      - vendor/**
+                      - public/typo3/**
+                      - public/index.php
+                      - public/typo3conf/ext/**
+              - step:
+                  name: Node Build
+                  image: node:18
+                  script:
+                      - npm install -g pnpm
+                      - pnpm install
+                      - pnpm run build
+                  artifacts:
+                      - packages/typo3_vite_demo/Resources/Public/Vite/**
+        - step: &deployStaging
+              name: Deploy to staging
+              deployment: staging
+              image: sebastianhofer86/deployer:latest
+              script: &stagingDeployScript
+                  - export SSH_HOSTNAME=***REMOVED***
+                  - export SSH_USER=***REMOVED***
+                  - export FILE_PERMISSION=664
+                  - export DIRECTORY_PERMISSION=775
+                  - export HTTP_USER=www-data
+                  - export HTTP_GROUP=www-data
+                  - export DEPLOY_PATH=/home/www/***REMOVED***/html
+                  - export KEEP_RELEASES=3
+                  - export PHP_CLI=php
+                  - export TYPO3_CONTEXT=Production/Staging
+                  - export BASE_URL=***REMOVED***
+                  - dep -vvv pluswerk:deploy
+        - step: &deployStagingManual
+              name: Deploy to staging
+              deployment: staging
+              trigger: manual
+              image: sebastianhofer86/deployer:latest
+              script: *stagingDeployScript
+
+pipelines:
+    default:
+        - parallel: *testAndBuild
+        - step: *deployStagingManual
+    branches:
+        development:
+            - parallel: *testAndBuild
+            - step: *deployStaging
+        main:
+            - parallel: *testAndBuild
+            - step: *deployStagingManual
+    tags:
+        latest:
+            - parallel: *testAndBuild
+            - step: *deployStaging
