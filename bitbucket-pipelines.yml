@@ -33,6 +33,7 @@ definitions:
                       - pnpm install
                       - pnpm run build
                   artifacts:
+                      - packages/typo3_vite_demo/Resources/Public/Vite/**
         - step: &deployStaging
               name: Deploy to staging
               deployment: staging
