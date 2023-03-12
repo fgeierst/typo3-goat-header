@@ -1,10 +1,10 @@
 
 <f:section name="LevelOne">
     <nav id="mainnav" class="main-nav">
-        <button type="button" class="main-nav-toggle" aria-expanded="false" aria-controls="mainnav" >
-            <span>Menu</span>
+        <button type="button" class="main-nav-toggle" aria-expanded="false" aria-controls="main-nav-container">
+            <span class="visually-hidden">Menu</span>
         </button>
-        <div class="main-nav__container">
+        <div id="main-nav-container" class="main-nav__container">
             <ul class="main-nav__list preload">
                 <f:for each="{mainnavigation}" as="item">
                     <li class="main-nav__item">
@@ -27,9 +27,20 @@
 
 <f:section name="LevelTwo">
     <div class="level-two-nav">
-        <button class="level-two-nav__toggle">{item.title}</button>
-        <div class="level-two-nav__container">
+        <button class="level-two-nav__toggle"
+            aria-expanded="false"
+            aria-controls="level-two-nav-container-{item.data.uid}"
+        >
+            {item.title}
+        </button>
+        <div class="level-two-nav__container" id="level-two-nav-container-{item.data.uid}">
             <ul class="level-two-nav__list">
+                <li class="level-two-nav__item level-two-nav__item--overview">
+                    <a href="{item.link}" class="main-nav__link" {f:if(condition: item.active, then:'aria-current="page"')}>
+                        {item.title}
+                    </a>
+                </li>
+
                 <f:for each="{item.children}" as="item">
                     <li class="level-two-nav__item" {f:if(condition: item.active, then:'aria-current="page"')}>
                         <a class="level-two-nav__link" href="{item.link}">

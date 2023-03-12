@@ -36,3 +36,44 @@ export function MainNav()  {
 }
 
 
+/**
+* Level Two Nav.
+* Add event listeners that toggle the Level Two Nav on desktop.
+*/
+export function LevelTwoNav() {
+  const buttons = document.querySelectorAll(".level-two-nav__toggle");
+  buttons.forEach(button => button.addEventListener("click", handleLevelTwoClick));
+}
+
+function handleLevelTwoClick(event) {
+  // Get state of current button.
+  const currentButton = event.currentTarget;
+  const isCurrentOpen = currentButton.getAttribute("aria-expanded") === "true";
+
+  // Close all button.
+  const buttons = document.querySelectorAll(".level-two-nav__toggle");
+  let isOtherButtonOpen = false;
+  buttons.forEach(button => {
+    if (button.getAttribute("aria-expanded") === "true" && button !== currentButton) {
+      isOtherButtonOpen = true;
+    }
+  });
+
+  // Omit transition if nav is already expanded.
+  const mainNav = document.querySelector(".main-nav");
+  if (isOtherButtonOpen) {
+    mainNav.style.setProperty('--main-nav-animation-timing', 0);
+  } else {
+    mainNav.style.removeProperty('--main-nav-animation-timing');
+  }
+
+  buttons.forEach(button => {
+    if (button !== currentButton) {
+      button.setAttribute("aria-expanded", false);
+    } else {
+      button.setAttribute("aria-expanded", !isCurrentOpen);
+    }
+  });
+}
+
+

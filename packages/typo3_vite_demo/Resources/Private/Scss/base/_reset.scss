@@ -24,3 +24,17 @@ a {
 .preload {
   transition: none !important;
 }
+
+//
+// Visually hide elements but keep them accessible
+// to assistive technologies, such as screen readers.
+//
+.visually-hidden {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}

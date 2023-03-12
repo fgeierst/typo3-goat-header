@@ -9,6 +9,7 @@
   align-items: center;
   justify-content: space-between;
   gap: var(--space-100);
+  position: relative; // .level-two-nav is absolutely positioned relative to this.
 }
 
 .logo {
