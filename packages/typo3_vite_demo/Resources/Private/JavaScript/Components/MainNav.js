@@ -68,11 +68,18 @@ function handleLevelTwoClick(event) {
   }
 
   buttons.forEach(button => {
+    // Close other buttons.
     if (button !== currentButton) {
       button.setAttribute("aria-expanded", false);
-    } else {
-      button.setAttribute("aria-expanded", !isCurrentOpen);
+      return;
     }
+
+    // Handle current button.
+    const mainNav = document.querySelector(".main-nav");
+    const target = button.getAttribute('aria-controls');
+    mainNav.dataset.levelTwoNav = isCurrentOpen ? false : target;
+    button.setAttribute("aria-expanded", !isCurrentOpen);
+
   });
 }
 
