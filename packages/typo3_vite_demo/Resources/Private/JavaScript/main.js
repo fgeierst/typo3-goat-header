@@ -6,15 +6,15 @@ import { ExpandingNav } from './Components/ExpandingNav.js';
 preload();
 
 new ExpandingNav({
-  parent: document.querySelector(".sub-nav"),
-  buttonSelector: ".level-two-nav__toggle, .level-two-nav__back",
-  backClass: "level-two-nav__back",
-  focusableSelector: ".level-two-nav__back, .level-two-nav__link"
+  rootElement: document.querySelector(".subnav"),
+  buttonSelector: ".subnav__button, .subnav__back",
+  backButtonSelector: ".subnav__back",
+  inertSelector: "main, .mainnav__item:not(:has([aria-expanded='true'])), .logo, .header__metanav, .mainnav__button"
 });
 
 new ExpandingNav({
-  parent: document.querySelector(".main-nav"),
-  buttonSelector: ".main-nav-toggle",
-  backClass: null,
-  focusableSelector: ".main-nav-toggle, .sub-nav__button"
+  rootElement: document.querySelector(".mainnav"),
+  buttonSelector: ".mainnav__button",
+  inertSelector: "main"
 });
+

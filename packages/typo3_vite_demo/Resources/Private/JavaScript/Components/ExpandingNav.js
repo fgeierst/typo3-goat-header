@@ -1,140 +1,114 @@
-
-/* TODO
- *  - [x] Fix Focus trapping mobile
- *  - [ ] Handle focus on mobile
- *  - [ ] Prevent transition on page load
- *  - [ ] Mobile escape close only current level (custom close event?)
- */
-
-/*
- * Features
- *   - Focus Trapping
- *   - Click Outside
- *   - Escape key
- *
- * Principles
- *   - CSS Transitions
- *   - State is stored in HTML [aria-expanded] attribute
- *   - No dependencies
- *   - Assuming server rendered HTML (TYPO3, WP, SSG); with client side rendering this would be solved differently.
- */
-
 /**
- * @param {HTMLElement} parent - Parent Element
- * @param {string} buttonSelector - Toggle button selector
- * @param {string} backClass - Back button class
- * @param {string} focusableSelector - Focusable elements selector
- *
+ * A class that creates an expanding navigation menu.
+ * @class
  */
 export class ExpandingNav {
-  constructor(options) {
-    this.parent = options.parent;
-    this.buttons = Array.from(
-      this.parent.querySelectorAll(options.buttonSelector)
-    );
-    this.backClass = options.backClass;
-    this.focusableSelector = options.focusableSelector;
-    this.onClickBound = this.onClick.bind(this);
-    this.parent.addEventListener("click", this.onClickBound);
-  }
+	/**
+	 * Creates an instance of ExpandingNav.
+	 * @param {Object} options - The configuration options for the menu.
+	 * @param {HTMLElement} options.rootElement - Root element of the menu.
+	 * @param {string} options.backButtonSelector - CSS selector for the button to close a subnav panel.
+	 * @param {string} options.inertSelector - CSS selector for elements that can't be focused when the menu is open.
+	 * @param {string} options.buttonSelector - The CSS selector for the menu buttons.
+	 */
+	constructor(options) {
+		this.rootElement = options.rootElement;
+		this.backButtonSelector = options.backButtonSelector;
+		this.inertSelector = options.inertSelector;
+		this.buttons = Array.from(
+			this.rootElement.querySelectorAll(options.buttonSelector)
+		);
+		this.rootElement.addEventListener("click", this.onClick.bind(this));
+	}
 
-  onClick(event) {
-    console.log(this.buttons, event.target);
+	/**
+	 * Handles the click event on the menu buttons.
+	 * @param {MouseEvent} event - The click event object.
+	 */
+	onClick(event) {
+		if (!this.buttons.includes(event.target)) {
+			return;
+		}
+		event.stopPropagation();
+		const isOpen = event.target.getAttribute("aria-expanded") === "true";
+		const isBackButton = event.target.matches(this.backButtonSelector);
+		if (isOpen || isBackButton) {
+			this.switch(false);
+		} else {
+			this.switch(event.target);
+		}
+	}
 
-    if (!this.buttons.includes(event.target)) {
-      return;
-    }
-    console.log('is button click');
+	/**
+	 * Switches between open and closed states of the menu buttons.
+	 * @param {HTMLElement | false} nextButton - The next button to open, or false to close all buttons.
+	 */
+	switch(nextButton) {
+		this.buttons.forEach((button) => {
+			if (button !== nextButton) {
+				this.close(button);
+			}
+		});
+		if (nextButton) {
+			this.open(nextButton);
+		}
+	}
 
-    event.stopPropagation();
-    const isOpen = event.target.getAttribute("aria-expanded") === "true";
-    const isBack = event.target.classList.contains(this.backClass);
-    if (isOpen || isBack) {
-      this.switch(false);
-    } else {
-      this.switch(event.target);
-    }
-    if (isBack) {
-      const parentButton = event.target.parentNode;
-      console.log(parentButton);
-    }
-  }
+	/**
+	 * Opens a menu button and adds event listeners for closing it.
+	 * Adds inert attributes to other elements for focus trapping.
+	 * @param {HTMLElement} button - The button to open.
+	 */
+	open(button) {
+		button.setAttribute("aria-expanded", "true");
+		this.onEscapeKeyBound = this.onEscapeKey.bind(this, button);
+		document.addEventListener("keydown", this.onEscapeKeyBound);
+		document.addEventListener("click", this.onClickOutside.bind(this, button), {
+			once: true
+		});
+		document.querySelectorAll(this.inertSelector).forEach((element) => {
+			element.setAttribute("inert", "");
+		});
+	}
 
-  onClickOutside(button, event) {
-    const li = button.parentElement;
-    const isOutside = !li.contains(event.target);
-    if (isOutside) {
-      this.switch(false);
-    }
-  }
+	/**
+	 * Closes a menu button and removes event listeners for closing it.
+	 * Removes inert attributes to release focus.
+	 * @param {HTMLElement} button - The button to close.
+	 */
+	close(button) {
+		button.setAttribute("aria-expanded", "false");
+		document.removeEventListener("keydown", this.onEscapeKeyBound);
+		document.querySelectorAll(this.inertSelector).forEach((element) => {
+			element.removeAttribute("inert");
+		});
+	}
 
-  onKeydown(button, event) {
-    switch (event.key) {
-      case "Escape":
-        this.switch(false);
-        button.focus();
-        event.preventDefault();
-        break;
-      case "Tab":
-        const focusable = this.getFocusableElements(button);
-        if (event.shiftKey) {
-          if (document.activeElement === focusable.first) {
-            focusable.last.focus();
-            event.preventDefault();
-          }
-        } else {
-          if (document.activeElement === focusable.last) {
-            focusable.first.focus();
-            event.preventDefault();
-          }
-        }
-        break;
-      default:
-    }
-  }
+	/**
+	 * Closes a menu button when the escape key is pressed.
+	 * @param {HTMLElement} button - The button to close.
+	 * @param {KeyboardEvent} event - The keydown event object.
+	 */
+	onEscapeKey(button, event) {
+		if (event.key !== "Escape") {
+			return;
+		}
+		event.preventDefault();
+		this.switch(false);
+		button.focus();
+		event.stopPropagation();
+	}
 
-  /**
-   * @param {HTMLElement | false} nextButton - Next button element or `false` to close all buttons.
-   */
-  switch(nextButton) {
-    this.buttons.forEach((button) => {
-      if (button !== nextButton) {
-        this.close(button);
-      }
-    });
-    if (nextButton) {
-      this.open(nextButton);
-    }
-  }
-
-  open(button) {
-    button.setAttribute("aria-expanded", "true");
-    const backButton = button.parentElement.querySelector(`.${this.backClass}`);
-    if (backButton) {
-      window.setTimeout(() => {
-        backButton.focus();
-      }, 300);
-    }
-    this.onKeydownBound = this.onKeydown.bind(this, button);
-    document.addEventListener("keydown", this.onKeydownBound);
-    this.onClickOutsideBound = this.onClickOutside.bind(this, button);
-    document.addEventListener("click", this.onClickOutsideBound);
-  }
-
-  close(button) {
-    button.setAttribute("aria-expanded", "false");
-    document.removeEventListener("keydown", this.onKeydownBound);
-    document.removeEventListener("click", this.onClickOutsideBound);
-  }
-
-  getFocusableElements(button) {
-    const parent = button.parentElement;
-    const focusable = parent.querySelectorAll(this.focusableSelector);
-    return {
-      all: focusable,
-      first: focusable[0],
-      last: focusable[focusable.length - 1]
-    };
-  }
+	/**
+	 * Closes a menu button when clicked outside of it.
+	 * @param {HTMLElement} button - The button to close.
+	 * @param {MouseEvent} event - The click event object.
+	 */
+	onClickOutside(button, event) {
+		const isOutside = !button.parentElement.contains(event.target);
+		if (isOutside) {
+			this.switch(false);
+		}
+	}
 }
 

@@ -1,8 +1,7 @@
+@use 'base/variables';
 @use 'base/colors';
-@use 'base/spacing';
-@use 'base/responsive';
 @use 'base/reset';
 @use 'components/header';
-@use 'components/main-nav';
-@use 'components/sub-nav';
+@use 'components/mainnav';
+@use 'components/subnav';
 

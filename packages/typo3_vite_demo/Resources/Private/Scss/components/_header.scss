@@ -1,15 +1,39 @@
+@use '../base/breakpoints';
+
 .header {
-  --header-color-background: hsl(203, 64%, 94%);
-  --header-height: var(--space-300);
+  --color-background: var(--color-black);
+  --color-text: var(--color-white);
+  --header-height: var(--space-400);
   --header-button-width: var(--min-tap-target-size);
 
-  background-color: var(--header-color-background);
+  background-color: var(--color-background);
+  color: var(--color-text);
   height: var(--header-height);
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: var(--space-100);
   position: relative; // .level-two-nav is absolutely positioned relative to this.
+  padding: var(--page-margin);
+  border-block-end: 1px solid var(--color-white);
+
+  &__metanav {
+    &--mobile {
+      display: flex;
+
+      @media (min-width: breakpoints.$md) {
+        display: none;
+      }
+    }
+
+    &--desktop {
+      display: none;
+
+      @media (min-width: breakpoints.$md) {
+        display: flex;
+      }
+    }
+  }
 }
 
 .logo {
@@ -29,4 +53,9 @@
     width: auto;
     filter: saturate(0);
   }
+}
+
+[aria-current='page'] {
+  font-weight: bold;
+  text-decoration: none;
 }

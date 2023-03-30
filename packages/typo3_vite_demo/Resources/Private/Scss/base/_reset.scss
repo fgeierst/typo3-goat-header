@@ -1,12 +1,25 @@
+* {
+  box-sizing: border-box;
+}
+
 body {
 	font-family: system-ui;
 	background-color: var(--color-background);
 	color: var(--color-text);
-  margin: var(--space-100);
+  margin: 0;
 }
 
 a {
   color: inherit;
+}
+
+button {
+  all: unset;
+  cursor: pointer;
+}
+
+main, footer {
+  padding: var(--page-margin);
 }
 
 //
