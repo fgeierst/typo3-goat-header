@@ -37,7 +37,7 @@ definitions:
         - step: &deployStaging
               name: Deploy to staging
               deployment: staging
-              image: sebastianhofer86/deployer:latest
+              image: sebastianhofer86/deployer:6
               script: &stagingDeployScript
                   - export SSH_HOSTNAME=***REMOVED***
                   - export SSH_USER=***REMOVED***
@@ -55,7 +55,7 @@ definitions:
               name: Deploy to staging
               deployment: staging
               trigger: manual
-              image: sebastianhofer86/deployer:latest
+              image: sebastianhofer86/deployer:6
               script: *stagingDeployScript
 
 pipelines:
