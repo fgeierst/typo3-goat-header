@@ -36,6 +36,14 @@
 				visibility: hidden;
 			}
 		}
+
+    &__item {
+      transition: visibility var(--animation-timing);
+
+      .subnav:has([aria-expanded="true"]) &:not(:has([aria-expanded="true"])) {
+        visibility: hidden;
+      }
+    }
 	}
 }
 
