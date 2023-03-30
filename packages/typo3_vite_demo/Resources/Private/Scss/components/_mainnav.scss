@@ -1,0 +1,101 @@
+@use '../base/breakpoints';
+
+// Main nav
+// └ Mobile
+@media (max-width: breakpoints.$md) {
+	.mainnav {
+		display: flex;
+		gap: 1rem;
+		align-items: center;
+
+		&__panel {
+			position: fixed;
+			top: var(--header-height);
+			right: 0;
+			left: 0;
+			bottom: 0;
+			transition: visibility var(--animation-timing);
+			overflow: hidden;
+			display: grid;
+
+      @media (min-width: breakpoints.$sm) {
+        width: 300px;
+        left: unset;
+      }
+
+			.mainnav__button[aria-expanded="false"] + & {
+				visibility: hidden;
+			}
+		}
+
+		&__list {
+			transition: transform var(--animation-timing), visibility var(--animation-timing);
+
+			.mainnav__button[aria-expanded="false"] + .mainnav__panel & {
+				transform: translatey(-100%);
+				visibility: hidden;
+			}
+		}
+	}
+}
+
+// Main nav
+// └ Desktop
+@media (min-width: (breakpoints.$md + 1px)) {
+	.mainnav {
+		display: flex;
+		gap: 1rem;
+		align-items: center;
+
+		&__button {
+			display: none;
+		}
+	}
+}
+
+// Hamburger Button
+.hamburger-button {
+  position: relative;
+  width: var(--header-button-width);
+  height: var(--header-button-width);
+
+  @media (min-width: breakpoints.$md) {
+    display: none;
+  }
+
+  &::before,
+  &::after {
+    content: "";
+    display: block;
+    width: 24px;
+    height: 3px;
+    position: absolute;
+    left: 12px;
+    background-color: var(--color-text);
+    transition: transform 0.2s;
+    }
+
+  &::before {
+    top: 18px;
+  }
+
+  &::after {
+    bottom: 18px;
+  }
+
+  &[aria-expanded="true"] {
+    &::before {
+      top: calc(50% - 3px / 2);
+      transform: rotate(-45deg);
+    }
+
+    &::after {
+      top: calc(50% - 3px / 2);
+      transform: rotate(45deg);
+    }
+  }
+
+  &:focus-visible {
+    outline-offset: -3px;
+  }
+}

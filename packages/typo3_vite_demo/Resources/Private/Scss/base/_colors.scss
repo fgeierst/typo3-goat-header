@@ -1,5 +1,11 @@
 :root {
-  --color-text: hsl(0, 0%, 15%);
-  --color-background: hsl(0, 0%, 100%);
-  --color-focus: hsl(219, 82%, 56%);
+  // Color palette
+  --color-black: hsl(0, 0%, 15%);
+  --color-white: hsl(0, 0%, 100%);
+  --color-primary: hsl(219, 82%, 56%);
+
+  // function colors
+  --color-text: var(--color-black);
+  --color-background: var(--color-white);
+  --color-focus: var(--color-primary);
 }

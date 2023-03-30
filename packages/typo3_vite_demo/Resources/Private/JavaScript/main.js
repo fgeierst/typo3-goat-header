@@ -1,7 +1,20 @@
 import 'vite/modulepreload-polyfill';
 import '../Scss/main.scss';
 import { preload } from './Utilities/preload.js';
-import { MainNav } from './Components/MainNav.js';
+import { ExpandingNav } from './Components/ExpandingNav.js';
 
 preload();
-MainNav();
+
+new ExpandingNav({
+  rootElement: document.querySelector(".subnav"),
+  buttonSelector: ".subnav__button, .subnav__back",
+  backButtonSelector: ".subnav__back",
+  inertSelector: "main, .mainnav__item:not(:has([aria-expanded='true'])), .logo, .header__metanav, .mainnav__button"
+});
+
+new ExpandingNav({
+  rootElement: document.querySelector(".mainnav"),
+  buttonSelector: ".mainnav__button",
+  inertSelector: "main"
+});
+

@@ -1,26 +1,53 @@
+* {
+  box-sizing: border-box;
+}
+
 body {
 	font-family: system-ui;
 	background-color: var(--color-background);
 	color: var(--color-text);
-  margin: var(--space-100);
+  margin: 0;
 }
 
 a {
   color: inherit;
 }
 
-/**
-* Focused state
-*/
+button {
+  all: unset;
+  cursor: pointer;
+}
+
+main, footer {
+  padding: var(--page-margin);
+}
+
+//
+// Focused state
+//
 :focus-visible {
   outline: 3px solid var(--color-focus);
   outline-offset: 3px;
 }
 
-/**
-* .preload will be removed with JavaScript after page has loaded.
-* This prevents unwanted CSS transitions firing on page load.
-*/
+//
+// .preload will be removed with JavaScript after page has loaded.
+// This prevents unwanted CSS transitions firing on page load.
+//
 .preload {
   transition: none !important;
+}
+
+//
+// Visually hide elements but keep them accessible
+// to assistive technologies, such as screen readers.
+//
+.visually-hidden {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
 }

@@ -1,30 +1,53 @@
-<nav id="mainnav" class="main-nav">
-    <button type="button" aria-expanded="false" aria-controls="mainnav" class="main-nav__button">
-        <span>Menu</span>
+
+<f:section name="LevelOne">
+    <nav class="mainnav">
+        <button type="button" class="mainnav__button hamburger-button" aria-expanded="false">
+            <span class="visually-hidden">Menu</span>
+        </button>
+        <div class="mainnav__panel">
+            <ul class="mainnav__list subnav preload">
+                <f:for each="{mainnavigation}" as="item">
+                    <li class="mainnav__item">
+                        <f:if condition="!{item.children}">
+                            <f:then>
+                                <a href="{item.link}" class="mainnav__link" {f:if(condition: item.active, then:'aria-current="page"')}>
+                                    {item.title}
+                                </a>
+                            </f:then>
+                            <f:else>
+                                <f:render section="LevelTwo" arguments="{item: item}" />
+                            </f:else>
+                        </f:if>
+                    </li>
+                </f:for>
+            </ul>
+        </div>
+    </nav>
+</f:section>
+
+<f:section name="LevelTwo">
+    <button class="subnav__button" aria-expanded="false" >
+        {item.title}
     </button>
-    <div class="main-nav__container">
-        <ul class="main-nav__list preload">
-            <f:for each="{mainnavigation}" as="mainnavigationItem">
-                <li class="main-nav__item {f:if(condition: mainnavigationItem.active, then:'active')}">
-                    <a href="{mainnavigationItem.link}" class="main-nav__link">
-                        {mainnavigationItem.title}
+    <div class="subnav__panel"">
+        <ul class="subnav__list">
+            <li class="subnav__item subnav__item--back">
+                <button class="subnav__back">Back</button>
+            </li>
+
+            <li class="subnav__item subnav__item--overview">
+                <a href="{item.link}" {f:if(condition: item.active, then:'aria-current="page"')}>
+                    {item.title}
+                </a>
+            </li>
+
+            <f:for each="{item.children}" as="item">
+                <li class="subnav__item" {f:if(condition: item.active, then:'aria-current="page"')}>
+                    <a class="subnav__link" href="{item.link}">
+                        {item.title}
                     </a>
-                    <f:comment>
-                        <!-- @todo: handle subnavigation -->
-                        <!-- <f:if condition="{mainnavigationItem.children}">
-                            <ul>
-                                <f:for each="{mainnavigationItem.children}" as="child">
-                                    <li class="{f:if(condition: child.active, then:'active')}">
-                                        <a href="{child.link}" target="{child.target}" title="{child.title}">
-                                            {child.title}
-                                        </a>
-                                    </li>
-                                </f:for>
-                            </ul>
-                        </f:if> -->
-                    </f:comment>
                 </li>
             </f:for>
         </ul>
     </div>
-</nav>
+</f:section>
