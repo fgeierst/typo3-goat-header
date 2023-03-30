@@ -9,7 +9,8 @@ new ExpandingNav({
   rootElement: document.querySelector(".subnav"),
   buttonSelector: ".subnav__button, .subnav__close",
   closeButtonSelector: ".subnav__close",
-  inertSelector: "main, .logo, .header__metanav, .mainnav__button"
+  inertSelector: "main, .logo, .header__metanav, .mainnav__button",
+  hover: true
 });
 
 new ExpandingNav({
