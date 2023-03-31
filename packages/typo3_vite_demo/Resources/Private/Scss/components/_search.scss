@@ -1,0 +1,31 @@
+@use '../base/breakpoints';
+
+// Search
+// └ Desktop
+@media (min-width: (breakpoints.$md + 1px)) {
+  .search {
+    &__panel {
+      position: fixed;
+      top: var(--header-height);
+      right: 0;
+      left: 0;
+      overflow: hidden;
+      transition: visibility var(--animation-timing);
+
+      [aria-expanded="false"] + & {
+        visibility: hidden;
+      }
+    }
+
+    &__form {
+      background-color: var(--color-black);
+      padding: var(--page-margin);
+      transition: transform var(--animation-timing), visibility var(--animation-timing);
+
+      .search__button[aria-expanded="false"] + .search__panel & {
+        transform: translatey(-100%);
+        visibility: hidden;
+      }
+    }
+  }
+}

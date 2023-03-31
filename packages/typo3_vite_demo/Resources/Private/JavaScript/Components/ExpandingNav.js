@@ -12,7 +12,8 @@ export class ExpandingNav {
 	 * @param {string} options.buttonSelector - CSS selector for all clickable menu buttons.
    * @param {boolean} options.hover - Whether to open on hover.
 	 */
-	constructor(options) {
+  constructor(options) {
+    console.log(options);
 		this.rootElement = options.rootElement;
 		this.closeButtonSelector = options.closeButtonSelector;
 		this.inertSelector = options.inertSelector;
