@@ -1,6 +1,44 @@
 @use '../base/breakpoints';
 
 // Search
+// └ Mobile
+@media (max-width: (breakpoints.$md)) {
+  .search {
+    margin-inline-start: auto;
+
+    &__panel {
+      position: fixed;
+      top: var(--header-height);
+      right: 0;
+      left: 0;
+      bottom: 0;
+      overflow: hidden;
+      transition: visibility var(--animation-timing);
+      display: grid;
+
+      [aria-expanded="false"] + & {
+        visibility: hidden;
+      }
+    }
+
+    &__form {
+      background-color: var(--color-black);
+      padding: var(--page-margin);
+      transition: transform var(--animation-timing), visibility var(--animation-timing);
+
+      .search__button[aria-expanded="false"] + .search__panel & {
+        transform: translatey(-100%);
+        visibility: hidden;
+      }
+    }
+
+    &__icon {
+      pointer-events: none;
+    }
+  }
+}
+
+// Search
 // └ Desktop
 @media (min-width: (breakpoints.$md + 1px)) {
   .search {
@@ -26,6 +64,10 @@
         transform: translatey(-100%);
         visibility: hidden;
       }
+    }
+
+    &__icon {
+      pointer-events: none;
     }
   }
 }

@@ -11,12 +11,13 @@
 
     <div class="header__metanav header__metanav--mobile">
         <f:render partial="MetaNav" arguments="{_all}" />
+        <f:render partial="Search"/>
     </div>
 
     <f:render partial="MainNav" section="Main" arguments="{_all}" />
 
     <div class="header__metanav header__metanav--desktop">
-        <f:render partial="Search" section="Desktop"/>
+        <f:render partial="Search"/>
         <f:render partial="MetaNav" arguments="{_all}" />
     </div>
 
