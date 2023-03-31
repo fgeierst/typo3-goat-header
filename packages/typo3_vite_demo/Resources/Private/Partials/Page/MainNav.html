@@ -1,7 +1,7 @@
 
-<f:section name="LevelOne">
+<f:section name="Main">
     <nav class="mainnav">
-        <button type="button" class="mainnav__button hamburger-button" aria-expanded="false">
+        <button type="button" class="mainnav__button hamburger-button scale-on-hover" aria-expanded="false">
             <span class="visually-hidden">Menu</span>
         </button>
         <div class="mainnav__panel">
@@ -15,7 +15,7 @@
                                 </a>
                             </f:then>
                             <f:else>
-                                <f:render section="LevelTwo" arguments="{item: item}" />
+                                <f:render section="Subnav" arguments="{item: item}" />
                             </f:else>
                         </f:if>
                     </li>
@@ -25,14 +25,14 @@
     </nav>
 </f:section>
 
-<f:section name="LevelTwo">
+<f:section name="Subnav">
     <button class="subnav__button" aria-expanded="false" >
         {item.title}
     </button>
     <div class="subnav__panel"">
         <ul class="subnav__list">
-            <li class="subnav__item subnav__item--back">
-                <button class="subnav__back">Back</button>
+            <li class="subnav__item subnav__item--close">
+                <button class="subnav__close">Back</button>
             </li>
 
             <li class="subnav__item subnav__item--overview">

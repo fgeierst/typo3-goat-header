@@ -5,21 +5,23 @@
 export class ExpandingNav {
 	/**
 	 * Creates an instance of ExpandingNav.
-	 * @param {Object} options - The configuration options for the menu.
+	 * @param {Object} options - Configuration of the menu.
 	 * @param {HTMLElement} options.rootElement - Root element of the menu.
-	 * @param {string} options.backButtonSelector - CSS selector for the button to close a subnav panel.
+	 * @param {string} [options.closeButtonSelector] - Optional CSS selector for an extra close button.
 	 * @param {string} options.inertSelector - CSS selector for elements that can't be focused when the menu is open.
-	 * @param {string} options.buttonSelector - The CSS selector for the menu buttons.
+	 * @param {string} options.buttonSelector - CSS selector for all clickable menu buttons.
+   * @param {boolean} options.hover - Whether to open on hover.
 	 */
 	constructor(options) {
 		this.rootElement = options.rootElement;
-		this.backButtonSelector = options.backButtonSelector;
+		this.closeButtonSelector = options.closeButtonSelector;
 		this.inertSelector = options.inertSelector;
 		this.buttons = Array.from(
 			this.rootElement.querySelectorAll(options.buttonSelector)
 		);
-		this.rootElement.addEventListener("click", this.onClick.bind(this));
-	}
+    this.rootElement.addEventListener("click", this.onClick.bind(this));
+    if (options.hover) { this.addHoverListeners() };
+  }
 
 	/**
 	 * Handles the click event on the menu buttons.
@@ -31,8 +33,8 @@ export class ExpandingNav {
 		}
 		event.stopPropagation();
 		const isOpen = event.target.getAttribute("aria-expanded") === "true";
-		const isBackButton = event.target.matches(this.backButtonSelector);
-		if (isOpen || isBackButton) {
+		const closeButtonEvent = event.target.matches(this.closeButtonSelector);
+		if (isOpen || closeButtonEvent) {
 			this.switch(false);
 		} else {
 			this.switch(event.target);
@@ -109,6 +111,21 @@ export class ExpandingNav {
 		if (isOutside) {
 			this.switch(false);
 		}
-	}
+  }
+
+  /**
+   * Adds event listeners for hovering over menu buttons.
+   * Only on desktop, hover opens the menu.
+   */
+  addHoverListeners() {
+    this.buttons.forEach((button) => {
+      button.addEventListener("mouseenter", (event) => {
+        const mediaQuery = window.matchMedia('(min-width: 768px)');
+        if (mediaQuery.matches) {
+          this.switch(event.target);
+        }
+      })
+    });
+  }
 }
 

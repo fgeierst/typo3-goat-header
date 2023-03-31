@@ -19,7 +19,7 @@
 		&__button {
       transition: visibility var(--animation-timing);
 
-			.subnav:has([aria-expanded="true"]) &:not(.subnav__back) {
+			.subnav:has([aria-expanded="true"]) &:not(.subnav__close) {
 				visibility: hidden;
 			}
 		}
@@ -89,7 +89,7 @@
 		}
 
 		&__item {
-			&--back {
+			&--close {
 				display: none;
 			}
 
