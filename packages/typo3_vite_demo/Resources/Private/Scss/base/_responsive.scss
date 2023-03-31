@@ -1,0 +1,89 @@
+//
+// Responsive utility variants
+// Example usage: `<div class="sm:none md:block"></div>`
+//
+
+@use 'breakpoints';
+
+.sm\: {
+
+  &none {
+    display: none;
+  }
+
+  &block {
+    display: block;
+  }
+
+  &inline {
+    display: inline;
+  }
+
+  &inline-block {
+    display: inline-block;
+  }
+
+  &flex {
+    display: flex;
+  }
+
+  &grid {
+    display: grid;
+  }
+}
+
+@media (min-width: breakpoints.$sm) {
+  .md\: {
+    &none {
+      display: none;
+    }
+
+    &block {
+      display: block;
+    }
+
+    &inline {
+      display: inline;
+    }
+
+    &inline-block {
+      display: inline-block;
+    }
+
+    &flex {
+      display: flex;
+    }
+
+    &grid {
+      display: grid;
+    }
+  }
+}
+
+@media (min-width: breakpoints.$md) {
+  .lg\: {
+    &none {
+      display: none;
+    }
+
+    &block {
+      display: block;
+    }
+
+    &inline {
+      display: inline;
+    }
+
+    &inline-block {
+      display: inline-block;
+    }
+
+    &flex {
+      display: flex;
+    }
+
+    &grid {
+      display: grid;
+    }
+  }
+}

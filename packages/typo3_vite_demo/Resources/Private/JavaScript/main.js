@@ -6,6 +6,12 @@ import { ExpandingNav } from './Components/ExpandingNav.js';
 preload();
 
 new ExpandingNav({
+  rootElement: document.querySelector(".mainnav"),
+  buttonSelector: ".mainnav__button",
+  inertSelector: "main"
+});
+
+new ExpandingNav({
   rootElement: document.querySelector(".subnav"),
   buttonSelector: ".subnav__button, .subnav__close",
   closeButtonSelector: ".subnav__close",
@@ -14,8 +20,9 @@ new ExpandingNav({
 });
 
 new ExpandingNav({
-  rootElement: document.querySelector(".mainnav"),
-  buttonSelector: ".mainnav__button",
+  rootElement: document.querySelector(".search"),
+  buttonSelector: ".search__button",
   inertSelector: "main"
 });
+
 

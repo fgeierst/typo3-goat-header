@@ -6,6 +6,9 @@
         </button>
         <div class="mainnav__panel">
             <ul class="mainnav__list subnav preload">
+                <li class="mainnav__item mainnav__item--mobile-search lg:none">
+                    <f:render partial="Search" section="Mobile"/>
+                </li>
                 <f:for each="{mainnavigation}" as="item">
                     <li class="mainnav__item">
                         <f:if condition="!{item.children}">
