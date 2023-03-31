@@ -10,7 +10,12 @@
 
 <f:section name="Desktop">
     <div class="search sm:none lg:block">
-        <button type="button" class="search__button" aria-expanded="false">Search</button>
+        <button type="button" class="search__button scale-on-hover" aria-expanded="false">
+            <svg width="24" height="24" class="search__icon">
+                <title>Search</title>
+                <use href="{f:uri.resource(path: 'EXT:typo3_vite_demo/Resources/Public/Icons/sprite.svg')}#search"></use>
+            </svg>
+        </button>
         <div class="search__panel">
             <form class="search__form">
                 <label>

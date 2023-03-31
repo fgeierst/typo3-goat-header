@@ -13,7 +13,6 @@ export class ExpandingNav {
    * @param {boolean} options.hover - Whether to open on hover.
 	 */
   constructor(options) {
-    console.log(options);
 		this.rootElement = options.rootElement;
 		this.closeButtonSelector = options.closeButtonSelector;
 		this.inertSelector = options.inertSelector;
@@ -28,7 +27,8 @@ export class ExpandingNav {
 	 * Handles the click event on the menu buttons.
 	 * @param {MouseEvent} event - The click event object.
 	 */
-	onClick(event) {
+  onClick(event) {
+    console.log('click', event.target);
 		if (!this.buttons.includes(event.target)) {
 			return;
 		}

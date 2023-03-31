@@ -20,6 +20,7 @@
   &__metanav {
     display: flex;
     gap: var(--space-50);
+    align-items: center;
 
     &--mobile {
       display: flex;

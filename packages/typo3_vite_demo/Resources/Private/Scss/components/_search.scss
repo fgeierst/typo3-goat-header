@@ -27,5 +27,9 @@
         visibility: hidden;
       }
     }
+
+    &__icon {
+      pointer-events: none;
+    }
   }
 }
