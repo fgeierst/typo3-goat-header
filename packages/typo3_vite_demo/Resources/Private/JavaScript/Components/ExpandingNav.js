@@ -28,7 +28,6 @@ export class ExpandingNav {
 	 * @param {MouseEvent} event - The click event object.
 	 */
   onClick(event) {
-    console.log('click', event.target);
 		if (!this.buttons.includes(event.target)) {
 			return;
 		}

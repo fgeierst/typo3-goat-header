@@ -20,7 +20,12 @@ new ExpandingNav({
 });
 
 new ExpandingNav({
-  rootElement: document.querySelector(".search"),
+  rootElement: document.querySelector(".header__metanav--desktop > .search"),
+  buttonSelector: ".search__button",
+  inertSelector: "main"
+});
+new ExpandingNav({
+  rootElement: document.querySelector(".header__metanav--mobile > .search"),
   buttonSelector: ".search__button",
   inertSelector: "main"
 });
