@@ -71,6 +71,11 @@ page {
                 includeSpacer = 1
                 as = mainnavigation
             }
+            30 = TYPO3\CMS\Frontend\DataProcessing\LanguageMenuProcessor
+            30 {
+                languages = auto
+                as = languagenavigation
+            }
         }
     }
 
@@ -163,6 +168,15 @@ page {
     includeJSFooter {
 
     }
+
+    headerData {
+        05 = TEXT
+        05.value = -
+        05.if.isTrue.field = title
+        05.noTrimWrap = || |
+        05.trim = |
+        05.wrap = <title>|</title>
+    }
 }
 
 # In development mode, JS and CSS are injected from the Vite dev server.
@@ -211,6 +225,8 @@ config {
     index_externals = 1
     index_metatags = 1
     headerComment = {$config.headerComment}
+    pageTitleSeparator = -
+    pageTitleSeparator.noTrimWrap = | | |
 
     // Disable Image Upscaling
     noScaleUp = 1

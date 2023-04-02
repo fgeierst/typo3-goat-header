@@ -2,3 +2,13 @@
 
 <a href="#">Login</a>
 
+<!-- Language Navigation -->
+<div class="langnav">
+    <f:for each="{languagenavigation}" as="item">
+        <f:if condition="{item.active} == 0">
+            <a href="{item.link}">
+                {item.navigationTitle}
+            </a>
+        </f:if>
+    </f:for>
+</div class="langnav">
