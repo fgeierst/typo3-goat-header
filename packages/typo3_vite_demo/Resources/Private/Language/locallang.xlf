@@ -8,6 +8,12 @@
 			<trans-unit id="navigation.back">
 				<source>Back</source>
 			</trans-unit>
+			<trans-unit id="navigation.search">
+				<source>Search</source>
+			</trans-unit>
+			<trans-unit id="navigation.languages">
+				<source>Languages</source>
+			</trans-unit>
         </body>
     </file>
 </xliff>
