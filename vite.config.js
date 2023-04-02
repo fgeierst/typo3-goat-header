@@ -1,10 +1,8 @@
 import { defineConfig } from 'vite';
-import FullReload from 'vite-plugin-full-reload';
 import vue from '@vitejs/plugin-vue';
 
 export default defineConfig({
   plugins: [
-    FullReload(['packages/typo3_vite_demo/Resources/Private/**/*.html']),
     vue(),
   ],
   server: {
