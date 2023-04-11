@@ -6,22 +6,66 @@
 	.subnav {
 		margin-block: 0;
 		background-color: var(--color-background);
-		padding: 0.5rem;
+		padding: var(--page-margin);
 		list-style: none;
 		display: flex;
 		flex-direction: column;
-		gap: 1rem;
 
 		&:has([aria-expanded="true"]) {
 			transform: translateX(-100%);
 		}
 
+    &__link, &__button, &__close {
+      padding-block-start: var(--space-100);
+      padding-block-end: var(--space-100);
+      display: flex;
+      width: 100%;
+      align-items: center;
+    }
+
 		&__button {
       transition: visibility var(--animation-timing);
+			justify-content: space-between;
 
 			.subnav:has([aria-expanded="true"]) &:not(.subnav__close) {
 				visibility: hidden;
 			}
+
+      &::after {
+        content: "";
+        background-color: var(--color-white);
+        -webkit-mask: url("/typo3conf/ext/typo3_vite_demo/Resources/Public/Icons/sprite.svg#chevron-right-view");
+        mask: url("/typo3conf/ext/typo3_vite_demo/Resources/Public/Icons/sprite.svg#chevron-right-view");
+				display: block;
+        width: 0.375rem;
+        height: 0.625rem;
+        transition: transform .25s ease-in-out;
+				transform: translateX(0);
+      }
+
+      &:hover::after {
+        transform: translateX(.375rem);
+      }
+		}
+
+		&__close {
+      gap: var(--space-100);
+
+			&::before {
+        content: "";
+        background-color: var(--color-white);
+        -webkit-mask: url("/typo3conf/ext/typo3_vite_demo/Resources/Public/Icons/sprite.svg#chevron-right-view");
+        mask: url("/typo3conf/ext/typo3_vite_demo/Resources/Public/Icons/sprite.svg#chevron-right-view");
+				display: block;
+        width: 0.375rem;
+        height: 0.625rem;
+        transition: transform .25s ease-in-out;
+				transform: translateX(0) rotate(180deg);
+      }
+
+      &:hover::before {
+        transform: translateX(-.375rem) rotate(180deg);
+      }
 		}
 
 		&__panel {
@@ -40,10 +84,9 @@
 
 		&__list {
 			list-style: none;
-			padding: 0.5rem;
+			padding: var(--page-margin);
 			display: flex;
 			flex-direction: column;
-			gap: 1rem;
 		}
 
     &__item {
