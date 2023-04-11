@@ -9,5 +9,6 @@
   --min-tap-target-size: var(--space-300);
   --page-margin: var(--space-150);
 
-  --animation-timing: 0.2s;
+  --transition-timing: 0.2s;
+  --transition-timing-function: cubic-bezier(0.77, 0, 0.175, 1);
 }

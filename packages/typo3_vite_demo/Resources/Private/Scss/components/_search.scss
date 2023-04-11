@@ -13,7 +13,7 @@
       left: 0;
       bottom: 0;
       overflow: hidden;
-      transition: visibility var(--animation-timing);
+      transition: visibility var(--transition-timing);
       display: grid;
 
       [aria-expanded="false"] + & {
@@ -24,7 +24,7 @@
     &__form {
       background-color: var(--color-black);
       padding: var(--page-margin);
-      transition: transform var(--animation-timing), visibility var(--animation-timing);
+      transition: transform var(--transition-timing), visibility var(--transition-timing);
 
       .search__button[aria-expanded="false"] + .search__panel & {
         transform: translatey(-100%);
@@ -48,7 +48,7 @@
       right: 0;
       left: 0;
       overflow: hidden;
-      transition: visibility var(--animation-timing);
+      transition: visibility var(--transition-timing);
 
       [aria-expanded="false"] + & {
         visibility: hidden;
@@ -58,7 +58,7 @@
     &__form {
       background-color: var(--color-black);
       padding: var(--page-margin);
-      transition: transform var(--animation-timing), visibility var(--animation-timing);
+      transition: transform var(--transition-timing), visibility var(--transition-timing);
 
       .search__button[aria-expanded="false"] + .search__panel & {
         transform: translatey(-100%);

@@ -24,7 +24,7 @@
     }
 
 		&__button {
-      transition: visibility var(--animation-timing);
+      transition: visibility var(--transition-timing);
 			justify-content: space-between;
 
 			.subnav:has([aria-expanded="true"]) &:not(.subnav__close) {
@@ -75,7 +75,7 @@
 			width: 100%;
 			bottom: 0;
 			background-color: var(--color-background);
-			transition: visibility var(--animation-timing);
+			transition: visibility var(--transition-timing);
 
 			[aria-expanded="false"] + & {
 				visibility: hidden;
@@ -103,13 +103,13 @@
 	.subnav {
 		list-style: none;
 		display: flex;
-		gap: 0.5rem;
+		gap: var(--space-400);
 		padding-inline-start: 0;
 		margin-block: 0;
 
 		&__panel {
 			overflow: hidden;
-			transition: visibility var(--animation-timing);
+			transition: visibility var(--transition-timing);
 			position: fixed;
 			top: var(--header-height);
       left: 0;
@@ -121,7 +121,7 @@
 		}
 
 		&__list {
-			transition: transform var(--animation-timing), visibility var(--animation-timing);
+			transition: transform var(--transition-timing)  var(--transition-timing-function), visibility var(--transition-timing);
 			background-color: var(--color-background);
 			padding: 0.5rem;
 
@@ -140,5 +140,26 @@
         text-transform: uppercase;
       }
 		}
+
+    &__button {
+      display: flex;
+      align-items: center;
+      gap: 0.35em;
+
+      &::after {
+        content: "";
+        background-color: var(--color-white);
+        -webkit-mask: url("/typo3conf/ext/typo3_vite_demo/Resources/Public/Icons/sprite.svg#chevron-right-view");
+        mask: url("/typo3conf/ext/typo3_vite_demo/Resources/Public/Icons/sprite.svg#chevron-right-view");
+				display: block;
+        width: 0.375rem;
+        height: 0.625rem;
+				transform: rotate(90deg);
+      }
+
+      &[aria-expanded="true"]::after {
+        transform: rotate(-90deg);
+      }
+    }
 	}
 }

@@ -2,6 +2,9 @@
 <xliff version="1.0">
     <file source-language="en" datatype="plaintext" original="messages">
         <body>
+			<trans-unit id="header.logo">
+				<source>Homepage</source>
+			</trans-unit>
 			<trans-unit id="navigation.button">
 				<source>Main menu</source>
 			</trans-unit>
