@@ -15,7 +15,8 @@ export class ExpandingNav {
   constructor(options) {
 		this.rootElement = options.rootElement;
 		this.closeButtonSelector = options.closeButtonSelector;
-		this.inertSelector = options.inertSelector;
+    this.inertSelector = options.inertSelector;
+    this.previousInertElements = [];
 		this.buttons = Array.from(
 			this.rootElement.querySelectorAll(options.buttonSelector)
 		);
@@ -45,7 +46,10 @@ export class ExpandingNav {
 	 * Switches between open and closed states of the menu buttons.
 	 * @param {HTMLElement | false} nextButton - The next button to open, or false to close all buttons.
 	 */
-	switch(nextButton) {
+  switch(nextButton) {
+    if (nextButton) {
+      this.storePreviousInertElements();
+    }
 		this.buttons.forEach((button) => {
 			if (button !== nextButton) {
 				this.close(button);
@@ -54,7 +58,20 @@ export class ExpandingNav {
 		if (nextButton) {
 			this.open(nextButton);
 		}
-	}
+  }
+
+  /**
+   * Stores previous inert elements.
+   */
+  storePreviousInertElements() {
+    this.previousInertElements = [];
+    document.querySelectorAll(this.inertSelector).forEach((element) => {
+      const isInert = element.getAttribute("inert") === "";
+      if (isInert) {
+        this.previousInertElements.push(element);
+      }
+    });
+  }
 
 	/**
 	 * Opens a menu button and adds event listeners for closing it.
@@ -67,11 +84,13 @@ export class ExpandingNav {
 		document.addEventListener("keydown", this.onEscapeKeyBound);
 		document.addEventListener("click", this.onClickOutside.bind(this, button), {
 			once: true
-		});
-		document.querySelectorAll(this.inertSelector).forEach((element) => {
-			element.setAttribute("inert", "");
-		});
-	}
+    });
+
+    document.querySelectorAll(this.inertSelector).forEach((element) => {
+      element.setAttribute("inert", "");
+    });
+  }
+
 
 	/**
 	 * Closes a menu button and removes event listeners for closing it.
@@ -80,9 +99,13 @@ export class ExpandingNav {
 	 */
 	close(button) {
 		button.setAttribute("aria-expanded", "false");
-		document.removeEventListener("keydown", this.onEscapeKeyBound);
-		document.querySelectorAll(this.inertSelector).forEach((element) => {
-			element.removeAttribute("inert");
+    document.removeEventListener("keydown", this.onEscapeKeyBound);
+
+    // [ ] restore the previous inert status
+    document.querySelectorAll(this.inertSelector).forEach((element) => {
+      if (!this.previousInertElements.includes(element)) {
+        element.removeAttribute("inert");
+      }
 		});
 	}
 
@@ -128,4 +151,3 @@ export class ExpandingNav {
     });
   }
 }
-

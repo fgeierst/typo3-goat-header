@@ -8,7 +8,7 @@ preload();
 new ExpandingNav({
   rootElement: document.querySelector(".mainnav"),
   buttonSelector: ".mainnav__button",
-  inertSelector: "main"
+  inertSelector: "main",
 });
 
 new ExpandingNav({
@@ -24,6 +24,7 @@ new ExpandingNav({
   buttonSelector: ".search__button",
   inertSelector: "main"
 });
+
 new ExpandingNav({
   rootElement: document.querySelector(".header__metanav--mobile > .search"),
   buttonSelector: ".search__button",

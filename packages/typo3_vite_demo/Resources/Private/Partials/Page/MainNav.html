@@ -1,28 +1,34 @@
 
 <f:section name="Main">
     <nav class="mainnav">
-        <button type="button" class="mainnav__button hamburger-button scale-on-hover" aria-expanded="false">
-            <span class="visually-hidden">Menu</span>
-        </button>
-        <div class="mainnav__panel">
-            <ul class="mainnav__list subnav preload">
-                <f:for each="{mainnavigation}" as="item">
-                    <li class="mainnav__item">
-                        <f:if condition="!{item.children}">
-                            <f:then>
-                                <a href="{item.link}" class="mainnav__link" {f:if(condition: item.active, then:'aria-current="page"')}>
-                                    {item.title}
-                                </a>
-                            </f:then>
-                            <f:else>
-                                <f:render section="Subnav" arguments="{item: item}" />
-                            </f:else>
-                        </f:if>
-                    </li>
-                </f:for>
-            </ul>
-        </div>
+        <f:render section="MainNavLevelOne" arguments="{mainnavigation: mainnavigation}" />
     </nav>
+</f:section>
+
+<f:section name="MainNavLevelOne">
+    <button type="button" class="mainnav__button hamburger-button scale-on-hover" aria-expanded="false">
+        <span class="visually-hidden">
+            <f:translate key="LLL:EXT:typo3_vite_demo/Resources/Private/Language/locallang.xlf:navigation.button"/>
+        </span>
+    </button>
+    <div class="mainnav__panel">
+        <ul class="mainnav__list subnav preload">
+            <f:for each="{mainnavigation}" as="item">
+                <li class="mainnav__item">
+                    <f:if condition="!{item.children}">
+                        <f:then>
+                            <a href="{item.link}" class="mainnav__link" {f:if(condition: item.active, then:'aria-current="page"')}>
+                                {item.title}
+                            </a>
+                        </f:then>
+                        <f:else>
+                            <f:render section="Subnav" arguments="{item: item}" />
+                        </f:else>
+                    </f:if>
+                </li>
+            </f:for>
+        </ul>
+    </div>
 </f:section>
 
 <f:section name="Subnav">
@@ -32,7 +38,9 @@
     <div class="subnav__panel"">
         <ul class="subnav__list">
             <li class="subnav__item subnav__item--close">
-                <button class="subnav__close">Back</button>
+                <button class="subnav__close">
+                    <f:translate key="LLL:EXT:typo3_vite_demo/Resources/Private/Language/locallang.xlf:navigation.back"/>
+                </button>
             </li>
 
             <li class="subnav__item subnav__item--overview">
