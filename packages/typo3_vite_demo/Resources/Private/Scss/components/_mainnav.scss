@@ -14,7 +14,7 @@
 			right: 0;
 			left: 0;
 			bottom: 0;
-			transition: visibility var(--animation-timing);
+			transition: visibility var(--transition-timing);
 			overflow: hidden;
 			display: grid;
 
@@ -29,7 +29,7 @@
 		}
 
 		&__list {
-			transition: transform var(--animation-timing), visibility var(--animation-timing);
+			transition: transform var(--transition-timing) var(--transition-timing-function), visibility var(--transition-timing);
 
 			.mainnav__button[aria-expanded="false"] + .mainnav__panel & {
 				transform: translatey(-100%);
@@ -38,11 +38,17 @@
 		}
 
     &__item {
-      transition: visibility var(--animation-timing);
+      transition: visibility var(--transition-timing);
 
       .subnav:has([aria-expanded="true"]) &:not(:has([aria-expanded="true"])) {
         visibility: hidden;
       }
+    }
+
+    &__link {
+      padding-block-start: var(--space-100);
+      padding-block-end: var(--space-100);
+      display: flex;
     }
 	}
 }

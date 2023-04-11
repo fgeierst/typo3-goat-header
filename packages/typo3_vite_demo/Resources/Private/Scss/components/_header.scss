@@ -14,8 +14,12 @@
   justify-content: space-between;
   gap: var(--space-100);
   position: relative; // .level-two-nav is absolutely positioned relative to this.
-  padding: var(--page-margin);
+  padding: 0 var(--page-margin);
   border-block-end: 1px solid var(--color-white);
+
+  a {
+    text-decoration: none;
+  }
 
   &__metanav {
     display: flex;
@@ -57,12 +61,10 @@
     align-items: center;
     font-weight: 900;
     text-decoration: none;
-  }
 
-  &__icon {
-    height: 100%;
-    width: auto;
-    filter: saturate(0);
+    &:focus-visible {
+      outline-offset: calc(var(--focus-outline-offset) * -1);
+    }
   }
 }
 
