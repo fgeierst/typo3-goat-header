@@ -44,6 +44,12 @@
         visibility: hidden;
       }
     }
+
+    &__link {
+      padding-block-start: var(--space-100);
+      padding-block-end: var(--space-100);
+      display: flex;
+    }
 	}
 }
 

@@ -61,12 +61,10 @@
     align-items: center;
     font-weight: 900;
     text-decoration: none;
-  }
 
-  &__icon {
-    height: 100%;
-    width: auto;
-    filter: saturate(0);
+    &:focus-visible {
+      outline-offset: calc(var(--focus-outline-offset) * -1);
+    }
   }
 }
 

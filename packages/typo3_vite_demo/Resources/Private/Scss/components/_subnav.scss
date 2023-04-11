@@ -121,9 +121,10 @@
 		}
 
 		&__list {
+      list-style: none;
 			transition: transform var(--transition-timing)  var(--transition-timing-function), visibility var(--transition-timing);
 			background-color: var(--color-background);
-			padding: 0.5rem;
+			padding: var(--page-margin);
 
 			[aria-expanded="false"] + .subnav__panel & {
 				transform: translatey(-100%);
@@ -132,6 +133,9 @@
 		}
 
 		&__item {
+      max-width: 600px;
+      margin-inline: auto;
+
 			&--close {
 				display: none;
 			}
@@ -140,6 +144,12 @@
         text-transform: uppercase;
       }
 		}
+
+    &__link {
+      display: flex;
+      padding-block-start: var(--space-100);
+      padding-block-end: var(--space-100);
+    }
 
     &__button {
       display: flex;

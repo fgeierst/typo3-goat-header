@@ -17,7 +17,7 @@
                 <li class="mainnav__item">
                     <f:if condition="!{item.children}">
                         <f:then>
-                            <a href="{item.link}" class="mainnav__link subnav__link" {f:if(condition: item.active, then:'aria-current="page"')}>
+                            <a href="{item.link}" class="mainnav__link" {f:if(condition: item.active, then:'aria-current="page"')}>
                                 {item.title}
                             </a>
                         </f:then>
