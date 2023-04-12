@@ -17,14 +17,14 @@ new ExpandingNav({
   hover: true
 });
 
-new ExpandingNav({
-  rootElement: document.querySelector(".header__metanav--desktop > .search"),
-  buttonSelector: ".search__button",
-});
+// new ExpandingNav({
+//   rootElement: document.querySelector(".header__metanav--desktop > .search"),
+//   buttonSelector: ".search__button",
+// });
 
-new ExpandingNav({
-  rootElement: document.querySelector(".header__metanav--mobile > .search"),
-  buttonSelector: ".search__button",
-});
+// new ExpandingNav({
+//   rootElement: document.querySelector(".header__metanav--mobile > .search"),
+//   buttonSelector: ".search__button",
+// });
 
 

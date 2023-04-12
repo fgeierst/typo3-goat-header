@@ -8,7 +8,7 @@
 		gap: 1rem;
 		align-items: center;
 
-		&__panel {
+		&__clipbox {
 			position: fixed;
 			top: var(--header-height);
 			right: 0;
@@ -28,10 +28,11 @@
 			}
 		}
 
-		&__list {
+		&__panel {
+      background-color: var(--color-background);
 			transition: transform var(--transition-timing) var(--transition-timing-function), visibility var(--transition-timing);
 
-			.mainnav__button[aria-expanded="false"] + .mainnav__panel & {
+			.mainnav__button[aria-expanded="false"] + .mainnav__clipbox & {
 				transform: translatey(-100%);
 				visibility: hidden;
 			}
@@ -40,7 +41,7 @@
     &__item {
       transition: visibility var(--transition-timing);
 
-      .subnav:has([aria-expanded="true"]) &:not(:has([aria-expanded="true"])) {
+      .subnav:has([aria-expanded="true"]) &:not(:has([aria-expanded="true"])) { // @todo: Firefox
         visibility: hidden;
       }
     }

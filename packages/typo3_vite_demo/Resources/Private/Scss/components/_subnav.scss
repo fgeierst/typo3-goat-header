@@ -4,14 +4,14 @@
 // └ Mobile
 @media (max-width: breakpoints.$md) {
 	.subnav {
-		margin-block: 0;
-		background-color: var(--color-background);
-		padding: var(--page-margin);
-		list-style: none;
+    margin-block-start: 0;
+    padding: var(--page-margin);
+    list-style: none;
 		display: flex;
 		flex-direction: column;
+    transition: transform var(--transition-timing) var(--transition-timing-function);
 
-		&:has([aria-expanded="true"]) {
+		&:has([aria-expanded="true"]) { // @todo: Does not yet work in Firefox
 			transform: translateX(-100%);
 		}
 
@@ -27,7 +27,7 @@
       transition: visibility var(--transition-timing);
 			justify-content: space-between;
 
-			.subnav:has([aria-expanded="true"]) &:not(.subnav__close) {
+			.subnav:has([aria-expanded="true"]) &:not(.subnav__close) { // @todo: Firefox
 				visibility: hidden;
 			}
 
@@ -68,7 +68,7 @@
       }
 		}
 
-		&__panel {
+		&__clipbox {
 			position: absolute;
 			top: 0;
 			left: 100%;
@@ -80,6 +80,10 @@
 			[aria-expanded="false"] + & {
 				visibility: hidden;
 			}
+		}
+
+		&__panel{
+
 		}
 
 		&__list {
@@ -107,7 +111,7 @@
 		padding-inline-start: 0;
 		margin-block: 0;
 
-		&__panel {
+		&__clipbox {
 			overflow: hidden;
 			transition: visibility var(--transition-timing);
 			position: fixed;
@@ -120,16 +124,19 @@
 			}
 		}
 
-		&__list {
-      list-style: none;
+		&__panel {
 			transition: transform var(--transition-timing)  var(--transition-timing-function), visibility var(--transition-timing);
 			background-color: var(--color-background);
 			padding: var(--page-margin);
 
-			[aria-expanded="false"] + .subnav__panel & {
+			[aria-expanded="false"] + .subnav__clipbox & {
 				transform: translatey(-100%);
 				visibility: hidden;
 			}
+		}
+
+		&__list {
+      list-style: none;
 		}
 
 		&__item {

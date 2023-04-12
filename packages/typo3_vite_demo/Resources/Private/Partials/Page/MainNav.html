@@ -1,61 +1,72 @@
 
 <f:section name="Main">
     <nav class="mainnav">
-        <f:render section="MainNavLevelOne" arguments="{mainnavigation: mainnavigation}" />
+        <button type="button" class="mainnav__button hamburger-button scale-on-hover" aria-expanded="false">
+            <span class="visually-hidden">
+                <f:translate key="LLL:EXT:typo3_vite_demo/Resources/Private/Language/locallang.xlf:navigation.button"/>
+            </span>
+        </button>
+        <div class="mainnav__clipbox">
+            <div class="mainnav__panel">
+                <f:render section="LevelOne" arguments="{mainnavigation: mainnavigation}" />
+            </div>
+        </div>
     </nav>
 </f:section>
 
-<f:section name="MainNavLevelOne">
-    <button type="button" class="mainnav__button hamburger-button scale-on-hover" aria-expanded="false">
-        <span class="visually-hidden">
-            <f:translate key="LLL:EXT:typo3_vite_demo/Resources/Private/Language/locallang.xlf:navigation.button"/>
-        </span>
-    </button>
-    <div class="mainnav__panel">
-        <ul class="mainnav__list subnav preload">
-            <f:for each="{mainnavigation}" as="item">
-                <li class="mainnav__item">
-                    <f:if condition="!{item.children}">
-                        <f:then>
-                            <a href="{item.link}" class="mainnav__link" {f:if(condition: item.active, then:'aria-current="page"')}>
-                                {item.title}
-                            </a>
-                        </f:then>
-                        <f:else>
-                            <f:render section="Subnav" arguments="{item: item}" />
-                        </f:else>
-                    </f:if>
-                </li>
-            </f:for>
-        </ul>
-    </div>
+
+<f:section name="LevelOne">
+    <ul class="subnav preload">
+        <f:for each="{mainnavigation}" as="item">
+            <li class="mainnav__item">
+                <f:if condition="!{item.children}">
+                    <f:then>
+                        <a href="{item.link}" class="mainnav__link" {f:if(condition: item.active, then:'aria-current="page"')}>
+                            {item.title}
+                        </a>
+                    </f:then>
+                    <f:else>
+                        <f:render section="Subnav" arguments="{item: item}" />
+                    </f:else>
+                </f:if>
+            </li>
+        </f:for>
+    </ul>
 </f:section>
+
 
 <f:section name="Subnav">
     <button class="subnav__button" aria-expanded="false" >
         {item.title}
     </button>
-    <div class="subnav__panel"">
-        <ul class="subnav__list">
-            <li class="subnav__item subnav__item--close">
-                <button class="subnav__close">
-                    <f:translate key="LLL:EXT:typo3_vite_demo/Resources/Private/Language/locallang.xlf:navigation.back"/>
-                </button>
-            </li>
+    <div class="subnav__clipbox">
+        <div class="subnav__panel">
+            <f:render section="LevelTwo" arguments="{item: item}" />
+        </div>
+    </div>
+</f:section>
 
-            <li class="subnav__item subnav__item--overview">
-                <a class="subnav__link" href="{item.link}" {f:if(condition: item.active, then:'aria-current="page"')}>
+
+<f:section name="LevelTwo">
+    <ul class="subnav__list">
+        <li class="subnav__item subnav__item--close">
+            <button class="subnav__close">
+                <f:translate key="LLL:EXT:typo3_vite_demo/Resources/Private/Language/locallang.xlf:navigation.back"/>
+            </button>
+        </li>
+
+        <li class="subnav__item subnav__item--overview">
+            <a class="subnav__link" href="{item.link}" {f:if(condition: item.active, then:'aria-current="page"')}>
+                {item.title}
+            </a>
+        </li>
+
+        <f:for each="{item.children}" as="item">
+            <li class="subnav__item" {f:if(condition: item.active, then:'aria-current="page"')}>
+                <a class="subnav__link" href="{item.link}">
                     {item.title}
                 </a>
             </li>
-
-            <f:for each="{item.children}" as="item">
-                <li class="subnav__item" {f:if(condition: item.active, then:'aria-current="page"')}>
-                    <a class="subnav__link" href="{item.link}">
-                        {item.title}
-                    </a>
-                </li>
-            </f:for>
-        </ul>
-    </div>
+        </f:for>
+    </ul>
 </f:section>
