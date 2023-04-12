@@ -6,8 +6,8 @@ import { ExpandingNav } from './Components/ExpandingNav.js';
 preload();
 
 new ExpandingNav({
-  rootElement: document.querySelector(".mainnav"),
-  buttonSelector: ".mainnav__button",
+  rootElement: document.querySelector(".header"),
+  buttonSelector: ".mainnav__button, .search__button",
 });
 
 new ExpandingNav({
@@ -16,15 +16,5 @@ new ExpandingNav({
   closeButtonSelector: ".subnav__close",
   hover: true
 });
-
-// new ExpandingNav({
-//   rootElement: document.querySelector(".header__metanav--desktop > .search"),
-//   buttonSelector: ".search__button",
-// });
-
-// new ExpandingNav({
-//   rootElement: document.querySelector(".header__metanav--mobile > .search"),
-//   buttonSelector: ".search__button",
-// });
 
 
