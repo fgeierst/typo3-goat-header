@@ -8,7 +8,6 @@ export class ExpandingNav {
 	 * @param {Object} options - Configuration of the menu.
 	 * @param {HTMLElement} options.rootElement - Root element of the menu.
 	 * @param {string} [options.closeButtonSelector] - Optional CSS selector for an extra close button.
-	 * @param {string} options.inertSelector - CSS selector for elements that can't be focused when the menu is open.
 	 * @param {string} options.buttonSelector - CSS selector for all clickable menu buttons.
    * @param {boolean} options.hover - Whether to open on hover.
 	 */
@@ -16,13 +15,13 @@ export class ExpandingNav {
 		this.rootElement = options.rootElement;
 		this.closeButtonSelector = options.closeButtonSelector;
     this.inertSelector = options.inertSelector;
-    this.previousInertElements = [];
 		this.buttons = Array.from(
 			this.rootElement.querySelectorAll(options.buttonSelector)
 		);
     this.rootElement.addEventListener("click", this.onClick.bind(this));
     if (options.hover) { this.addHoverListeners() };
   }
+
 
 	/**
 	 * Handles the click event on the menu buttons.
@@ -47,9 +46,6 @@ export class ExpandingNav {
 	 * @param {HTMLElement | false} nextButton - The next button to open, or false to close all buttons.
 	 */
   switch(nextButton) {
-    if (nextButton) {
-      this.storePreviousInertElements();
-    }
 		this.buttons.forEach((button) => {
 			if (button !== nextButton) {
 				this.close(button);
@@ -60,22 +56,8 @@ export class ExpandingNav {
 		}
   }
 
-  /**
-   * Stores previous inert elements.
-   */
-  storePreviousInertElements() {
-    this.previousInertElements = [];
-    document.querySelectorAll(this.inertSelector).forEach((element) => {
-      const isInert = element.getAttribute("inert") === "";
-      if (isInert) {
-        this.previousInertElements.push(element);
-      }
-    });
-  }
-
 	/**
 	 * Opens a menu button and adds event listeners for closing it.
-	 * Adds inert attributes to other elements for focus trapping.
 	 * @param {HTMLElement} button - The button to open.
 	 */
 	open(button) {
@@ -85,28 +67,16 @@ export class ExpandingNav {
 		document.addEventListener("click", this.onClickOutside.bind(this, button), {
 			once: true
     });
-
-    document.querySelectorAll(this.inertSelector).forEach((element) => {
-      element.setAttribute("inert", "");
-    });
   }
 
 
 	/**
 	 * Closes a menu button and removes event listeners for closing it.
-	 * Removes inert attributes to release focus.
 	 * @param {HTMLElement} button - The button to close.
 	 */
 	close(button) {
 		button.setAttribute("aria-expanded", "false");
     document.removeEventListener("keydown", this.onEscapeKeyBound);
-
-    // [ ] restore the previous inert status
-    document.querySelectorAll(this.inertSelector).forEach((element) => {
-      if (!this.previousInertElements.includes(element)) {
-        element.removeAttribute("inert");
-      }
-		});
 	}
 
 	/**
