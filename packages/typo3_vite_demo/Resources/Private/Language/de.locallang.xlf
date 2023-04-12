@@ -21,6 +21,14 @@
 				<source>Languages</source>
 				<target>Sprachen</target>
 			</trans-unit>
+			<trans-unit id="search.term">
+				<source>Search term</source>
+				<target>Suchbegriff</target>
+			</trans-unit>
+			<trans-unit id="search.submit">
+				<source>Search</source>
+				<target>Suche</target>
+			</trans-unit>
 			<trans-unit id="footer.logo">
 				<source>Goats!</source>
 				<target>Goats!</target>

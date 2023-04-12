@@ -1,7 +1,11 @@
 <form class="search__form">
-    <label>
-        <span class="visually-hidden">Search term</span>
-        <input type="text">
+    <label class="search__label">
+        <span class="visually-hidden">
+            <f:translate key="LLL:EXT:typo3_vite_demo/Resources/Private/Language/locallang.xlf:search.term"/>
+        </span>
+        <input type="text" class="search__input">
     </label>
-    <button>Submit</button>
+    <button class="search__submit">
+        <f:translate key="LLL:EXT:typo3_vite_demo/Resources/Private/Language/locallang.xlf:search.submit"/>
+    </button>
 </form>
