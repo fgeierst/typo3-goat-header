@@ -1,10 +1,27 @@
 
 <f:section name="Main">
 
+    <f:comment><!-- Language (Mobile)--></f:comment>
+    <nav class="mobile-language" aria-labelledby="language-button">
+        <button id="language-button" class="mainnav__button" aria-expanded="false">
+            <svg width="24" height="24" class="mainnav__icon">
+                <title>
+                    <f:translate key="LLL:EXT:typo3_vite_demo/Resources/Private/Language/locallang.xlf:navigation.languages"/>
+                </title>
+                <use href="{f:uri.resource(path: 'EXT:typo3_vite_demo/Resources/Public/Icons/sprite.svg')}#globe"></use>
+            </svg>
+        </button>
+        <div class="mainnav__clipbox">
+            <div class="mainnav__panel">
+                <f:render partial="LanguageNav" arguments="{languagenavigation: languagenavigation}"/>
+            </div>
+        </div>
+    </nav>
+
     <f:comment><!-- Search (Mobile) --></f:comment>
-    <nav class="mobile-search">
-        <button class="mainnav__button" aria-expanded="false">
-            <svg width="24" height="24" class="search__icon">
+    <nav class="mobile-search" aria-labelledby="search-button">
+        <button id="search-button" class="mainnav__button" aria-expanded="false">
+            <svg width="24" height="24" class="mainnav__icon">
                 <title>
                     <f:translate key="LLL:EXT:typo3_vite_demo/Resources/Private/Language/locallang.xlf:navigation.search"/>
                 </title>
@@ -26,7 +43,7 @@
         </button>
         <div class="mainnav__clipbox">
             <div class="mainnav__panel">
-                <f:render section="LevelOne" arguments="{mainnavigation: mainnavigation}" />
+                <f:render section="LevelOne" arguments="{mainnavigation: mainnavigation, languagenavigation: languagenavigation}" />
             </div>
         </div>
     </nav>
@@ -52,9 +69,9 @@
         </f:for>
 
         <f:comment><!-- Search (Desktop) --></f:comment>
-        <li class="mainnav__item mainnav__item--search">
+        <li class="mainnav__item mainnav__item--desktop-only">
             <button class="subnav__button" aria-expanded="false" >
-                <svg width="24" height="24" class="search__icon" >
+                <svg width="24" height="24" class="subnav__icon" >
                     <title>
                         <f:translate key="LLL:EXT:typo3_vite_demo/Resources/Private/Language/locallang.xlf:navigation.search"/>
                     </title>
@@ -64,6 +81,23 @@
             <div class="subnav__clipbox">
                 <div class="subnav__panel">
                     <f:render partial="Search"/>
+                </div>
+            </div>
+        </li>
+
+        <f:comment><!-- Language (Desktop) --></f:comment>
+        <li class="mainnav__item mainnav__item--desktop-only">
+            <button id="language-button" class="subnav__button" aria-expanded="false">
+                <svg width="24" height="24" class="subnav__icon">
+                    <title>
+                        <f:translate key="LLL:EXT:typo3_vite_demo/Resources/Private/Language/locallang.xlf:navigation.languages"/>
+                    </title>
+                    <use href="{f:uri.resource(path: 'EXT:typo3_vite_demo/Resources/Public/Icons/sprite.svg')}#globe"></use>
+                </svg>
+            </button>
+            <div class="subnav__clipbox">
+                <div class="subnav__panel">
+                    <f:render partial="LanguageNav" arguments="{languagenavigation: languagenavigation}"/>
                 </div>
             </div>
         </li>

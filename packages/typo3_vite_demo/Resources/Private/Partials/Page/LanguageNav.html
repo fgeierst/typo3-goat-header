@@ -1,12 +1,6 @@
 <!-- Language Navigation -->
 
 <div class="langnav">
-    <svg width="24" height="24" class="langnav__icon">
-        <title>
-            <f:translate key="LLL:EXT:typo3_vite_demo/Resources/Private/Language/locallang.xlf:navigation.languages"/>
-        </title>
-        <use href="{f:uri.resource(path: 'EXT:typo3_vite_demo/Resources/Public/Icons/sprite.svg')}#globe"></use>
-    </svg>
     <f:for each="{languagenavigation}" as="item">
         <f:if condition="{item.active} == 0">
             <a href="{item.link}">

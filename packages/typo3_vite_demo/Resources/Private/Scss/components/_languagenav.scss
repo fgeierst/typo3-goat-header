@@ -1,0 +1,15 @@
+@use '../base/breakpoints';
+
+.mobile-language {
+  @media (min-width: breakpoints.$md) {
+    display: none;
+  }
+}
+
+.langnav {
+  padding: var(--page-margin);
+
+  @media (min-width: breakpoints.$md) {
+    padding: 0;
+  }
+}

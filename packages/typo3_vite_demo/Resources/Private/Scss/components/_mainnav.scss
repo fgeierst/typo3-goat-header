@@ -1,6 +1,13 @@
 @use '../base/breakpoints';
 
 // Main nav
+.mainnav {
+  &__icon {
+    pointer-events: none;
+  }
+}
+
+// Main nav
 // └ Mobile
 @media (max-width: breakpoints.$md) {
 	.mainnav {
@@ -45,7 +52,7 @@
         visibility: hidden;
       }
 
-      &--search {
+      &--desktop-only {
         display: none;
       }
     }
@@ -66,7 +73,7 @@
 		gap: 1rem;
 		align-items: center;
 
-		&__button:not(.search__button) {
+		&__button {
 			display: none;
 		}
 	}

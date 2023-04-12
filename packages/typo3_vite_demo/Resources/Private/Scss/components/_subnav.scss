@@ -82,10 +82,6 @@
 			}
 		}
 
-		&__panel{
-
-		}
-
 		&__list {
 			list-style: none;
 			padding: var(--page-margin);
@@ -98,6 +94,10 @@
         text-transform: uppercase;
       }
 		}
+
+    &__icon {
+      pointer-events: none;
+    }
 	}
 }
 

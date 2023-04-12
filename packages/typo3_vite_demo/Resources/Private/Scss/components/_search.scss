@@ -1,34 +1,28 @@
 @use '../base/breakpoints';
 
-// Search
-// └ Mobile
-@media (max-width: (breakpoints.$md)) {
-  .search {
-    &__form {
-      padding: var(--page-margin);
-    }
-
-  }
-}
-
-// Search
-// └ Desktop
-@media (min-width: (breakpoints.$md + 1px)) {
-  .mobile-search {
+// Hide mobile search on desktop
+.mobile-search {
+  @media (min-width: (breakpoints.$md + 1px)) {
     display: none;
   }
 }
-
 
 // Search
 .search {
   &__form {
     max-width: 600px;
     margin-inline: auto;
+    padding: var(--page-margin);
     display: flex;
     gap: var(--space-150);
-    flex-direction: row;
-    align-items: center;
+    flex-direction: column;
+    align-items: stretch;
+
+    @media (min-width: breakpoints.$md) {
+      padding: 0;
+      flex-direction: row;
+      align-items: center;
+    }
   }
 
   &__label {
@@ -46,9 +40,5 @@
       outline: var(--focus-outline-width) solid var(--color-focus);
       outline-offset: var(--focus-outline-offset);
     }
-  }
-
-  &__icon {
-    pointer-events: none;
   }
 }
