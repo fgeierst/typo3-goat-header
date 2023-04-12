@@ -1,0 +1,14 @@
+.footer {
+  &::before {
+    content: "";
+    display: block;
+    background-color: var(--color-text);
+    height: 5px;
+    width: 5ch;
+    margin-block-end: var(--space-100);
+  }
+
+  &__logo {
+    --color-icon: var(--color-text);
+  }
+}

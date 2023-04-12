@@ -9,13 +9,16 @@
 				<source>Main menu</source>
 			</trans-unit>
 			<trans-unit id="navigation.back">
-				<source>Back</source>
+				<source>Main menu</source>
 			</trans-unit>
 			<trans-unit id="navigation.search">
 				<source>Search</source>
 			</trans-unit>
 			<trans-unit id="navigation.languages">
 				<source>Languages</source>
+			</trans-unit>
+			<trans-unit id="footer.logo">
+				<source>Goats!</source>
 			</trans-unit>
         </body>
     </file>

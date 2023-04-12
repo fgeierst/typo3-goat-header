@@ -10,8 +10,8 @@
 				<target>Hauptmenü</target>
 			</trans-unit>
 			<trans-unit id="navigation.back">
-				<source>Back</source>
-				<target>Zurück</target>
+				<source>Main menu</source>
+				<target>Hauptmenü</target>
 			</trans-unit>
 			<trans-unit id="navigation.search">
 				<source>Search</source>
@@ -20,6 +20,10 @@
 			<trans-unit id="navigation.languages">
 				<source>Languages</source>
 				<target>Sprachen</target>
+			</trans-unit>
+			<trans-unit id="footer.logo">
+				<source>Goats!</source>
+				<target>Goats!</target>
 			</trans-unit>
 		</body>
 	</file>
