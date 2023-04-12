@@ -107,6 +107,7 @@
 	.subnav {
 		list-style: none;
 		display: flex;
+    align-items: center;
 		gap: var(--space-400);
 		padding-inline-start: 0;
 		margin-block: 0;

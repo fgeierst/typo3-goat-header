@@ -1,5 +1,23 @@
 
 <f:section name="Main">
+
+    <f:comment><!-- Search (Mobile) --></f:comment>
+    <nav class="mobile-search">
+        <button class="mainnav__button" aria-expanded="false">
+            <svg width="24" height="24" class="search__icon">
+                <title>
+                    <f:translate key="LLL:EXT:typo3_vite_demo/Resources/Private/Language/locallang.xlf:navigation.search"/>
+                </title>
+                <use href="{f:uri.resource(path: 'EXT:typo3_vite_demo/Resources/Public/Icons/sprite.svg')}#search"></use>
+            </svg>
+        </button>
+        <div class="mainnav__clipbox">
+            <div class="mainnav__panel">
+                <f:render partial="Search"/>
+            </div>
+        </div>
+    </nav>
+
     <nav class="mainnav">
         <button type="button" class="mainnav__button hamburger-button scale-on-hover" aria-expanded="false">
             <span class="visually-hidden">
@@ -14,9 +32,10 @@
     </nav>
 </f:section>
 
-
 <f:section name="LevelOne">
     <ul class="subnav preload">
+
+        <f:comment><!-- Level 1 items --></f:comment>
         <f:for each="{mainnavigation}" as="item">
             <li class="mainnav__item">
                 <f:if condition="!{item.children}">
@@ -31,6 +50,24 @@
                 </f:if>
             </li>
         </f:for>
+
+        <f:comment><!-- Search (Desktop) --></f:comment>
+        <li class="mainnav__item mainnav__item--search">
+            <button class="subnav__button" aria-expanded="false" >
+                <svg width="24" height="24" class="search__icon" >
+                    <title>
+                        <f:translate key="LLL:EXT:typo3_vite_demo/Resources/Private/Language/locallang.xlf:navigation.search"/>
+                    </title>
+                    <use href="{f:uri.resource(path: 'EXT:typo3_vite_demo/Resources/Public/Icons/sprite.svg')}#search"></use>
+                </svg>
+            </button>
+            <div class="subnav__clipbox">
+                <div class="subnav__panel">
+                    <f:render partial="Search"/>
+                </div>
+            </div>
+        </li>
+
     </ul>
 </f:section>
 

@@ -20,20 +20,8 @@ export class ExpandingNav {
 		);
     this.rootElement.addEventListener("click", this.onClick.bind(this));
     if (options.hover) { this.addHoverListeners() };
-
-    // listen for close events
-    document.addEventListener("close", this.onClose.bind(this), true);
-
   }
 
-  onClose(event) {
-    if (this.rootElement !== event.detail.nextRoot) {
-      this.switch(false);
-      console.log(`IN: ${this.rootElement.classList} recieves close event, next is ${event.detail.nextRoot.classList} --> CLOSING ${this.rootElement.classList}.`);
-    } else {
-      console.log(`IN: ${this.rootElement.classList} recieves close event, next is ${event.detail.nextRoot.classList} --> DO NOTHING.`);
-    }
-  }
 
 	/**
 	 * Handles the click event on the menu buttons.
@@ -79,18 +67,6 @@ export class ExpandingNav {
 		document.addEventListener("click", this.onClickOutside.bind(this, button), {
 			once: true
     });
-    // emit close event
-    console.log(`---------`);
-    console.log(`OUT: ${this.rootElement.classList} (${button.classList}) emits close event`);
-
-    document.dispatchEvent(
-      new CustomEvent("close", {
-        bubbles: true,
-        detail: {
-          nextRoot: this.rootElement // 👈 CONTINUE HERE
-        }
-      })
-    )
   }
 
 

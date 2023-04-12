@@ -44,6 +44,10 @@
       .subnav:has([aria-expanded="true"]) &:not(:has([aria-expanded="true"])) { // @todo: Firefox
         visibility: hidden;
       }
+
+      &--search {
+        display: none;
+      }
     }
 
     &__link {
