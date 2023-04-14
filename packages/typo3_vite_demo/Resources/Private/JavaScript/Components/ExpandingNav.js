@@ -6,15 +6,17 @@ export class ExpandingNav {
 	/**
 	 * Creates an instance of ExpandingNav.
 	 * @param {Object} options - Configuration of the menu.
-	 * @param {HTMLElement} options.rootElement - Root element of the menu.
-	 * @param {string} [options.closeButtonSelector] - Optional CSS selector for an extra close button.
+	 * @param {HTMLElement | null} options.rootElement - Root element of the menu.
 	 * @param {string} options.buttonSelector - CSS selector for all clickable menu buttons.
-   * @param {boolean} options.hover - Whether to open on hover.
+	 * @param {string} [options.closeButtonSelector] - Optional CSS selector for an extra close button.
+   * @param {boolean} [options.hover] - Whether to open on hover.
 	 */
   constructor(options) {
-		this.rootElement = options.rootElement;
+    this.rootElement = options.rootElement;
+    if (!this.rootElement) {
+      throw new Error("rootElement is required");
+    }
 		this.closeButtonSelector = options.closeButtonSelector;
-    this.inertSelector = options.inertSelector;
 		this.buttons = Array.from(
 			this.rootElement.querySelectorAll(options.buttonSelector)
 		);
