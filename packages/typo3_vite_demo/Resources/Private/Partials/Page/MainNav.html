@@ -1,103 +1,61 @@
-
 <f:section name="Main">
+    <ul class="mainnav preload">
 
-    <f:comment><!-- Language (Mobile)--></f:comment>
-    <nav class="mobile-language" aria-labelledby="language-button">
-        <button id="language-button" class="mainnav__button" aria-expanded="false">
-            <svg width="24" height="24" class="mainnav__icon">
-                <title>
-                    <f:translate key="LLL:EXT:typo3_vite_demo/Resources/Private/Language/locallang.xlf:navigation.languages"/>
-                </title>
-                <use href="{f:uri.resource(path: 'EXT:typo3_vite_demo/Resources/Public/Icons/sprite.svg')}#globe"></use>
-            </svg>
-        </button>
-        <div class="mainnav__clipbox">
-            <div class="mainnav__panel">
-                <f:render partial="LanguageNav" arguments="{languagenavigation: languagenavigation}"/>
-            </div>
-        </div>
-    </nav>
-
-    <f:comment><!-- Search (Mobile) --></f:comment>
-    <nav class="mobile-search" aria-labelledby="search-button">
-        <button id="search-button" class="mainnav__button" aria-expanded="false">
-            <svg width="24" height="24" class="mainnav__icon">
-                <title>
-                    <f:translate key="LLL:EXT:typo3_vite_demo/Resources/Private/Language/locallang.xlf:navigation.search"/>
-                </title>
-                <use href="{f:uri.resource(path: 'EXT:typo3_vite_demo/Resources/Public/Icons/sprite.svg')}#search"></use>
-            </svg>
-        </button>
-        <div class="mainnav__clipbox">
-            <div class="mainnav__panel">
-                <f:render partial="Search"/>
-            </div>
-        </div>
-    </nav>
-
-    <nav class="mainnav">
-        <button type="button" class="mainnav__button hamburger-button scale-on-hover" aria-expanded="false">
-            <span class="visually-hidden">
-                <f:translate key="LLL:EXT:typo3_vite_demo/Resources/Private/Language/locallang.xlf:navigation.button"/>
-            </span>
-        </button>
-        <div class="mainnav__clipbox">
-            <div class="mainnav__panel">
-                <f:render section="LevelOne" arguments="{mainnavigation: mainnavigation, languagenavigation: languagenavigation}" />
-            </div>
-        </div>
-    </nav>
-</f:section>
-
-<f:section name="LevelOne">
-    <ul class="subnav preload">
-
-        <f:comment><!-- Level 1 items --></f:comment>
+        <f:comment><!-- mainnav__item(s): level-one --></f:comment>
         <f:for each="{mainnavigation}" as="item">
             <li class="mainnav__item">
-                <f:if condition="!{item.children}">
+                <f:if condition="{item.children}">
                     <f:then>
+                        <button class="mainnav__button" aria-expanded="false" >
+                            {item.title}
+                        </button>
+                        <div class="mainnav__clipbox">
+                            <div class="mainnav__panel">
+                                <f:render section="LevelTwo" arguments="{item: item}" />
+                            </div>
+                        </div>
+                    </f:then>
+                    <f:else>
                         <a href="{item.link}" class="mainnav__link" {f:if(condition: item.active, then:'aria-current="page"')}>
                             {item.title}
                         </a>
-                    </f:then>
-                    <f:else>
-                        <f:render section="Subnav" arguments="{item: item}" />
                     </f:else>
                 </f:if>
             </li>
         </f:for>
 
-        <f:comment><!-- Search (Desktop) --></f:comment>
+        <f:comment><!-- mainnav__item: search-desktop --></f:comment>
         <li class="mainnav__item mainnav__item--desktop-only">
-            <button class="subnav__button" aria-expanded="false" >
-                <svg width="24" height="24" class="subnav__icon" >
+            <button class="mainnav__button" aria-expanded="false" >
+                <svg width="24" height="24" class="mainnav__icon" >
                     <title>
                         <f:translate key="LLL:EXT:typo3_vite_demo/Resources/Private/Language/locallang.xlf:navigation.search"/>
                     </title>
                     <use href="{f:uri.resource(path: 'EXT:typo3_vite_demo/Resources/Public/Icons/sprite.svg')}#search"></use>
                 </svg>
             </button>
-            <div class="subnav__clipbox">
-                <div class="subnav__panel">
+            <div class="mainnav__clipbox">
+                <div class="mainnav__panel">
                     <f:render partial="Search"/>
                 </div>
             </div>
         </li>
 
-        <f:comment><!-- Language (Desktop) --></f:comment>
+        <f:comment><!-- mainnav__item: langnav-desktop --></f:comment>
         <li class="mainnav__item mainnav__item--desktop-only">
-            <button id="language-button" class="subnav__button" aria-expanded="false">
-                <svg width="24" height="24" class="subnav__icon">
+            <button id="language-button" class="mainnav__button" aria-expanded="false">
+                <svg width="24" height="24" class="mainnav__icon">
                     <title>
                         <f:translate key="LLL:EXT:typo3_vite_demo/Resources/Private/Language/locallang.xlf:navigation.languages"/>
                     </title>
                     <use href="{f:uri.resource(path: 'EXT:typo3_vite_demo/Resources/Public/Icons/sprite.svg')}#globe"></use>
                 </svg>
             </button>
-            <div class="subnav__clipbox">
-                <div class="subnav__panel">
-                    <f:render partial="LanguageNav" arguments="{languagenavigation: languagenavigation}"/>
+            <div class="mainnav__clipbox">
+                <div class="mainnav__panel">
+                    <f:render partial="LanguageNav"
+                        arguments="{languagenavigation: languagenavigation}"
+                    />
                 </div>
             </div>
         </li>
@@ -106,35 +64,23 @@
 </f:section>
 
 
-<f:section name="Subnav">
-    <button class="subnav__button" aria-expanded="false" >
-        {item.title}
-    </button>
-    <div class="subnav__clipbox">
-        <div class="subnav__panel">
-            <f:render section="LevelTwo" arguments="{item: item}" />
-        </div>
-    </div>
-</f:section>
-
-
 <f:section name="LevelTwo">
-    <ul class="subnav__list">
-        <li class="subnav__item subnav__item--close">
-            <button class="subnav__close">
+    <ul class="level-two">
+        <li class="level-two__item level-two__item--close">
+            <button class="mainnav__close">
                 <f:translate key="LLL:EXT:typo3_vite_demo/Resources/Private/Language/locallang.xlf:navigation.back"/>
             </button>
         </li>
 
-        <li class="subnav__item subnav__item--overview">
-            <a class="subnav__link" href="{item.link}" {f:if(condition: item.active, then:'aria-current="page"')}>
+        <li class="level-two__item level-two__item--overview">
+            <a class="level-two__link" href="{item.link}" {f:if(condition: item.active, then:'aria-current="page"')}>
                 {item.title}
             </a>
         </li>
 
         <f:for each="{item.children}" as="item">
-            <li class="subnav__item" {f:if(condition: item.active, then:'aria-current="page"')}>
-                <a class="subnav__link" href="{item.link}">
+            <li class="level-two__item" {f:if(condition: item.active, then:'aria-current="page"')}>
+                <a class="level-two__link" href="{item.link}">
                     {item.title}
                 </a>
             </li>

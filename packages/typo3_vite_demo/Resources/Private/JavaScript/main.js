@@ -6,14 +6,14 @@ import { ExpandingNav } from './Components/ExpandingNav.js';
 preload();
 
 new ExpandingNav({
-  rootElement: document.querySelector(".header"),
-  buttonSelector: ".mainnav__button",
+  rootElement: document.querySelector(".mobile-menu"),
+  buttonSelector: ".mobile-menu__button",
 });
 
 new ExpandingNav({
-  rootElement: document.querySelector(".subnav"),
-  buttonSelector: ".subnav__button, .subnav__close",
-  closeButtonSelector: ".subnav__close",
+  rootElement: document.querySelector(".mainnav"),
+  buttonSelector: ".mainnav__button, .mainnav__close",
+  closeButtonSelector: ".mainnav__close",
   hover: true
 });
 

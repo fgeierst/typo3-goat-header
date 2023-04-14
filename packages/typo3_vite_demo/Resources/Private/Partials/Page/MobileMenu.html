@@ -1,0 +1,65 @@
+<div class="mobile-menu">
+
+    <f:comment><!-- mobile-menu__item: langnav-mobile --></f:comment>
+    <nav class="mobile-menu__item" aria-labelledby="language-button">
+        <button id="language-button"
+            class="mobile-menu__button"
+            aria-expanded="false"
+        >
+            <svg width="24" height="24" class="mobile-menu__icon">
+                <title>
+                    <f:translate key="LLL:EXT:typo3_vite_demo/Resources/Private/Language/locallang.xlf:navigation.languages"/>
+                </title>
+                <use href="{f:uri.resource(path: 'EXT:typo3_vite_demo/Resources/Public/Icons/sprite.svg')}#globe"></use>
+            </svg>
+        </button>
+        <div class="mobile-menu__clipbox">
+            <div class="mobile-menu__panel">
+                <f:render partial="LanguageNav"
+                    arguments="{languagenavigation: languagenavigation}"
+                />
+            </div>
+        </div>
+    </nav>
+
+    <f:comment><!-- mobile-menu__item: search-mobile --></f:comment>
+    <nav class="mobile-menu__item" aria-labelledby="search-button">
+        <button id="search-button"
+            class="mobile-menu__button"
+            aria-expanded="false"
+        >
+            <svg width="24" height="24" class="mobile-menu__icon">
+                <title>
+                    <f:translate key="LLL:EXT:typo3_vite_demo/Resources/Private/Language/locallang.xlf:navigation.search"/>
+                </title>
+                <use href="{f:uri.resource(path: 'EXT:typo3_vite_demo/Resources/Public/Icons/sprite.svg')}#search"></use>
+            </svg>
+        </button>
+        <div class="mobile-menu__clipbox">
+            <div class="mobile-menu__panel">
+                <f:render partial="Search"/>
+            </div>
+        </div>
+    </nav>
+
+    <f:comment><!-- mobile-menu__item: mainnav --></f:comment>
+    <nav class="mobile-menu__item" aria-labelledby="mainnav-button">
+        <button id="mainnav-button"
+            class="mobile-menu__button hamburger-button scale-on-hover"
+            aria-expanded="false"
+        >
+            <span class="visually-hidden">
+                <f:translate key="LLL:EXT:typo3_vite_demo/Resources/Private/Language/locallang.xlf:navigation.button"/>
+            </span>
+        </button>
+        <div class="mobile-menu__clipbox">
+            <div class="mobile-menu__panel">
+                <f:render partial="MainNav"
+                    section="Main"
+                    arguments="{mainnavigation: mainnavigation, languagenavigation: languagenavigation}"
+                />
+            </div>
+        </div>
+    </nav>
+
+</div>
