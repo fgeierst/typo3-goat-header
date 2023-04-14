@@ -1,39 +1,38 @@
-//
 // Responsive utility variants
-// Example usage: `<div class="sm:none md:block"></div>`
-//
+// Example usage:
+//  <div class="block lg:none">Displayed only on mobile</div>
+//  <div class="none lg:block">Displayed only on desktop</div>
 
 @use 'breakpoints';
 
-.sm\: {
 
-  &none {
-    display: none;
-  }
-
-  &block {
-    display: block;
-  }
-
-  &inline {
-    display: inline;
-  }
-
-  &inline-block {
-    display: inline-block;
-  }
-
-  &flex {
-    display: flex;
-  }
-
-  &grid {
-    display: grid;
-  }
+.none {
+  display: none;
 }
 
+.block {
+  display: block;
+}
+
+.inline {
+  display: inline;
+}
+
+.inline-block {
+  display: inline-block;
+}
+
+.flex {
+  display: flex;
+}
+
+.grid {
+  display: grid;
+}
+
+
 @media (min-width: breakpoints.$sm) {
-  .md\: {
+  .sm\: {
     &none {
       display: none;
     }
@@ -61,6 +60,34 @@
 }
 
 @media (min-width: breakpoints.$md) {
+  .md\: {
+    &none {
+      display: none;
+    }
+
+    &block {
+      display: block;
+    }
+
+    &inline {
+      display: inline;
+    }
+
+    &inline-block {
+      display: inline-block;
+    }
+
+    &flex {
+      display: flex;
+    }
+
+    &grid {
+      display: grid;
+    }
+  }
+}
+
+@media (min-width: breakpoints.$lg) {
   .lg\: {
     &none {
       display: none;

@@ -7,7 +7,7 @@ preload();
 
 new ExpandingNav({
   rootElement: document.querySelector(".header"),
-  buttonSelector: ".mainnav__button, .search__button",
+  buttonSelector: ".mainnav__button",
 });
 
 new ExpandingNav({

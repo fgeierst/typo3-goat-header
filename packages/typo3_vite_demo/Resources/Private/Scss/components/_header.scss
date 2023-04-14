@@ -1,13 +1,24 @@
 @use '../base/breakpoints';
 
 .header {
-  --color-background: var(--color-black);
-  --color-text: var(--color-white);
+  --color-background: var(--color-black); // --header-background-color: white;
+  --color-text: var(--color-white);  // --header-color: red;
   --header-height: var(--space-400);
   --header-button-width: var(--min-tap-target-size);
+  --header-font-size: var(--font-size, 16px);
+
+  // --header-desktop-subnav-font-size: 14px;
+  // --header-max-content-width: 1280px;
+  // --header-padding-inline: 24px;
+  // --header-transition-duration: 0.4s;
+  // --header-border: solid 1px #333333;
+  // --header-tablet-nav-width: 360px;
+  // --header-focus-outline: 2px solid lightblue;
+  // --header-focus-offset: 2px;
 
   background-color: var(--color-background);
   color: var(--color-text);
+  font-size: var(--header-font-size);
   height: var(--header-height);
   display: flex;
   align-items: center;
@@ -22,26 +33,12 @@
   }
 
   &__metanav {
-    display: flex;
     gap: var(--space-50);
     align-items: center;
+    flex-grow: 1;
 
-
-    &--mobile {
-      display: flex;
-      flex-grow: 1;
-
-      @media (min-width: breakpoints.$md) {
-        display: none;
-      }
-    }
-
-    &--desktop {
-      display: none;
-
-      @media (min-width: breakpoints.$md) {
-        display: flex;
-      }
+    @media (min-width: breakpoints.$md) {
+      flex-grow: unset;
     }
   }
 }
