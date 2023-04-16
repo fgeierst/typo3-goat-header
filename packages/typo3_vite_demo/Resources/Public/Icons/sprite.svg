@@ -28,4 +28,12 @@
   <use xlink:href="#logo" width="117" height="32" x="0" y="300"/>
   <view id="logo-view" viewBox="0 300 117 32"/>
 
+  <!-- 400: cross -->
+  <symbol id="cross" viewBox="0 0 24.121 24.121" style="stroke: var(--color-icon, white)">
+    <line  x2="22" y2="22" transform="translate(1.061 1.061)" fill="none" stroke-width="3"/>
+    <line y1="22" x2="22" transform="translate(1.061 1.061)" fill="none" stroke-width="3"/>
+  </symbol>
+  <use xlink:href="#cross" width="24" height="24" x="0" y="400"/>
+  <view id="cross-view" viewBox="0 400 24 24"/>
+
 </svg>

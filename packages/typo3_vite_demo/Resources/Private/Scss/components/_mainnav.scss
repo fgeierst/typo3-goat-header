@@ -1,73 +1,10 @@
 @use '../base/breakpoints';
 
-// Main nav
-.mainnav {
-  &__icon {
-    pointer-events: none;
-  }
-}
 
-// Main nav
-// └ Mobile
-@media (max-width: breakpoints.$md) {
-	.mainnav {
-		display: flex;
-		gap: 1rem;
-		align-items: center;
-
-		&__clipbox {
-			position: fixed;
-			top: var(--header-height);
-			right: 0;
-			left: 0;
-			bottom: 0;
-			transition: visibility var(--transition-timing);
-			overflow: hidden;
-			display: grid;
-
-      @media (min-width: breakpoints.$sm) {
-        width: 300px;
-        left: unset;
-      }
-
-			.mainnav__button[aria-expanded="false"] + & {
-				visibility: hidden;
-			}
-		}
-
-		&__panel {
-      background-color: var(--color-background);
-			transition: transform var(--transition-timing) var(--transition-timing-function), visibility var(--transition-timing);
-
-			.mainnav__button[aria-expanded="false"] + .mainnav__clipbox & {
-				transform: translatey(-100%);
-				visibility: hidden;
-			}
-		}
-
-    &__item {
-      transition: visibility var(--transition-timing);
-
-      .subnav:has([aria-expanded="true"]) &:not(:has([aria-expanded="true"])) { // @todo: Firefox
-        visibility: hidden;
-      }
-
-      &--desktop-only {
-        display: none;
-      }
-    }
-
-    &__link {
-      padding-block-start: var(--space-100);
-      padding-block-end: var(--space-100);
-      display: flex;
-    }
-	}
-}
 
 // Main nav
 // └ Desktop
-@media (min-width: (breakpoints.$md + 1px)) {
+/* @media (min-width: (breakpoints.$md + 1px)) {
 	.mainnav {
 		display: flex;
 		gap: 1rem;
@@ -77,51 +14,4 @@
 			display: none;
 		}
 	}
-}
-
-// Hamburger Button
-.hamburger-button {
-  position: relative;
-  width: var(--header-button-width);
-  height: var(--header-button-width);
-
-  @media (min-width: breakpoints.$md) {
-    display: none;
-  }
-
-  &::before,
-  &::after {
-    content: "";
-    display: block;
-    width: 24px;
-    height: 3px;
-    position: absolute;
-    left: 12px;
-    background-color: var(--color-text);
-    transition: transform 0.2s;
-    }
-
-  &::before {
-    top: 18px;
-  }
-
-  &::after {
-    bottom: 18px;
-  }
-
-  &[aria-expanded="true"] {
-    &::before {
-      top: calc(50% - 3px / 2);
-      transform: rotate(-45deg);
-    }
-
-    &::after {
-      top: calc(50% - 3px / 2);
-      transform: rotate(45deg);
-    }
-  }
-
-  &:focus-visible {
-    outline-offset: -3px;
-  }
-}
+} */

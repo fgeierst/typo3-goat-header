@@ -7,7 +7,7 @@ preload();
 
 new ExpandingNav({
   rootElement: document.querySelector(".mobile-menu"),
-  buttonSelector: ".mobile-menu__button",
+  buttonSelector: ".mobile-menu__toggle-button",
 });
 
 new ExpandingNav({
