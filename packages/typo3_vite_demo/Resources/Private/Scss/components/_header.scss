@@ -36,6 +36,7 @@
     gap: var(--space-50);
     flex-grow: 1;
     grid-auto-flow: column;
+    justify-content: start;
     height: 100%;
 
     @media (min-width: breakpoints.$md) {
@@ -45,6 +46,10 @@
     a {
       display: grid;
       align-items: center;
+
+      &:focus-visible {
+        outline-offset: calc(var(--header-focus-outline-offset) * -1);
+      }
     }
   }
 }

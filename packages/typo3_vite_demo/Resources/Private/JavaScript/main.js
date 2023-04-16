@@ -12,8 +12,8 @@ new ExpandingNav({
 
 new ExpandingNav({
   rootElement: document.querySelector(".mainnav"),
-  buttonSelector: ".mainnav__button, .mainnav__close",
-  closeButtonSelector: ".mainnav__close",
+  buttonSelector: ".mainnav__toggle-button, .mainnav__close-button",
+  closeButtonSelector: ".mainnav__close-button",
   hover: true
 });
 

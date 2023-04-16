@@ -6,11 +6,11 @@
             <li class="mainnav__item">
                 <f:if condition="{item.children}">
                     <f:then>
-                        <button class="mainnav__button" aria-expanded="false" >
+                        <button class="mainnav__toggle-button" aria-expanded="false" >
                             {item.title}
                         </button>
                         <div class="mainnav__clipbox">
-                            <div class="mainnav__panel">
+                            <div class="mainnav__sliding-panel">
                                 <f:render section="LevelTwo" arguments="{item: item}" />
                             </div>
                         </div>
@@ -27,12 +27,7 @@
         <f:comment><!-- mainnav__item: search-desktop --></f:comment>
         <li class="mainnav__item mainnav__item--desktop-only">
             <button class="mainnav__button" aria-expanded="false" >
-                <svg width="24" height="24" class="mainnav__icon" >
-                    <title>
-                        <f:translate key="LLL:EXT:typo3_vite_demo/Resources/Private/Language/locallang.xlf:navigation.search"/>
-                    </title>
-                    <use href="{f:uri.resource(path: 'EXT:typo3_vite_demo/Resources/Public/Icons/sprite.svg')}#search"></use>
-                </svg>
+                <f:translate key="LLL:EXT:typo3_vite_demo/Resources/Private/Language/locallang.xlf:navigation.search"/>
             </button>
             <div class="mainnav__clipbox">
                 <div class="mainnav__panel">
@@ -44,12 +39,7 @@
         <f:comment><!-- mainnav__item: langnav-desktop --></f:comment>
         <li class="mainnav__item mainnav__item--desktop-only">
             <button id="language-button" class="mainnav__button" aria-expanded="false">
-                <svg width="24" height="24" class="mainnav__icon">
-                    <title>
-                        <f:translate key="LLL:EXT:typo3_vite_demo/Resources/Private/Language/locallang.xlf:navigation.languages"/>
-                    </title>
-                    <use href="{f:uri.resource(path: 'EXT:typo3_vite_demo/Resources/Public/Icons/sprite.svg')}#globe"></use>
-                </svg>
+                <f:translate key="LLL:EXT:typo3_vite_demo/Resources/Private/Language/locallang.xlf:navigation.languages"/>
             </button>
             <div class="mainnav__clipbox">
                 <div class="mainnav__panel">
@@ -67,7 +57,7 @@
 <f:section name="LevelTwo">
     <ul class="level-two">
         <li class="level-two__item level-two__item--close">
-            <button class="mainnav__close">
+            <button class="mainnav__close-button">
                 <f:translate key="LLL:EXT:typo3_vite_demo/Resources/Private/Language/locallang.xlf:navigation.back"/>
             </button>
         </li>

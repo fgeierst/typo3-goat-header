@@ -21,6 +21,7 @@
     grid-auto-flow: column;
     height: 100%;
     gap: var(--space-50);
+    margin-inline-end: calc(var(--space-75) * -1); // icon padding
 
     &__item {
       display: grid;
