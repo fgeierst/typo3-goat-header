@@ -42,7 +42,7 @@
       display: grid;
 
       @media (min-width: breakpoints.$sm) {
-        width: 300px;
+        width: var(--header-tablet-sidebar-width, 22.5rem);
         left: unset;
       }
 

@@ -7,6 +7,7 @@
   --header-button-width: var(--min-tap-target-size);
   --header-focus-outline: var(--focus-outline, 2px solid hsl(219, 82%, 56%));
   --header-focus-outline-offset: var(--focus-outline-offset, 2px);
+  --header-tablet-sidebar-width: 22.5rem;
 
   // --header-font-size: var(--font-size, 16px);
   // --header-desktop-subnav-font-size: 14px;
@@ -14,7 +15,6 @@
   // --header-padding-inline: 24px;
   // --header-transition-duration: 0.4s;
   // --header-border: solid 1px #333333;
-  // --header-tablet-nav-width: 360px;
 
   background-color: var(--color-background);
   color: var(--color-text);
