@@ -6,7 +6,7 @@
             <li class="mainnav__item">
                 <f:if condition="{item.children}">
                     <f:then>
-                        <button class="mainnav__toggle-button" aria-expanded="false" >
+                        <button class="mainnav__toggle-button mainnav__toggle-button--chevron" aria-expanded="false" >
                             {item.title}
                         </button>
                         <div class="mainnav__clipbox">
@@ -26,8 +26,12 @@
 
         <f:comment><!-- mainnav__item: search-desktop --></f:comment>
         <li class="mainnav__item mainnav__item--desktop-only">
-            <button class="mainnav__toggle-button" aria-expanded="false" >
-                <f:translate key="LLL:EXT:typo3_vite_demo/Resources/Private/Language/locallang.xlf:navigation.search"/>
+            <button class="mainnav__toggle-button header-icon header-icon--search"
+                aria-expanded="false"
+            >
+                <span class="visually-hidden">
+                    <f:translate key="LLL:EXT:typo3_vite_demo/Resources/Private/Language/locallang.xlf:navigation.search"/>
+                </span>
             </button>
             <div class="mainnav__clipbox">
                 <div class="mainnav__sliding-panel">
@@ -38,8 +42,12 @@
 
         <f:comment><!-- mainnav__item: langnav-desktop --></f:comment>
         <li class="mainnav__item mainnav__item--desktop-only">
-            <button id="language-button" class="mainnav__toggle-button" aria-expanded="false">
-                <f:translate key="LLL:EXT:typo3_vite_demo/Resources/Private/Language/locallang.xlf:navigation.languages"/>
+            <button class="mainnav__toggle-button header-icon header-icon--globe"
+                aria-expanded="false"
+            >
+                <span class="visually-hidden">
+                    <f:translate key="LLL:EXT:typo3_vite_demo/Resources/Private/Language/locallang.xlf:navigation.languages"/>
+                </span>
             </button>
             <div class="mainnav__clipbox">
                 <div class="mainnav__sliding-panel">

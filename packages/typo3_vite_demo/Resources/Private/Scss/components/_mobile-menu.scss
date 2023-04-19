@@ -73,44 +73,10 @@
       }
     }
 
-    &__icon {
-      padding: var(--space-75);
 
-      &::after {
-        content: '';
-        display: block;
-        width: var(--space-150);
-        height: var(--space-150);
-        background-color: var(--color-white);
-      }
-
-      &--globe {
-        &::after {
-          background-color: var(--color-white);
-          -webkit-mask: url("/typo3conf/ext/typo3_vite_demo/Resources/Public/Icons/sprite.svg#globe-view");
-          mask: url("/typo3conf/ext/typo3_vite_demo/Resources/Public/Icons/sprite.svg#globe-view");
-        }
-
-        &[aria-expanded='true']::after {
-          -webkit-mask: url("/typo3conf/ext/typo3_vite_demo/Resources/Public/Icons/sprite.svg#cross-view");
-          mask: url("/typo3conf/ext/typo3_vite_demo/Resources/Public/Icons/sprite.svg#cross-view");
-        }
-      }
-
-      &--search {
-        &::after {
-          -webkit-mask: url("/typo3conf/ext/typo3_vite_demo/Resources/Public/Icons/sprite.svg#search-view");
-          mask: url("/typo3conf/ext/typo3_vite_demo/Resources/Public/Icons/sprite.svg#search-view");
-        }
-
-        &[aria-expanded='true']::after {
-          -webkit-mask: url("/typo3conf/ext/typo3_vite_demo/Resources/Public/Icons/sprite.svg#cross-view");
-          mask: url("/typo3conf/ext/typo3_vite_demo/Resources/Public/Icons/sprite.svg#cross-view");
-        }
-      }
-    }
   }
 }
+
 
 .icon-hamburger {
   pointer-events: none;

@@ -1,8 +1,22 @@
 @use '../base/breakpoints';
 
+/*
+*  .header
+*      ├── logo
+*      ├── metanav (mobile)
+*      ├── mobile-menu
+*      │      └── mainnav
+*      └── metanav (desktop)
+*
+*   .logo
+*   .header-icon
+*      --globe
+*      --search
+*/
+
 .header {
   --color-background: var(--color-black); // --header-background-color: white;
-  --color-text: var(--color-white);  // --header-color: red;
+  --color-text: var(--color-white); // --header-color: red;
   --header-height: var(--space-400);
   --header-button-width: var(--min-tap-target-size);
   --header-focus-outline: var(--focus-outline, 2px solid hsl(219, 82%, 56%));
@@ -79,4 +93,46 @@
 [aria-current='page'] {
   font-weight: bold;
   text-decoration: none;
+}
+
+
+.header-icon {
+  padding: var(--space-75);
+
+  &::after {
+    content: '';
+    display: block;
+    width: var(--space-150);
+    height: var(--space-150);
+    background-color: var(--color-white);
+  }
+
+  &--globe {
+    &::after {
+      background-color: var(--color-white);
+      -webkit-mask: url("/typo3conf/ext/typo3_vite_demo/Resources/Public/Icons/sprite.svg#globe-view");
+      mask: url("/typo3conf/ext/typo3_vite_demo/Resources/Public/Icons/sprite.svg#globe-view");
+    }
+
+    @media (max-width: breakpoints.$md) {
+      &[aria-expanded='true']::after {
+        -webkit-mask: url("/typo3conf/ext/typo3_vite_demo/Resources/Public/Icons/sprite.svg#cross-view");
+        mask: url("/typo3conf/ext/typo3_vite_demo/Resources/Public/Icons/sprite.svg#cross-view");
+      }
+    }
+  }
+
+  &--search {
+    &::after {
+      -webkit-mask: url("/typo3conf/ext/typo3_vite_demo/Resources/Public/Icons/sprite.svg#search-view");
+      mask: url("/typo3conf/ext/typo3_vite_demo/Resources/Public/Icons/sprite.svg#search-view");
+    }
+
+    @media (max-width: breakpoints.$md) {
+      &[aria-expanded='true']::after {
+        -webkit-mask: url("/typo3conf/ext/typo3_vite_demo/Resources/Public/Icons/sprite.svg#cross-view");
+        mask: url("/typo3conf/ext/typo3_vite_demo/Resources/Public/Icons/sprite.svg#cross-view");
+      }
+    }
+  }
 }
