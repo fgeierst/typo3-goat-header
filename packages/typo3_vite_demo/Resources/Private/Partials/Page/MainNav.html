@@ -26,11 +26,11 @@
 
         <f:comment><!-- mainnav__item: search-desktop --></f:comment>
         <li class="mainnav__item mainnav__item--desktop-only">
-            <button class="mainnav__button" aria-expanded="false" >
+            <button class="mainnav__toggle-button" aria-expanded="false" >
                 <f:translate key="LLL:EXT:typo3_vite_demo/Resources/Private/Language/locallang.xlf:navigation.search"/>
             </button>
             <div class="mainnav__clipbox">
-                <div class="mainnav__panel">
+                <div class="mainnav__sliding-panel">
                     <f:render partial="Search"/>
                 </div>
             </div>
@@ -38,11 +38,11 @@
 
         <f:comment><!-- mainnav__item: langnav-desktop --></f:comment>
         <li class="mainnav__item mainnav__item--desktop-only">
-            <button id="language-button" class="mainnav__button" aria-expanded="false">
+            <button id="language-button" class="mainnav__toggle-button" aria-expanded="false">
                 <f:translate key="LLL:EXT:typo3_vite_demo/Resources/Private/Language/locallang.xlf:navigation.languages"/>
             </button>
             <div class="mainnav__clipbox">
-                <div class="mainnav__panel">
+                <div class="mainnav__sliding-panel">
                     <f:render partial="LanguageNav"
                         arguments="{languagenavigation: languagenavigation}"
                     />
@@ -56,7 +56,7 @@
 
 <f:section name="LevelTwo">
     <ul class="level-two">
-        <li class="level-two__item level-two__item--close">
+        <li class="level-two__item level-two__item--close md:none">
             <button class="mainnav__close-button">
                 <f:translate key="LLL:EXT:typo3_vite_demo/Resources/Private/Language/locallang.xlf:navigation.back"/>
             </button>

@@ -1,7 +1,7 @@
 <div class="mobile-menu">
 
     <f:comment><!-- mobile-menu__item: langnav-mobile --></f:comment>
-    <nav class="mobile-menu__item" aria-labelledby="language-button">
+    <nav class="mobile-menu__item md:none" aria-labelledby="language-button">
         <button id="language-button"
             class="mobile-menu__toggle-button mobile-menu__icon mobile-menu__icon--globe"
             aria-expanded="false"
@@ -20,7 +20,7 @@
     </nav>
 
     <f:comment><!-- mobile-menu__item: search-mobile --></f:comment>
-    <nav class="mobile-menu__item" aria-labelledby="search-button">
+    <nav class="mobile-menu__item md:none" aria-labelledby="search-button">
         <button id="search-button"
             class="mobile-menu__toggle-button mobile-menu__icon mobile-menu__icon--search"
             aria-expanded="false"
@@ -39,7 +39,7 @@
     <f:comment><!-- mobile-menu__item: mainnav --></f:comment>
     <nav class="mobile-menu__item" aria-labelledby="mainnav-button">
         <button id="mainnav-button"
-            class="mobile-menu__toggle-button scale-on-hover"
+            class="mobile-menu__toggle-button scale-on-hover md:none"
             aria-expanded="false"
         >
             <span class="visually-hidden">
