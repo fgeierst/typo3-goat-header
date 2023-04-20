@@ -41,7 +41,15 @@
       display: flex;
       width: 100%;
       align-items: center;
+    }
+
+    &__link {
       text-decoration: none;
+
+      &:hover, &:focus-visible {
+        text-decoration: underline;
+        text-underline-offset: .3rem;
+      }
     }
 
     &__toggle-button {
@@ -128,8 +136,47 @@
     margin: 0;
     padding-inline-start: 0;
 
+    &__item {
+      display: grid;
+      height: 100%;
+    }
+
     &__link {
       text-decoration: none;
+      display: grid;
+      align-items: center;
+      padding-inline-start: var(--space-75);
+      padding-inline-end: var(--space-75);
+
+      &:hover, &:focus-visible {
+        text-decoration: underline;
+        text-underline-offset: .3rem;
+      }
+    }
+
+    &__toggle-button {
+      &--chevron {
+        display: flex;
+        align-items: center;
+        gap: 0.35em;
+        padding-inline-start: var(--space-75);
+        padding-inline-end: var(--space-75);
+
+        &::after {
+          content: "";
+          background-color: var(--color-white);
+          -webkit-mask: url("/typo3conf/ext/typo3_vite_demo/Resources/Public/Icons/sprite.svg#chevron-right-view");
+          mask: url("/typo3conf/ext/typo3_vite_demo/Resources/Public/Icons/sprite.svg#chevron-right-view");
+          display: block;
+          width: 0.375rem;
+          height: 0.625rem;
+          transform: rotate(90deg);
+        }
+
+        &[aria-expanded="true"]::after {
+          transform: rotate(-90deg);
+        }
+      }
     }
 
     &__clipbox {
@@ -160,29 +207,6 @@
       }
 
     }
-
-    &__toggle-button {
-      &--chevron {
-        display: flex;
-        align-items: center;
-        gap: 0.35em;
-
-        &::after {
-          content: "";
-          background-color: var(--color-white);
-          -webkit-mask: url("/typo3conf/ext/typo3_vite_demo/Resources/Public/Icons/sprite.svg#chevron-right-view");
-          mask: url("/typo3conf/ext/typo3_vite_demo/Resources/Public/Icons/sprite.svg#chevron-right-view");
-          display: block;
-          width: 0.375rem;
-          height: 0.625rem;
-          transform: rotate(90deg);
-        }
-
-        &[aria-expanded="true"]::after {
-          transform: rotate(-90deg);
-        }
-      }
-    }
   }
 }
 
@@ -199,6 +223,11 @@
     width: 100%;
     align-items: center;
     text-decoration: none;
+
+    &:hover, &:focus-visible {
+      text-decoration: underline;
+      text-underline-offset: .3rem;
+    }
   }
 
   &__item {
