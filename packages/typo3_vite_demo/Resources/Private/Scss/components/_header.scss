@@ -1,17 +1,18 @@
 @use '../base/breakpoints';
 
-/*
-*  .header
-*      ├── logo
-*      ├── metanav (mobile)
-*      ├── mobile-menu
-*      │      └── mainnav
-*      └── metanav (desktop)
-*
-*   .logo
-*   .header-icon
-*      --globe
-*      --search
+/*  .header
+*      ├─ item (logo)
+*      │   └── link
+*      ├─ item (metanav/mobile)
+*      │   └── link
+*      ├─ item (mainnav)
+*      │   ├── toggle-button
+*      │   │     └─ icon
+*      │   └── clipbox
+*      │         └─ sliding-panel
+*      │                └── .mainnav
+*      └─ item (metanav/desktop)
+*          └── link
 */
 
 .header {
@@ -30,37 +31,112 @@
   // --header-transition-duration: 0.4s;
   // --header-border: solid 1px #333333;
 
+  position: relative; // .mainnav__clipbox is absolutely positioned relative to this.
+  height: var(--header-height);
+  padding: 0 var(--page-margin);
+  margin-inline-end: calc(var(--space-75) * -1); // icon padding
+  border-block-end: 1px solid var(--color-white);
   background-color: var(--color-background);
   color: var(--color-text);
   font-size: var(--header-font-size);
-  height: var(--header-height);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: var(--space-100);
-  position: relative; // .level-two-nav is absolutely positioned relative to this.
-  padding: 0 var(--page-margin);
-  border-block-end: 1px solid var(--color-white);
 
-  a {
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--space-50);
+
+  &__item {
+    display: grid;
+
+    @media (max-width: breakpoints.$md) {
+      // If one item is open, hide all other items.
+      .header:has([aria-expanded="true"]) &:not(:has([aria-expanded="true"])) { // @todo: Firefox
+        display: none;
+      }
+    }
+
+    &--mobile-only {
+      @media (min-width: (breakpoints.$md + 1px)) {
+        display: none;
+      }
+    }
+
+    &--desktop-only {
+      display: none;
+
+      @media (min-width: (breakpoints.$md + 1px)) {
+        display: grid;
+      }
+    }
+
+    &--logo {
+      flex-grow: 1;
+      justify-content: start;
+    }
+
+    &--mainnav {
+      flex-grow: unset;
+
+      @media (min-width: (breakpoints.$md + 1px)) {
+        flex-grow: 1;
+      }
+    }
+  }
+
+  &__link {
+    text-decoration: none;
+    display: grid;
+    align-items: center;
+
+    &:focus-visible {
+      outline-offset: calc(var(--header-focus-outline-offset) * -1);
+    }
+  }
+
+  [aria-current='page'] {
+    font-weight: bold;
     text-decoration: none;
   }
 
-  &__metanav {
-    gap: var(--space-50);
-    flex-grow: 1;
-    grid-auto-flow: column;
-    justify-content: start;
-    height: 100%;
+  // Mobile
+  @media (min-width: breakpoints.$md) {
+    &__clipbox, &__sliding-panel {
+      display: grid;
+    }
+  }
 
-    @media (min-width: breakpoints.$md) {
-      flex-grow: unset;
+  // Desktop
+  @media (max-width: breakpoints.$md) {
+    &__clipbox {
+      position: fixed;
+      top: var(--header-height);
+      right: 0;
+      left: 0;
+      bottom: 0;
+      transition: visibility var(--transition-timing);
+      overflow: hidden;
+      display: grid;
+
+      @media (min-width: breakpoints.$sm) {
+        width: var(--header-tablet-sidebar-width, 22.5rem);
+        left: unset;
+      }
+
+      .header__toggle-button[aria-expanded="false"] + & {
+        visibility: hidden;
+      }
     }
 
-    a {
-      display: grid;
-      align-items: center;
+    &__sliding-panel {
+      background-color: var(--color-background);
+      transition: transform var(--transition-timing) var(--transition-timing-function), visibility var(--transition-timing);
 
+      .header__toggle-button[aria-expanded="false"] + .header__clipbox & {
+        transform: translatey(-100%);
+        visibility: hidden;
+      }
+    }
+
+    &__toggle-button {
       &:focus-visible {
         outline-offset: calc(var(--header-focus-outline-offset) * -1);
       }
@@ -68,71 +144,3 @@
   }
 }
 
-.logo {
-  flex-grow: 1;
-  display: flex;
-  height: 100%;
-
-  @media (min-width: breakpoints.$md) {
-    flex-grow: unset;
-  }
-
-  &__link {
-    display: flex;
-    gap: var(--space-50);
-    align-items: center;
-    font-weight: 900;
-    text-decoration: none;
-
-    &:focus-visible {
-      outline-offset: calc(var(--focus-outline-offset) * -1);
-    }
-  }
-}
-
-[aria-current='page'] {
-  font-weight: bold;
-  text-decoration: none;
-}
-
-
-.header-icon {
-  padding: var(--space-75);
-
-  &::after {
-    content: '';
-    display: block;
-    width: var(--space-150);
-    height: var(--space-150);
-    background-color: var(--color-white);
-  }
-
-  &--globe {
-    &::after {
-      background-color: var(--color-white);
-      -webkit-mask: url("/typo3conf/ext/typo3_vite_demo/Resources/Public/Icons/sprite.svg#globe-view");
-      mask: url("/typo3conf/ext/typo3_vite_demo/Resources/Public/Icons/sprite.svg#globe-view");
-    }
-
-    @media (max-width: breakpoints.$md) {
-      &[aria-expanded='true']::after {
-        -webkit-mask: url("/typo3conf/ext/typo3_vite_demo/Resources/Public/Icons/sprite.svg#cross-view");
-        mask: url("/typo3conf/ext/typo3_vite_demo/Resources/Public/Icons/sprite.svg#cross-view");
-      }
-    }
-  }
-
-  &--search {
-    &::after {
-      -webkit-mask: url("/typo3conf/ext/typo3_vite_demo/Resources/Public/Icons/sprite.svg#search-view");
-      mask: url("/typo3conf/ext/typo3_vite_demo/Resources/Public/Icons/sprite.svg#search-view");
-    }
-
-    @media (max-width: breakpoints.$md) {
-      &[aria-expanded='true']::after {
-        -webkit-mask: url("/typo3conf/ext/typo3_vite_demo/Resources/Public/Icons/sprite.svg#cross-view");
-        mask: url("/typo3conf/ext/typo3_vite_demo/Resources/Public/Icons/sprite.svg#cross-view");
-      }
-    }
-  }
-}

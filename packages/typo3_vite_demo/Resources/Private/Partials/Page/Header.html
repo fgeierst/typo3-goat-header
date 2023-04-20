@@ -1,24 +1,92 @@
-<header id="header" class="header">
+<f:section name="Main">
+    <header id="header" class="header">
 
-    <div class="logo">
-        <a href="/" class="logo__link scale-on-hover">
-            <svg width="117" height="32" class="logo__icon" >
-                <title>
-                    <f:translate key="LLL:EXT:typo3_vite_demo/Resources/Private/Language/locallang.xlf:header.logo"/>
-                </title>
-                <use href="{f:uri.resource(path: 'EXT:typo3_vite_demo/Resources/Public/Icons/sprite.svg')}#logo"></use>
-            </svg>
-        </a>
-    </div>
+        <f:comment><!-- header__item: logo --></f:comment>
+        <div class="header__item header__item--logo">
+            <f:render section="Logo" arguments="{_all}" />
+        </div>
 
-    <div class="header__metanav grid md:none">
-        <f:render partial="MetaNav" arguments="{_all}" />
-    </div>
+        <f:comment><!-- header__item: metanav login (mobile)--></f:comment>
+        <div class="header__item header__item--mobile-only">
+            <f:render section="MetanavLogin" />
+        </div>
 
-    <f:render partial="MobileMenu" arguments="{_all}" />
+        <f:comment><!-- header__item: langnav (mobile) --></f:comment>
+        <nav class="header__item header__item--mobile-only" aria-labelledby="language-button">
+            <button id="language-button"
+                class="header__toggle-button header-icon header-icon--globe"
+                aria-expanded="false"
+            >
+                <span class="visually-hidden">
+                    <f:translate key="LLL:EXT:typo3_vite_demo/Resources/Private/Language/locallang.xlf:navigation.languages"/>
+                </span>
+            </button>
+            <div class="header__clipbox">
+                <div class="header__sliding-panel">
+                    <f:render partial="LanguageNav"
+                        arguments="{languagenavigation: languagenavigation}"
+                    />
+                </div>
+            </div>
+        </nav>
 
-    <div class="header__metanav none md:grid">
-        <f:render partial="MetaNav" arguments="{_all}" />
-    </div>
+        <f:comment><!-- header__item: search (mobile) --></f:comment>
+        <nav class="header__item header__item--mobile-only" aria-labelledby="search-button">
+            <button id="search-button"
+                class="header__toggle-button header-icon header-icon--search"
+                aria-expanded="false"
+            >
+                <span class="visually-hidden">
+                    <f:translate key="LLL:EXT:typo3_vite_demo/Resources/Private/Language/locallang.xlf:navigation.search"/>
+                </span>
+            </button>
+            <div class="header__clipbox">
+                <div class="header__sliding-panel">
+                    <f:render partial="Search"/>
+                </div>
+            </div>
+        </nav>
 
-</header>
+        <f:comment><!-- header__item: mainnav --></f:comment>
+        <nav class="header__item header__item--mainnav" aria-labelledby="mainnav-button">
+            <button id="mainnav-button"
+                class="header__toggle-button scale-on-hover md:none"
+                aria-expanded="false"
+            >
+                <span class="visually-hidden">
+                    <f:translate key="LLL:EXT:typo3_vite_demo/Resources/Private/Language/locallang.xlf:navigation.button"/>
+                </span>
+                <div class="icon-hamburger"></div>
+            </button>
+            <div class="header__clipbox">
+                <div class="header__sliding-panel">
+                    <f:render partial="MainNav"
+                        section="Main"
+                        arguments="{mainnavigation: mainnavigation, languagenavigation: languagenavigation}"
+                    />
+                </div>
+            </div>
+        </nav>
+
+        <f:comment><!-- header__item: metanav login (desktop)--></f:comment>
+        <div class="header__item header__item--desktop-only">
+            <f:render section="MetanavLogin" />
+        </div>
+
+    </header>
+</f:section>
+
+<f:section name="Logo">
+    <a href="/" class="header__link logo__link scale-on-hover">
+        <svg width="117" height="32" class="logo__icon" >
+            <title>
+                <f:translate key="LLL:EXT:typo3_vite_demo/Resources/Private/Language/locallang.xlf:header.logo"/>
+            </title>
+            <use href="{f:uri.resource(path: 'EXT:typo3_vite_demo/Resources/Public/Icons/sprite.svg')}#logo"></use>
+        </svg>
+    </a>
+</f:section>
+
+<f:section name="MetanavLogin">
+    <a class="header__link" href="#">Login</a>
+</f:section>

@@ -4,9 +4,9 @@
 @use 'base/motion';
 @use 'base/responsive';
 @use 'components/header';
-@use 'components/mobile-menu';
+@use 'components/header-parts';
+// @use 'components/mobile-menu';
 @use 'components/mainnav';
-// @use 'components/subnav';
 @use 'components/search';
 @use 'components/languagenav';
 @use 'components/footer';

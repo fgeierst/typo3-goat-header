@@ -6,8 +6,8 @@ import { ExpandingNav } from './Components/ExpandingNav.js';
 preload();
 
 new ExpandingNav({
-  rootElement: document.querySelector(".mobile-menu"),
-  buttonSelector: ".mobile-menu__toggle-button",
+  rootElement: document.querySelector(".header"),
+  buttonSelector: ".header__toggle-button",
 });
 
 new ExpandingNav({

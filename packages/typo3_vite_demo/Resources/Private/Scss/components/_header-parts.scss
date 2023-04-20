@@ -1,0 +1,113 @@
+@use '../base/breakpoints';
+
+/*
+*   .logo
+*   .header-icon
+*      --globe
+*      --search
+*   .icon-hamburger
+*/
+
+.logo {
+  flex-grow: 1;
+  display: flex;
+  height: 100%;
+
+  @media (min-width: breakpoints.$md) {
+    flex-grow: unset;
+  }
+
+  &__link {
+    display: flex;
+    gap: var(--space-50);
+    align-items: center;
+    font-weight: 900;
+    text-decoration: none;
+
+    &:focus-visible {
+      outline-offset: calc(var(--focus-outline-offset) * -1);
+    }
+  }
+}
+
+.header-icon {
+  padding: var(--space-75);
+
+  &::after {
+    content: '';
+    display: block;
+    width: var(--space-150);
+    height: var(--space-150);
+    background-color: var(--color-white);
+  }
+
+  &--globe {
+    &::after {
+      background-color: var(--color-white);
+      -webkit-mask: url("/typo3conf/ext/typo3_vite_demo/Resources/Public/Icons/sprite.svg#globe-view");
+      mask: url("/typo3conf/ext/typo3_vite_demo/Resources/Public/Icons/sprite.svg#globe-view");
+    }
+
+    @media (max-width: breakpoints.$md) {
+      &[aria-expanded='true']::after {
+        -webkit-mask: url("/typo3conf/ext/typo3_vite_demo/Resources/Public/Icons/sprite.svg#cross-view");
+        mask: url("/typo3conf/ext/typo3_vite_demo/Resources/Public/Icons/sprite.svg#cross-view");
+      }
+    }
+  }
+
+  &--search {
+    &::after {
+      -webkit-mask: url("/typo3conf/ext/typo3_vite_demo/Resources/Public/Icons/sprite.svg#search-view");
+      mask: url("/typo3conf/ext/typo3_vite_demo/Resources/Public/Icons/sprite.svg#search-view");
+    }
+
+    @media (max-width: breakpoints.$md) {
+      &[aria-expanded='true']::after {
+        -webkit-mask: url("/typo3conf/ext/typo3_vite_demo/Resources/Public/Icons/sprite.svg#cross-view");
+        mask: url("/typo3conf/ext/typo3_vite_demo/Resources/Public/Icons/sprite.svg#cross-view");
+      }
+    }
+  }
+}
+
+
+
+.icon-hamburger {
+  pointer-events: none;
+  position: relative;
+  width: 48px;
+  height: 48px;
+
+  &::before,
+  &::after {
+    content: "";
+    display: block;
+    width: 24px;
+    height: 3px;
+    position: absolute;
+    left: 12px;
+    background-color: var(--color-text);
+    transition: transform 0.2s;
+    }
+
+  &::before {
+    top: 18px;
+  }
+
+  &::after {
+    bottom: 18px;
+  }
+
+  [aria-expanded="true"] > & {
+    &::before {
+      top: calc(50% - 3px / 2);
+      transform: rotate(-45deg);
+    }
+
+    &::after {
+      top: calc(50% - 3px / 2);
+      transform: rotate(45deg);
+    }
+  }
+}
