@@ -24,11 +24,13 @@
   --header-focus-outline-offset: var(--focus-outline-offset, 2px);
   --header-tablet-sidebar-width: 22.5rem;
   --header-max-content-width: 900px;
+  --header-transition-duration: var(--transition-duration, 0.2s);
+  --header-transition-duration-function: var(--transition-duration-function, cubic-bezier(0.77, 0, 0.175, 1));
+
 
   // --header-font-size: var(--font-size, 16px);
   // --header-desktop-subnav-font-size: 14px;
   // --header-padding-inline: 24px;
-  // --header-transition-duration: 0.4s;
   // --header-border: solid 1px #333333;
 
   position: relative; // .mainnav__clipbox is absolutely positioned relative to this.
@@ -119,7 +121,7 @@
       right: 0;
       left: 0;
       bottom: 0;
-      transition: visibility var(--transition-timing);
+      transition: visibility var(--header-transition-duration);
       overflow: hidden;
       display: grid;
 
@@ -135,7 +137,7 @@
 
     &__sliding-panel {
       background-color: var(--color-background);
-      transition: transform var(--transition-timing) var(--transition-timing-function), visibility var(--transition-timing);
+      transition: transform var(--header-transition-duration) var(--header-transition-duration-function), visibility var(--header-transition-duration);
 
       .header__toggle-button[aria-expanded="false"] + .header__clipbox & {
         transform: translatey(-100%);

@@ -26,7 +26,7 @@
     list-style: none;
     display: flex;
     flex-direction: column;
-    transition: transform var(--transition-timing) var(--transition-timing-function);
+    transition: transform var(--header-transition-duration) var(--header-transition-duration-function);
 
     &:has([aria-expanded="true"]) {
       // @todo: Does not yet work in Firefox
@@ -53,7 +53,7 @@
     }
 
     &__toggle-button {
-      transition: visibility var(--transition-timing);
+      transition: visibility var(--header-transition-duration);
       justify-content: space-between;
 
       .subnav:has([aria-expanded="true"]) &:not(.subnav__close) {
@@ -105,7 +105,7 @@
       width: 100%;
       bottom: 0;
       background-color: var(--color-background);
-      transition: visibility var(--transition-timing);
+      transition: visibility var(--header-transition-duration);
 
       [aria-expanded="false"] + & {
         visibility: hidden;
@@ -135,6 +135,22 @@
     gap: var(--space-50);
     margin: 0;
     padding-inline-start: 0;
+
+    &::after {
+      content: "";
+      background-color: rgba(0, 0, 0, 0.4);
+      // backdrop-filter: blur(10x);
+      position: fixed;
+      inset: var(--header-height) 0 0 0;
+      z-index: -1;
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity .2s ease-in-out;
+    }
+
+    &:has(.mainnav__toggle-button[aria-expanded="true"])::after {
+      opacity: 1;
+    }
 
     &__item {
       display: grid;
@@ -181,11 +197,11 @@
 
     &__clipbox {
       overflow: hidden;
-      transition: visibility var(--transition-timing);
+      transition: visibility var(--header-transition-duration);
       position: fixed;
       top: var(--header-height);
-      left: 0;
-      right: 0;
+      inset-inline-start: 0;
+      inset-inline-end: 0;
 
       [aria-expanded="false"] + & {
         visibility: hidden;
@@ -193,7 +209,7 @@
     }
 
     &__sliding-panel {
-      transition: transform var(--transition-timing) var(--transition-timing-function), visibility var(--transition-timing);
+      transition: transform var(--header-transition-duration) var(--header-transition-duration-function), visibility var(--header-transition-duration);
       background-color: var(--color-background);
 
       [aria-expanded="false"] + .mainnav__clipbox & {
