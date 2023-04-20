@@ -1,14 +1,11 @@
 @use '../base/breakpoints';
 
-// Hide mobile search on desktop
-.mobile-search {
-  @media (min-width: (breakpoints.$md + 1px)) {
-    display: none;
-  }
-}
-
 // Search
 .search {
+  @media (min-width: (breakpoints.$md)) {
+    padding: var(--page-margin);
+  }
+
   &__form {
     max-width: 600px;
     margin-inline: auto;

@@ -1,11 +1,28 @@
-<form class="search__form">
-    <label class="search__label">
-        <span class="visually-hidden">
-            <f:translate key="LLL:EXT:typo3_vite_demo/Resources/Private/Language/locallang.xlf:search.term"/>
-        </span>
-        <input type="text" class="search__input">
-    </label>
-    <button class="search__submit">
-        <f:translate key="LLL:EXT:typo3_vite_demo/Resources/Private/Language/locallang.xlf:search.submit"/>
-    </button>
-</form>
+<div class="search">
+
+    <form class="search__form">
+        <label class="search__label">
+            <span class="visually-hidden">
+                <f:translate key="LLL:EXT:typo3_vite_demo/Resources/Private/Language/locallang.xlf:search.term"/>
+            </span>
+            <input type="text" class="search__input">
+        </label>
+        <button class="search__submit">
+            <f:translate key="LLL:EXT:typo3_vite_demo/Resources/Private/Language/locallang.xlf:search.submit"/>
+        </button>
+    </form>
+
+    <nav class="quicklinks" aria-labelledby="quicklinks-heading">
+        <p id="quicklinks-heading" class="quicklinks__heading">Quicklinks</p>
+        <ul class="quicklinks__list">
+            <f:for each="{mainnavigation}" as="item">
+                <li class="quicklinks__item">
+                    <a href="{item.link}" class="quicklinks__link" {f:if(condition: item.active, then:'aria-current="page"')}>
+                        {item.title}
+                    </a>
+                </li>
+            </f:for>
+        </ul>
+    </nav>
+
+</div>
