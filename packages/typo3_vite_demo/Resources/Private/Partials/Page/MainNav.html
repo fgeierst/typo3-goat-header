@@ -77,11 +77,35 @@
         </li>
 
         <f:for each="{item.children}" as="item">
-            <li class="level-two__item" {f:if(condition: item.active, then:'aria-current="page"')}>
-                <a class="level-two__link" href="{item.link}">
-                    {item.title}
-                </a>
-            </li>
+            <f:if condition="{item.children}">
+                <f:then>
+                    <f:render section="LevelThree" arguments="{item: item}" />
+                </f:then>
+                <f:else>
+                    <li class="level-two__item" {f:if(condition: item.active, then:'aria-current="page"')}>
+                        <a class="level-two__link" href="{item.link}">
+                            {item.title}
+                        </a>
+                    </li>
+                </f:else>
+            </f:if>
         </f:for>
     </ul>
+</f:section>
+
+<f:section name="LevelThree">
+    <li class="level-three__item level-three__item--overview">
+        <a class="level-three__link" href="{item.link}" {f:if(condition: item.active, then:'aria-current="page"')}>
+            {item.title}
+        </a>
+        <ul class="level-three">
+            <f:for each="{item.children}" as="item">
+                <li class="level-three__item" {f:if(condition: item.active, then:'aria-current="page"')}>
+                    <a class="level-three__link" href="{item.link}">
+                        {item.title}
+                    </a>
+                </li>
+            </f:for>
+        </ul>
+    </li>
 </f:section>
