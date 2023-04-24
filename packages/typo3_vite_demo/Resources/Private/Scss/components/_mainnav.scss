@@ -44,11 +44,6 @@
 
     &__link {
       text-decoration: none;
-
-      &:hover, &:focus-visible {
-        text-decoration: underline;
-        text-underline-offset: .3rem;
-      }
     }
 
     &__toggle-button {
@@ -110,6 +105,10 @@
       }
     }
 
+    &__panel-container {
+      padding: var(--page-margin);
+    }
+
     &__item {
       &--overview {
         font-size: var(--header-font-size-lg);
@@ -165,11 +164,6 @@
       align-items: center;
       padding-inline-start: var(--space-75);
       padding-inline-end: var(--space-75);
-
-      &:hover, &:focus-visible {
-        text-decoration: underline;
-        text-underline-offset: .3rem;
-      }
     }
 
     &__toggle-button {
@@ -218,13 +212,16 @@
         transform: translatey(-100%);
         visibility: hidden;
       }
-
-
     }
 
     &__panel-container {
       max-width: var(--header-max-content-width);
       margin-inline: auto;
+      padding: var(--page-margin);
+    }
+
+    &__close-button {
+      display: none;
     }
   }
 }

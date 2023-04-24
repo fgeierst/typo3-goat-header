@@ -1,21 +1,50 @@
+@use '../base/breakpoints';
+
 .subnav {
   &__list {
     list-style: none;
     padding-inline-start: 0;
+    padding-block-end: var(--space-75);
     margin-block-start: 0;
     margin-block-end: 0;
+
+    &--l2 {
+      @media (min-width: (breakpoints.$md + 1px)) {
+        display: flex;
+        gap: var(--space-300);
+      }
+    }
   }
 
   &__item {
-
   }
 
   &__link {
     text-decoration: none;
+    display: block;
+    padding-block-start: var(--space-75);
+    padding-block-end: var(--space-75);
 
-    &:hover {
-      text-decoration: underline;
-      text-underline-offset: .3rem;
+    &--l1 {
+      font-size: var(--header-font-size-lg);
+      padding-block-start: var(--space-150);
+      padding-block-end: var(--space-150);
+
+      @media (min-width: (breakpoints.$md + 1px)) {
+        border-block-end: 1px solid rgba(255, 255, 255, 0.4);
+      }
+    }
+
+    &--l2 {
+      font-size: var(--header-font-size-md);
+      padding-block-start: var(--space-150);
+      margin-block-start: var(--space-75);
+      border-block-start: 1px solid rgba(255, 255, 255, 0.4);
+
+      @media (min-width: (breakpoints.$md + 1px)) {
+        margin-block-start: 0;
+        border-block-start-width: 0;
+      }
     }
   }
 }

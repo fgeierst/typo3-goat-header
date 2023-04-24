@@ -117,8 +117,7 @@
   }
 
   [aria-current='page'] {
-    font-weight: bold;
-    text-decoration: none;
+    // font-weight: bold;
   }
 
   :focus-visible {
@@ -151,12 +150,14 @@
 
       .header__toggle-button[aria-expanded="false"] + & {
         visibility: hidden;
+        z-index: 2;
       }
     }
 
     &__sliding-panel {
       background-color: var(--color-background);
       transition: transform var(--header-transition-duration) var(--header-transition-duration-function), visibility var(--header-transition-duration);
+      overflow-y: auto;
 
       .header__toggle-button[aria-expanded="false"] + .header__clipbox & {
         transform: translatey(-100%);
