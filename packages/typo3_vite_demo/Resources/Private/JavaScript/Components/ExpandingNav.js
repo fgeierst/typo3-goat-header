@@ -65,10 +65,9 @@ export class ExpandingNav {
 	open(button) {
 		button.setAttribute("aria-expanded", "true");
 		this.onEscapeKeyBound = this.onEscapeKey.bind(this, button);
-		document.addEventListener("keydown", this.onEscapeKeyBound);
-		document.addEventListener("click", this.onClickOutside.bind(this, button), {
-			once: true
-    });
+    document.addEventListener("keydown", this.onEscapeKeyBound);
+    this.onClickOutsideBound = this.onClickOutside.bind(this, button);
+		document.addEventListener("click", this.onClickOutsideBound);
   }
 
 
@@ -79,6 +78,7 @@ export class ExpandingNav {
 	close(button) {
 		button.setAttribute("aria-expanded", "false");
     document.removeEventListener("keydown", this.onEscapeKeyBound);
+    document.removeEventListener("click", this.onClickOutsideBound);
 	}
 
 	/**
@@ -102,9 +102,9 @@ export class ExpandingNav {
 	 * @param {MouseEvent} event - The click event object.
 	 */
 	onClickOutside(button, event) {
-		const isOutside = !button.parentElement.contains(event.target);
+		const isOutside = !button.parentElement?.contains(event.target);
 		if (isOutside) {
-			this.switch(false);
+      this.switch(false);
 		}
   }
 
