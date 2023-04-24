@@ -137,13 +137,13 @@
     &::after {
       content: "";
       background-color: rgba(0, 0, 0, 0.4);
-      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(5px);
+      backdrop-filter: blur(5px);
       position: fixed;
       inset: var(--header-height) 0 0 0;
-      z-index: -1;
       pointer-events: none;
       opacity: 0;
-      transition: opacity .2s ease-in-out;
+      transition: opacity var(--header-transition-duration) ease-in-out;
     }
 
     &[data-expanded]::after {
@@ -153,6 +153,10 @@
     &__item {
       display: grid;
       height: 100%;
+
+      &[data-expanded] {
+        z-index: 1;
+      }
     }
 
     &__link {
