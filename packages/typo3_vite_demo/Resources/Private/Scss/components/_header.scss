@@ -51,7 +51,7 @@
 
     @media (max-width: breakpoints.$md) {
       // If one item is open, hide all other items.
-      .header:has([aria-expanded="true"]) &:not(:has([aria-expanded="true"])) { // @todo: Firefox
+      .header[data-expanded] &:not([data-expanded]) {
         display: none;
       }
     }

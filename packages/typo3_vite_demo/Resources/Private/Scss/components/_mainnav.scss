@@ -28,8 +28,7 @@
     flex-direction: column;
     transition: transform var(--header-transition-duration) var(--header-transition-duration-function);
 
-    &:has([aria-expanded="true"]) {
-      // @todo: Does not yet work in Firefox
+    &[data-expanded] {
       transform: translateX(-100%);
     }
 
@@ -56,8 +55,7 @@
       transition: visibility var(--header-transition-duration);
       justify-content: space-between;
 
-      .subnav:has([aria-expanded="true"]) &:not(.subnav__close) {
-        // @todo: Firefox
+      .mainnav[data-expanded] {
         visibility: hidden;
       }
 
@@ -148,7 +146,7 @@
       transition: opacity .2s ease-in-out;
     }
 
-    &:has(.mainnav__toggle-button[aria-expanded="true"])::after {
+    &[data-expanded]::after {
       opacity: 1;
     }
 

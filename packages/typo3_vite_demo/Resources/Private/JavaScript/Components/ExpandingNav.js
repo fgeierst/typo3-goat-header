@@ -54,8 +54,11 @@ export class ExpandingNav {
 			}
 		});
 		if (nextButton) {
-			this.open(nextButton);
-		}
+      this.open(nextButton);
+      this.rootElement.setAttribute("data-expanded", "");
+    } else {
+      this.rootElement.removeAttribute("data-expanded");
+    }
   }
 
 	/**
@@ -63,7 +66,8 @@ export class ExpandingNav {
 	 * @param {HTMLElement} button - The button to open.
 	 */
 	open(button) {
-		button.setAttribute("aria-expanded", "true");
+    button.setAttribute("aria-expanded", "true");
+    button.parentElement?.setAttribute("data-expanded", "");
 		this.onEscapeKeyBound = this.onEscapeKey.bind(this, button);
     document.addEventListener("keydown", this.onEscapeKeyBound);
     this.onClickOutsideBound = this.onClickOutside.bind(this, button);
@@ -76,7 +80,8 @@ export class ExpandingNav {
 	 * @param {HTMLElement} button - The button to close.
 	 */
 	close(button) {
-		button.setAttribute("aria-expanded", "false");
+    button.setAttribute("aria-expanded", "false");
+    button.parentElement?.removeAttribute("data-expanded");
     document.removeEventListener("keydown", this.onEscapeKeyBound);
     document.removeEventListener("click", this.onClickOutsideBound);
 	}
