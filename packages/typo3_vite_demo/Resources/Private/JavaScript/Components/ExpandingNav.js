@@ -9,7 +9,7 @@ export class ExpandingNav {
 	 * @param {HTMLElement | null} options.rootElement - Root element of the menu.
 	 * @param {string} options.buttonSelector - CSS selector for all clickable menu buttons.
 	 * @param {string} [options.closeButtonSelector] - Optional CSS selector for an extra close button.
-   * @param {boolean} [options.hover] - Whether to open on hover.
+   * @param {string} [options.hoverSelector] - Optional CSS selector for buttons that toggle on hover.
 	 */
   constructor(options) {
     this.rootElement = options.rootElement;
@@ -21,7 +21,7 @@ export class ExpandingNav {
 			this.rootElement.querySelectorAll(options.buttonSelector)
 		);
     this.rootElement.addEventListener("click", this.onClick.bind(this));
-    if (options.hover) { this.addHoverListeners() };
+    if (options.hoverSelector) { this.addHoverListeners(options.hoverSelector) };
   }
 
 
@@ -117,8 +117,11 @@ export class ExpandingNav {
    * Adds event listeners for hovering over menu buttons.
    * Only on desktop, hover opens the menu.
    */
-  addHoverListeners() {
-    this.buttons.forEach((button) => {
+  addHoverListeners(selector) {
+    const hoverButtons = Array.from(
+			this.rootElement.querySelectorAll(selector)
+		);
+    hoverButtons.forEach((button) => {
       button.addEventListener("mouseenter", (event) => {
         const mediaQuery = window.matchMedia('(min-width: 768px)');
         if (mediaQuery.matches) {

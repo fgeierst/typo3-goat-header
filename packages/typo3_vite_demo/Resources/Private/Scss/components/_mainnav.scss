@@ -219,39 +219,13 @@
         visibility: hidden;
       }
 
-      > * {
-        max-width: var(--header-max-content-width);
-        margin-inline: auto;
-      }
 
+    }
+
+    &__panel-container {
+      max-width: var(--header-max-content-width);
+      margin-inline: auto;
     }
   }
 }
 
-.level-two {
-  list-style: none;
-  padding: var(--page-margin);
-  display: flex;
-  flex-direction: column;
-
-  &__link {
-    padding-block-start: var(--space-100);
-    padding-block-end: var(--space-100);
-    display: flex;
-    width: 100%;
-    align-items: center;
-    text-decoration: none;
-
-    &:hover, &:focus-visible {
-      text-decoration: underline;
-      text-underline-offset: .3rem;
-    }
-  }
-
-  &__item {
-    &--overview {
-      text-transform: uppercase;
-      letter-spacing: .4em;
-    }
-  }
-}

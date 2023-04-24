@@ -39,37 +39,38 @@
     width: var(--space-150);
     height: var(--space-150);
     background-color: var(--color-white);
-    will-change: mask-image;
   }
 
   &--globe {
-    &[aria-expanded='false']::after {
+    &::after {
       -webkit-mask-image: url("/typo3conf/ext/typo3_vite_demo/Resources/Public/Icons/sprite.svg#globe-view");
       mask-image: url("/typo3conf/ext/typo3_vite_demo/Resources/Public/Icons/sprite.svg#globe-view");
     }
 
-    &[aria-expanded='true']::after {
-      transform: translate(0, 0); // Safari bugfix to trigger redraw when aria attribute changes
-      -webkit-mask-image: url("/typo3conf/ext/typo3_vite_demo/Resources/Public/Icons/sprite.svg#cross-view");
-      mask-image: url("/typo3conf/ext/typo3_vite_demo/Resources/Public/Icons/sprite.svg#cross-view");
+    @media (max-width: breakpoints.$md) {
+      &[aria-expanded='true']::after {
+        transform: translate(0, 0); // Safari bugfix to trigger redraw when aria attribute changes
+        -webkit-mask-image: url("/typo3conf/ext/typo3_vite_demo/Resources/Public/Icons/sprite.svg#cross-view");
+        mask-image: url("/typo3conf/ext/typo3_vite_demo/Resources/Public/Icons/sprite.svg#cross-view");
+      }
     }
   }
 
   &--search {
-    &[aria-expanded='false']::after {
+    &::after {
       -webkit-mask-image: url("/typo3conf/ext/typo3_vite_demo/Resources/Public/Icons/sprite.svg#search-view");
       mask-image: url("/typo3conf/ext/typo3_vite_demo/Resources/Public/Icons/sprite.svg#search-view");
     }
 
-    &[aria-expanded='true']::after {
-      transform: translate(0, 0); // Safari bugfix to trigger redraw when aria attribute changes
-      -webkit-mask-image: url("/typo3conf/ext/typo3_vite_demo/Resources/Public/Icons/sprite.svg#cross-view");
-      mask-image: url("/typo3conf/ext/typo3_vite_demo/Resources/Public/Icons/sprite.svg#cross-view");
+    @media (max-width: breakpoints.$md) {
+      &[aria-expanded='true']::after {
+        transform: translate(0, 0); // Safari bugfix to trigger redraw when aria attribute changes
+        -webkit-mask-image: url("/typo3conf/ext/typo3_vite_demo/Resources/Public/Icons/sprite.svg#cross-view");
+        mask-image: url("/typo3conf/ext/typo3_vite_demo/Resources/Public/Icons/sprite.svg#cross-view");
+      }
     }
   }
 }
-
-
 
 .icon-hamburger {
   pointer-events: none;

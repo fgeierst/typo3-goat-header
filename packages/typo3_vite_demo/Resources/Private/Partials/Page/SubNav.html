@@ -1,0 +1,36 @@
+
+<f:section name="l1">
+    <div class="subnav">
+        <a class="subnav__link subnav__link--l1" href="{item.link}" {f:if(condition: item.active, then:'aria-current="page"')}>
+            {item.title}
+        </a>
+        <f:render section="l2" arguments="{item: item}" />
+    </div>
+</f:section>
+
+<f:section name="l2">
+    <ul class="subnav__list subnav__list--l2">
+        <f:for each="{item.children}" as="item">
+            <li class="subnav__item subnav__item--l2" {f:if(condition: item.active, then:'aria-current="page"')}>
+                <a class="subnav__link subnav__link--l2" href="{item.link}">
+                    {item.title}
+                </a>
+                <f:if condition="{item.children}">
+                    <f:render section="l3" arguments="{item: item}" />
+                </f:if>
+            </li>
+        </f:for>
+    </ul>
+</f:section>
+
+<f:section name="l3">
+    <ul class="subnav__list subnav__list--l3">
+        <f:for each="{item.children}" as="item">
+            <li class="subnav__item subnav__item--l3" {f:if(condition: item.active, then:'aria-current="page"')}>
+                <a class="subnav__link subnav__link--l3" href="{item.link}">
+                    {item.title}
+                </a>
+            </li>
+        </f:for>
+    </ul>
+</f:section>
