@@ -39,34 +39,32 @@
     width: var(--space-150);
     height: var(--space-150);
     background-color: var(--color-white);
+    will-change: mask-image;
   }
 
   &--globe {
-    &::after {
-      background-color: var(--color-white);
-      -webkit-mask: url("/typo3conf/ext/typo3_vite_demo/Resources/Public/Icons/sprite.svg#globe-view");
-      mask: url("/typo3conf/ext/typo3_vite_demo/Resources/Public/Icons/sprite.svg#globe-view");
+    &[aria-expanded='false']::after {
+      -webkit-mask-image: url("/typo3conf/ext/typo3_vite_demo/Resources/Public/Icons/sprite.svg#globe-view");
+      mask-image: url("/typo3conf/ext/typo3_vite_demo/Resources/Public/Icons/sprite.svg#globe-view");
     }
 
-    @media (max-width: breakpoints.$md) {
-      &[aria-expanded='true']::after {
-        -webkit-mask: url("/typo3conf/ext/typo3_vite_demo/Resources/Public/Icons/sprite.svg#cross-view");
-        mask: url("/typo3conf/ext/typo3_vite_demo/Resources/Public/Icons/sprite.svg#cross-view");
-      }
+    &[aria-expanded='true']::after {
+      transform: translate(0, 0); // Safari bugfix to trigger redraw when aria attribute changes
+      -webkit-mask-image: url("/typo3conf/ext/typo3_vite_demo/Resources/Public/Icons/sprite.svg#cross-view");
+      mask-image: url("/typo3conf/ext/typo3_vite_demo/Resources/Public/Icons/sprite.svg#cross-view");
     }
   }
 
   &--search {
-    &::after {
-      -webkit-mask: url("/typo3conf/ext/typo3_vite_demo/Resources/Public/Icons/sprite.svg#search-view");
-      mask: url("/typo3conf/ext/typo3_vite_demo/Resources/Public/Icons/sprite.svg#search-view");
+    &[aria-expanded='false']::after {
+      -webkit-mask-image: url("/typo3conf/ext/typo3_vite_demo/Resources/Public/Icons/sprite.svg#search-view");
+      mask-image: url("/typo3conf/ext/typo3_vite_demo/Resources/Public/Icons/sprite.svg#search-view");
     }
 
-    @media (max-width: breakpoints.$md) {
-      &[aria-expanded='true']::after {
-        -webkit-mask: url("/typo3conf/ext/typo3_vite_demo/Resources/Public/Icons/sprite.svg#cross-view");
-        mask: url("/typo3conf/ext/typo3_vite_demo/Resources/Public/Icons/sprite.svg#cross-view");
-      }
+    &[aria-expanded='true']::after {
+      transform: translate(0, 0); // Safari bugfix to trigger redraw when aria attribute changes
+      -webkit-mask-image: url("/typo3conf/ext/typo3_vite_demo/Resources/Public/Icons/sprite.svg#cross-view");
+      mask-image: url("/typo3conf/ext/typo3_vite_demo/Resources/Public/Icons/sprite.svg#cross-view");
     }
   }
 }
