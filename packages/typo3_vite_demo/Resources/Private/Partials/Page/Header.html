@@ -1,76 +1,80 @@
 <f:section name="Main">
-    <header id="header" class="header">
+    <header id="header" class="header preload">
 
-        <f:comment><!-- header__item: logo --></f:comment>
-        <div class="header__item header__item--logo">
-            <f:render section="Logo" arguments="{_all}" />
-        </div>
+        <div class="header__container">
 
-        <f:comment><!-- header__item: metanav login (mobile)--></f:comment>
-        <div class="header__item header__item--mobile-only">
-            <f:render section="MetanavLogin" />
-        </div>
-
-        <f:comment><!-- header__item: langnav (mobile) --></f:comment>
-        <nav class="header__item header__item--mobile-only" aria-labelledby="language-button">
-            <button id="language-button"
-                class="header__toggle-button header-icon header-icon--globe scale-on-hover"
-                aria-expanded="false"
-            >
-                <span class="visually-hidden">
-                    <f:translate key="LLL:EXT:typo3_vite_demo/Resources/Private/Language/locallang.xlf:navigation.languages"/>
-                </span>
-            </button>
-            <div class="header__clipbox">
-                <div class="header__sliding-panel">
-                    <f:render partial="LanguageNav"
-                        arguments="{languagenavigation: languagenavigation}"
-                    />
-                </div>
+            <f:comment><!-- header__item: logo --></f:comment>
+            <div class="header__item header__item--logo">
+                <f:render section="Logo" arguments="{_all}" />
             </div>
-        </nav>
 
-        <f:comment><!-- header__item: search (mobile) --></f:comment>
-        <nav class="header__item header__item--mobile-only" aria-labelledby="search-button">
-            <button id="search-button"
-                class="header__toggle-button header-icon header-icon--search scale-on-hover"
-                aria-expanded="false"
-            >
-                <span class="visually-hidden">
-                    <f:translate key="LLL:EXT:typo3_vite_demo/Resources/Private/Language/locallang.xlf:navigation.search"/>
-                </span>
-            </button>
-            <div class="header__clipbox">
-                <div class="header__sliding-panel">
-                    <f:render partial="Search" arguments="{mainnavigation: mainnavigation}"/>
-                </div>
+            <f:comment><!-- header__item: metanav login (mobile)--></f:comment>
+            <div class="header__item header__item--mobile-only">
+                <f:render section="MetanavLogin" />
             </div>
-        </nav>
 
-        <f:comment><!-- header__item: mainnav --></f:comment>
-        <nav class="header__item header__item--mainnav" aria-labelledby="mainnav-button">
-            <button id="mainnav-button"
-                class="header__toggle-button scale-on-hover md:none"
-                aria-expanded="false"
-            >
-                <span class="visually-hidden">
-                    <f:translate key="LLL:EXT:typo3_vite_demo/Resources/Private/Language/locallang.xlf:navigation.button"/>
-                </span>
-                <div class="icon-hamburger"></div>
-            </button>
-            <div class="header__clipbox">
-                <div class="header__sliding-panel">
-                    <f:render partial="MainNav"
-                        section="Main"
-                        arguments="{mainnavigation: mainnavigation, languagenavigation: languagenavigation}"
-                    />
+            <f:comment><!-- header__item: langnav (mobile) --></f:comment>
+            <nav class="header__item header__item--mobile-only" aria-labelledby="language-button">
+                <button id="language-button"
+                    class="header__toggle-button header-icon header-icon--globe scale-on-hover"
+                    aria-expanded="false"
+                >
+                    <span class="visually-hidden">
+                        <f:translate key="LLL:EXT:typo3_vite_demo/Resources/Private/Language/locallang.xlf:navigation.languages"/>
+                    </span>
+                </button>
+                <div class="header__clipbox">
+                    <div class="header__sliding-panel">
+                        <f:render partial="LanguageNav"
+                            arguments="{languagenavigation: languagenavigation}"
+                        />
+                    </div>
                 </div>
-            </div>
-        </nav>
+            </nav>
 
-        <f:comment><!-- header__item: metanav login (desktop)--></f:comment>
-        <div class="header__item header__item--desktop-only">
-            <f:render section="MetanavLogin" />
+            <f:comment><!-- header__item: search (mobile) --></f:comment>
+            <nav class="header__item header__item--mobile-only" aria-labelledby="search-button">
+                <button id="search-button"
+                    class="header__toggle-button header-icon header-icon--search scale-on-hover"
+                    aria-expanded="false"
+                >
+                    <span class="visually-hidden">
+                        <f:translate key="LLL:EXT:typo3_vite_demo/Resources/Private/Language/locallang.xlf:navigation.search"/>
+                    </span>
+                </button>
+                <div class="header__clipbox">
+                    <div class="header__sliding-panel">
+                        <f:render partial="Search" arguments="{mainnavigation: mainnavigation}"/>
+                    </div>
+                </div>
+            </nav>
+
+            <f:comment><!-- header__item: mainnav --></f:comment>
+            <nav class="header__item header__item--mainnav" aria-labelledby="mainnav-button">
+                <button id="mainnav-button"
+                    class="header__toggle-button scale-on-hover md:none"
+                    aria-expanded="false"
+                >
+                    <span class="visually-hidden">
+                        <f:translate key="LLL:EXT:typo3_vite_demo/Resources/Private/Language/locallang.xlf:navigation.button"/>
+                    </span>
+                    <div class="icon-hamburger"></div>
+                </button>
+                <div class="header__clipbox">
+                    <div class="header__sliding-panel">
+                        <f:render partial="MainNav"
+                            section="Main"
+                            arguments="{mainnavigation: mainnavigation, languagenavigation: languagenavigation}"
+                        />
+                    </div>
+                </div>
+            </nav>
+
+            <f:comment><!-- header__item: metanav login (desktop)--></f:comment>
+            <div class="header__item header__item--desktop-only">
+                <f:render section="MetanavLogin" />
+            </div>
+
         </div>
 
     </header>

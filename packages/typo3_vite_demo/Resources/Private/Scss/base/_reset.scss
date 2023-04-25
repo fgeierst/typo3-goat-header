@@ -21,6 +21,9 @@ button {
 
 main, footer {
   padding: var(--page-margin);
+  margin-inline-start: auto;
+  margin-inline-end: auto;
+  max-width: 700px;
 }
 
 //
@@ -35,7 +38,7 @@ main, footer {
 // .preload will be removed with JavaScript after page has loaded.
 // This prevents unwanted CSS transitions firing on page load.
 //
-.preload {
+.preload * {
   transition: none !important;
 }
 

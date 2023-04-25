@@ -23,7 +23,8 @@
   --header-focus-outline: var(--focus-outline, 2px solid hsl(219, 82%, 56%));
   --header-focus-outline-offset: var(--focus-outline-offset, 2px);
   --header-tablet-sidebar-width: 22.5rem;
-  --header-max-content-width: 900px;
+  --header-max-content-width: 1200px;
+  --header-max-nav-width: 900px;
   --header-transition-duration: var(--transition-duration, 0.2s);
   --header-transition-duration-function: var(--transition-duration-function, cubic-bezier(0.77, 0, 0.175, 1));
   --header-font-size-sm: var(--font-size-sm, 14px);
@@ -43,9 +44,15 @@
   color: var(--color-text);
   font-size: var(--header-font-size-sm);
 
-  display: flex;
-  justify-content: flex-end;
-  gap: var(--space-50);
+  &__container {
+    height: 100%;
+    margin-inline-start: auto;
+    margin-inline-end: auto;
+    max-width: var(--header-max-content-width);
+    display: flex;
+    justify-content: flex-end;
+    gap: var(--space-50);
+  }
 
   &::after {
     content: "";
