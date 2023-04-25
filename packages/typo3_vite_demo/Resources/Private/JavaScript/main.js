@@ -3,8 +3,6 @@ import '../Scss/main.scss';
 import { preload } from './Utilities/preload.js';
 import { ExpandingNav } from './Components/ExpandingNav.js';
 
-preload();
-
 new ExpandingNav({
   rootElement: document.querySelector(".header"),
   buttonSelector: ".header__toggle-button",
@@ -17,4 +15,4 @@ new ExpandingNav({
   hoverSelector: "[data-hover]",
 });
 
-
+preload();

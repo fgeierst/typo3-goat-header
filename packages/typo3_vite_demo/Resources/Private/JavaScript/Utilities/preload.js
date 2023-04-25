@@ -3,7 +3,9 @@
 * This prevents unwanted CSS transitions firing on page load.
 */
 export function preload() {
-window.addEventListener("load", () => {
-  document.querySelector(".preload").classList.remove("preload");
+  window.addEventListener("load", () => {
+  document.querySelectorAll(".preload").forEach((element) => {
+    element.classList.remove("preload");
+  });
 })
 }
