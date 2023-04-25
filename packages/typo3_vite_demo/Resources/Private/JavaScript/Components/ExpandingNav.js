@@ -22,6 +22,7 @@ export class ExpandingNav {
 		);
     this.rootElement.addEventListener("click", this.onClick.bind(this));
     if (options.hoverSelector) { this.addHoverListeners(options.hoverSelector) };
+    window.addEventListener("resize", () => { this.switch(false) });
   }
 
 
