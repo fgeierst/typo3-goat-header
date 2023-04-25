@@ -17,10 +17,7 @@
 			<trans-unit id="navigation.languages">
 				<source>Languages</source>
 			</trans-unit>
-			<trans-unit id="search.term">
-				<source>Search term</source>
-			</trans-unit>
-			<trans-unit id="search.submit">
+			<trans-unit id="search">
 				<source>Search</source>
 			</trans-unit>
 			<trans-unit id="footer.logo">

@@ -2,40 +2,77 @@
 
 // Search
 .search {
-  @media (min-width: (breakpoints.$md)) {
-    padding: var(--page-margin);
-  }
+  padding: var(--page-margin);
+  margin-inline-start: auto;
+  margin-inline-end: auto;
+  max-width: var(--header-max-content-width);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-200);
 
   &__form {
-    max-width: 600px;
-    margin-inline: auto;
-    padding: var(--page-margin);
     display: flex;
-    gap: var(--space-150);
-    flex-direction: column;
-    align-items: stretch;
-
-    @media (min-width: breakpoints.$md) {
-      padding: 0;
-      flex-direction: row;
-      align-items: center;
-    }
+    flex-direction: row;
   }
 
   &__label {
-    display: grid;
     flex-grow: 1;
+    display: flex;
+    gap: var(--space-50);
+
+    &:focus-within {
+      outline: var(--header-focus-outline);
+      outline-offset: var(--header-focus-outline-offset);
+    }
+
+    &::before {
+      content: '';
+      display: block;
+      width: var(--space-200);
+      height: var(--space-200);
+      background-color: var(--color-white);
+      -webkit-mask-image: url("/typo3conf/ext/typo3_vite_demo/Resources/Public/Icons/sprite.svg#search-view");
+      mask-image: url("/typo3conf/ext/typo3_vite_demo/Resources/Public/Icons/sprite.svg#search-view");
+    }
   }
 
   &__input {
     all: unset;
-    border: 2px solid var(--color-text);
-    padding: var(--space-50);
+    display: grid;
+    font-size: var(--header-font-size-md);
+
+    @media (min-width: breakpoints.$md) {
+      font-size: var(--header-font-size-lg);
+    }
+
+    &::placeholder {
+      opacity: 0.5;
+    }
+  }
+}
+
+.quicklinks {
+  &__header {
+    opacity: 0.5;
+    margin-block-start: var(--space-75);
+    margin-block-end: var(--space-75);
+  }
+
+  &__list {
+    list-style: none;
+    padding-inline-start: 0;
+    margin-block-start: 0;
+    margin-block-end: 0;
+  }
+
+  &__link {
+    text-decoration: none;
+    padding-block-start: var(--space-75);
+    padding-block-end: var(--space-75);
     display: block;
 
     &:focus-visible {
-      outline: var(--focus-outline-width) solid var(--color-focus);
-      outline-offset: var(--focus-outline-offset);
+      outline-offset: var(--header-focus-outline-offset);
     }
   }
 }

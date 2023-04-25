@@ -3,17 +3,14 @@
     <form class="search__form">
         <label class="search__label">
             <span class="visually-hidden">
-                <f:translate key="LLL:EXT:typo3_vite_demo/Resources/Private/Language/locallang.xlf:search.term"/>
+                <f:translate key="LLL:EXT:typo3_vite_demo/Resources/Private/Language/locallang.xlf:search"/>
             </span>
-            <input type="text" class="search__input">
+            <input type="text" class="search__input" placeholder="{f:translate(key='LLL:EXT:typo3_vite_demo/Resources/Private/Language/locallang.xlf:search')}">
         </label>
-        <button class="search__submit">
-            <f:translate key="LLL:EXT:typo3_vite_demo/Resources/Private/Language/locallang.xlf:search.submit"/>
-        </button>
     </form>
 
-    <nav class="quicklinks" aria-labelledby="quicklinks-heading">
-        <p id="quicklinks-heading" class="quicklinks__heading">Quicklinks</p>
+    <nav class="quicklinks" aria-labelledby="quicklinks-header">
+        <p id="quicklinks-header" class="quicklinks__header">Quicklinks</p>
         <ul class="quicklinks__list">
             <f:for each="{mainnavigation}" as="item">
                 <li class="quicklinks__item">
