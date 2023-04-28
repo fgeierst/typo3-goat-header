@@ -20,7 +20,7 @@ export class ExpandingNav {
 		this.buttons = Array.from(
 			this.rootElement.querySelectorAll(options.buttonSelector)
 		);
-    this.rootElement.addEventListener("click", this.onClick.bind(this));
+    this.rootElement.addEventListener("pointerdown", this.onClick.bind(this));
     if (options.hoverSelector) { this.addHoverListeners(options.hoverSelector) };
     window.addEventListener("resize", () => { this.switch(false) });
   }
@@ -28,7 +28,7 @@ export class ExpandingNav {
 
 	/**
 	 * Handles the click event on the menu buttons.
-	 * @param {MouseEvent} event - The click event object.
+	 * @param {PointerEvent} event - The click event object.
 	 */
   onClick(event) {
 		if (!this.buttons.includes(event.target)) {
