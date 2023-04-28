@@ -1,4 +1,4 @@
-@use '../base/breakpoints';
+@use 'header' as *;
 
 // Search
 .search {
@@ -42,7 +42,7 @@
     flex-grow: 1;
     font-size: var(--header-font-size-md);
 
-    @media (min-width: breakpoints.$md) {
+    @media (min-width: $header-breakpoint-tablet) {
       font-size: var(--header-font-size-lg);
     }
 

@@ -1,5 +1,3 @@
-@use '../base/breakpoints';
-
 /*  .header
 *      ├─ item (logo)
 *      │   └── link
@@ -15,7 +13,11 @@
 *          └── link
 */
 
+$header-breakpoint-mobile: 450px;
+$header-breakpoint-tablet: 850px;
+
 .header {
+
   --color-background: var(--color-black); // --header-background-color: white;
   --color-text: var(--color-white); // --header-color: red;
   --header-height: var(--space-400);
@@ -74,7 +76,7 @@
     display: grid;
     z-index: 1;
 
-    @media (max-width: breakpoints.$md) {
+    @media (max-width: $header-breakpoint-tablet) {
 
       // If one item is open, hide all other items.
       .header[data-expanded] &:not([data-expanded]) {
@@ -83,7 +85,7 @@
     }
 
     &--mobile-only {
-      @media (min-width: (breakpoints.$md + 1px)) {
+      @media (min-width: ($header-breakpoint-tablet + 1px)) {
         display: none;
       }
     }
@@ -91,7 +93,7 @@
     &--desktop-only {
       display: none;
 
-      @media (min-width: (breakpoints.$md + 1px)) {
+      @media (min-width: ($header-breakpoint-tablet + 1px)) {
         display: grid;
       }
     }
@@ -104,7 +106,7 @@
     &--mainnav {
       flex-grow: unset;
 
-      @media (min-width: (breakpoints.$md + 1px)) {
+      @media (min-width: ($header-breakpoint-tablet + 1px)) {
         flex-grow: 1;
       }
     }
@@ -115,16 +117,12 @@
     align-items: center;
     padding-inline-start: var(--space-75);
     padding-inline-end: var(--space-75);
-
     text-decoration: none;
+
     &:hover, &:focus-visible {
       text-decoration: underline;
       text-underline-offset: .3rem;
     }
-  }
-
-  [aria-current='page'] {
-    // font-weight: bold;
   }
 
   :focus-visible {
@@ -132,14 +130,14 @@
   }
 
   // Mobile
-  @media (min-width: breakpoints.$md) {
+  @media (min-width: $header-breakpoint-tablet) {
     &__clipbox, &__sliding-panel {
       display: grid;
     }
   }
 
   // Desktop
-  @media (max-width: breakpoints.$md) {
+  @media (max-width: $header-breakpoint-tablet) {
     &__clipbox {
       position: fixed;
       top: var(--header-height);
@@ -150,7 +148,7 @@
       overflow: hidden;
       display: grid;
 
-      @media (min-width: breakpoints.$sm) {
+      @media (min-width: $header-breakpoint-mobile) {
         width: var(--header-tablet-sidebar-width, 22.5rem);
         left: unset;
       }

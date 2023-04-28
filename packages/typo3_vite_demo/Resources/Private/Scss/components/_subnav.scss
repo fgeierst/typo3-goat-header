@@ -1,4 +1,4 @@
-@use '../base/breakpoints';
+@use 'header' as *;
 
 .subnav {
   &__list {
@@ -9,7 +9,7 @@
     margin-block-end: 0;
 
     &--l2 {
-      @media (min-width: (breakpoints.$md + 1px)) {
+      @media (min-width: ($header-breakpoint-tablet + 1px)) {
         display: flex;
         gap: var(--space-300);
       }
@@ -30,7 +30,7 @@
       padding-block-start: var(--space-150);
       padding-block-end: var(--space-150);
 
-      @media (min-width: (breakpoints.$md + 1px)) {
+      @media (min-width: ($header-breakpoint-tablet + 1px)) {
         border-block-end: 1px solid rgba(255, 255, 255, 0.4);
       }
     }
@@ -41,7 +41,7 @@
       margin-block-start: var(--space-75);
       border-block-start: 1px solid rgba(255, 255, 255, 0.4);
 
-      @media (min-width: (breakpoints.$md + 1px)) {
+      @media (min-width: ($header-breakpoint-tablet + 1px)) {
         margin-block-start: 0;
         border-block-start-width: 0;
       }

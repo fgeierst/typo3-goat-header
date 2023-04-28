@@ -1,4 +1,4 @@
-@use '../base/breakpoints';
+@use 'header' as *;
 
 /*
 *   .logo
@@ -13,7 +13,7 @@
   display: flex;
   height: 100%;
 
-  @media (min-width: breakpoints.$md) {
+  @media (min-width: $header-breakpoint-tablet) {
     flex-grow: unset;
   }
 
@@ -47,7 +47,7 @@
       mask-image: url("/typo3conf/ext/typo3_vite_demo/Resources/Public/Icons/sprite.svg#globe-view");
     }
 
-    @media (max-width: breakpoints.$md) {
+    @media (max-width: $header-breakpoint-tablet) {
       &[aria-expanded='true']::after {
         transform: translate(0, 0); // Safari bugfix to trigger redraw when aria attribute changes
         -webkit-mask-image: url("/typo3conf/ext/typo3_vite_demo/Resources/Public/Icons/sprite.svg#cross-view");
@@ -62,7 +62,7 @@
       mask-image: url("/typo3conf/ext/typo3_vite_demo/Resources/Public/Icons/sprite.svg#search-view");
     }
 
-    @media (max-width: breakpoints.$md) {
+    @media (max-width: $header-breakpoint-tablet) {
       &[aria-expanded='true']::after {
         transform: translate(0, 0); // Safari bugfix to trigger redraw when aria attribute changes
         -webkit-mask-image: url("/typo3conf/ext/typo3_vite_demo/Resources/Public/Icons/sprite.svg#cross-view");

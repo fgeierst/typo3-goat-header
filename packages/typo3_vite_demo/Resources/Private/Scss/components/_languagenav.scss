@@ -1,7 +1,7 @@
-@use '../base/breakpoints';
+@use 'header' as *;
 
 .mobile-language {
-  @media (min-width: breakpoints.$md) {
+  @media (min-width: $header-breakpoint-tablet) {
     display: none;
   }
 }
@@ -9,7 +9,7 @@
 .langnav {
   padding: var(--page-margin);
 
-  @media (min-width: breakpoints.$md) {
+  @media (min-width: $header-breakpoint-tablet) {
     padding: 0;
   }
 }

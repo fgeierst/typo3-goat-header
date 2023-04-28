@@ -1,4 +1,4 @@
-@use '../base/breakpoints';
+@use 'header' as *;
 
 /*
 *  .mainnav
@@ -20,7 +20,7 @@
 
   // .mainnav
   //    └ Mobile
-  @media (max-width: (breakpoints.$md)) {
+  @media (max-width: ($header-breakpoint-tablet)) {
     margin-block-start: 0;
     padding: var(--page-margin);
     list-style: none;
@@ -116,7 +116,7 @@
       }
 
       &--desktop-only {
-        @media (max-width: (breakpoints.$md)) {
+        @media (max-width: ($header-breakpoint-tablet)) {
           display: none;
         }
       }
@@ -125,7 +125,7 @@
 
   // .mainnav
   //    └ Desktop
-  @media (min-width: (breakpoints.$md + 1px)) {
+  @media (min-width: ($header-breakpoint-tablet + 1px)) {
     list-style: none;
     display: flex;
     flex-direction: row;
