@@ -98,7 +98,7 @@
       left: 100%;
       width: 100%;
       bottom: 0;
-      background-color: var(--color-background);
+      background-color: var(--header-background-color);
       transition: visibility var(--header-transition-duration);
 
       [aria-expanded="false"] + & {
@@ -207,7 +207,7 @@
 
     &__sliding-panel {
       transition: transform var(--header-transition-duration) var(--header-transition-duration-function), visibility var(--header-transition-duration);
-      background-color: var(--color-background);
+      background-color: var(--header-background-color);
 
       [aria-expanded="false"] + .mainnav__clipbox & {
         transform: translatey(-100%);

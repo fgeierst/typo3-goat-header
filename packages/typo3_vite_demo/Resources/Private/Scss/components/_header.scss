@@ -18,8 +18,8 @@ $header-breakpoint-tablet: 900px;
 
 .header {
 
-  --color-background: var(--color-black); // --header-background-color: white;
-  --color-text: var(--color-white); // --header-color: red;
+  --header-background-color: var(--color-black);
+  --header-color: var(--color-white);
   --header-height: var(--space-400);
   --header-focus-outline: var(--focus-outline, 2px solid hsl(219, 82%, 56%));
   --header-focus-outline-offset: var(--focus-outline-offset, 2px);
@@ -41,8 +41,8 @@ $header-breakpoint-tablet: 900px;
   padding-inline-start: calc(var(--page-margin) - var(--space-75)); // Corresponds to .header__link padding-inline
   padding-inline-end: calc(var(--page-margin) - var(--space-75)); // Corresponds to .header__link icon padding-inline
   border-block-end: 1px solid var(--color-white);
-  background-color: var(--color-background);
-  color: var(--color-text);
+  background-color: var(--header-background-color);
+  color: var(--header-color);
   font-size: var(--header-font-size-sm);
 
   &__container {
@@ -165,7 +165,7 @@ $header-breakpoint-tablet: 900px;
     }
 
     &__sliding-panel {
-      background-color: var(--color-background);
+      background-color: var(--header-background-color);
       transition: transform var(--header-transition-duration) var(--header-transition-duration-function), visibility var(--header-transition-duration);
       overflow-y: auto;
 
