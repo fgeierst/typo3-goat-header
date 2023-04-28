@@ -3,10 +3,11 @@
   --color-black: hsl(0, 0%, 20%);
   --color-white: hsl(0, 0%, 100%);
   --color-primary: hsl(219, 82%, 56%);
+  --color-grey: hsl(0, 0%, 50%);
 
   // function colors
   --color-text: var(--color-black);
   --color-background: var(--color-white);
   --color-focus: var(--color-primary);
-  --color-icon: var(--color-white);
+  --color-border: var(--color-grey);
 }

@@ -31,16 +31,14 @@ $header-breakpoint-tablet: 900px;
   --header-font-size-sm: var(--font-size-sm, 14px);
   --header-font-size-md: var(--font-size-md, 24px);
   --header-font-size-lg: var(--font-size-lg, 32px);
-
-  // --header-padding-inline: 24px;
-  // --header-border: solid 1px #333333;
+  --header-border: 1px solid var(--color-border, hsl(0, 0%, 50%));
 
   position: sticky; // .mainnav__clipbox is absolutely positioned relative to this.
   inset-block-start: 0;
   height: var(--header-height);
   padding-inline-start: calc(var(--page-margin) - var(--space-75)); // Corresponds to .header__link padding-inline
   padding-inline-end: calc(var(--page-margin) - var(--space-75)); // Corresponds to .header__link icon padding-inline
-  border-block-end: 1px solid var(--color-white);
+  border-block-end: var(--header-border);
   background-color: var(--header-background-color);
   color: var(--header-color);
   font-size: var(--header-font-size-sm);

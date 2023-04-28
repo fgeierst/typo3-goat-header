@@ -16,9 +16,6 @@
     }
   }
 
-  &__item {
-  }
-
   &__link {
     text-decoration: none;
     display: block;
@@ -31,7 +28,7 @@
       padding-block-end: var(--space-150);
 
       @media (min-width: ($header-breakpoint-tablet + 1px)) {
-        border-block-end: 1px solid rgba(255, 255, 255, 0.4);
+        border-block-end: var(--header-border);
       }
     }
 
@@ -39,7 +36,7 @@
       font-size: var(--header-font-size-md);
       padding-block-start: var(--space-150);
       margin-block-start: var(--space-75);
-      border-block-start: 1px solid rgba(255, 255, 255, 0.4);
+      border-block-start: var(--header-border);
 
       @media (min-width: ($header-breakpoint-tablet + 1px)) {
         margin-block-start: 0;

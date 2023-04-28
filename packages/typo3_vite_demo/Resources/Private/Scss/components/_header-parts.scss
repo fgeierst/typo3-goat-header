@@ -28,6 +28,10 @@
       outline-offset: calc(var(--focus-outline-offset) * -1);
     }
   }
+
+  &__icon {
+    --color-icon: var(--header-color);
+  }
 }
 
 .header-icon {
@@ -38,7 +42,7 @@
     display: block;
     width: var(--space-150);
     height: var(--space-150);
-    background-color: var(--color-white);
+    background-color: var(--header-color);
   }
 
   &--globe {

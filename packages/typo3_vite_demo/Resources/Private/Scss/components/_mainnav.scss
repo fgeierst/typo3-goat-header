@@ -57,7 +57,7 @@
 
       &::after {
         content: "";
-        background-color: var(--color-white);
+        background-color: var(--header-color);
         -webkit-mask: url("/typo3conf/ext/typo3_vite_demo/Resources/Public/Icons/sprite.svg#chevron-right-view");
         mask: url("/typo3conf/ext/typo3_vite_demo/Resources/Public/Icons/sprite.svg#chevron-right-view");
         display: block;
@@ -77,7 +77,7 @@
 
       &::before {
         content: "";
-        background-color: var(--color-white);
+        background-color: var(--header-color);
         -webkit-mask: url("/typo3conf/ext/typo3_vite_demo/Resources/Public/Icons/sprite.svg#chevron-right-view");
         mask: url("/typo3conf/ext/typo3_vite_demo/Resources/Public/Icons/sprite.svg#chevron-right-view");
         display: block;
@@ -177,7 +177,7 @@
 
         &::after {
           content: "";
-          background-color: var(--color-white);
+          background-color: var(--header-color);
           -webkit-mask: url("/typo3conf/ext/typo3_vite_demo/Resources/Public/Icons/sprite.svg#chevron-right-view");
           mask: url("/typo3conf/ext/typo3_vite_demo/Resources/Public/Icons/sprite.svg#chevron-right-view");
           display: block;
