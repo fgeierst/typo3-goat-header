@@ -166,6 +166,7 @@ $header-breakpoint-tablet: 900px;
       background-color: var(--header-background-color);
       transition: transform var(--header-transition-duration) var(--header-transition-duration-function), visibility var(--header-transition-duration);
       overflow-y: auto;
+      overflow: hidden;
 
       .header__toggle-button[aria-expanded="false"] + .header__clipbox & {
         transform: translatey(-100%);
