@@ -20,7 +20,7 @@ export class ExpandingNav {
 		this.buttons = Array.from(
 			this.rootElement.querySelectorAll(options.buttonSelector)
 		);
-    this.rootElement.addEventListener("pointerdown", this.onClick.bind(this));
+    this.rootElement.addEventListener("click", this.onClick.bind(this));
     if (options.hoverSelector) { this.addHoverListeners(options.hoverSelector) };
     window.addEventListener("resize", () => { this.switch(false) });
   }
@@ -28,10 +28,10 @@ export class ExpandingNav {
 
 	/**
 	 * Handles the click event on the menu buttons.
-	 * @param {PointerEvent} event - The click event object.
+	 * @param {MouseEvent} event - The click event object.
 	 */
   onClick(event) {
-		if (!this.buttons.includes(event.target)) {
+		if (!this.buttons.includes(event.target) || this.wasImmediatelyOpened) {
 			return;
 		}
 		event.stopPropagation();
@@ -124,8 +124,12 @@ export class ExpandingNav {
 		);
     hoverButtons.forEach((button) => {
       button.addEventListener("mouseenter", (event) => {
-        const mediaQuery = window.matchMedia('(min-width: 768px)');
+        const mediaQuery = window.matchMedia('(min-width: 900px)');
         if (mediaQuery.matches) {
+          this.wasImmediatelyOpened = true;
+          setTimeout(() => {
+            this.wasImmediatelyOpened = false;
+          }, 500)
           this.switch(event.target);
         }
       })
