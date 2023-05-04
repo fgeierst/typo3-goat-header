@@ -27,6 +27,7 @@
     display: flex;
     flex-direction: column;
     transition: transform var(--header-transition-duration) var(--header-transition-duration-function);
+    height: 100%;
 
     &[data-expanded] {
       transform: translateX(-100%);
@@ -100,6 +101,7 @@
       bottom: 0;
       background-color: var(--header-background-color);
       transition: visibility var(--header-transition-duration);
+      overflow-y: auto;
 
       [aria-expanded="false"] + & {
         visibility: hidden;
