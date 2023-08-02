@@ -295,7 +295,7 @@ AddDefaultCharset utf-8
 	#RewriteRule .? - [E=TYPO3_CONTEXT:Development]
 	RewriteCond %{HTTP_HOST} ^lab\.pwmuc\.de$
 	RewriteRule .? - [E=TYPO3_CONTEXT:Production/Staging]
-	RewriteCond %{HTTP_HOST} ^***REMOVED***\.webspaceconfig\.de$
+	RewriteCond %{HTTP_HOST} ^p638522\.webspaceconfig\.de$
 	RewriteRule .? - [E=TYPO3_CONTEXT:Production/Staging]
 #	RewriteCond %{HTTP_HOST} ^www\.example\.com$
 #	RewriteRule .? - [E=TYPO3_CONTEXT:Production]
@@ -408,12 +408,11 @@ FileETag None
 
 # Add your own rules here.
 #Basic Auth for Staging
-<If "%{HTTP_HOST} == '***REMOVED***'">
+<If "%{HTTP_HOST} == 'lab.pwmuc.de'">
     AuthType Basic
     AuthName "Password Protected Area"
-    AuthUserFile /home/www/***REMOVED***/html/shared/.htpasswd
+    AuthUserFile /home/www/p638522/html/shared/.htpasswd
     Require valid-user
-    # Require ip ***REMOVED***
     Order allow,deny
     satisfy any
 </If>

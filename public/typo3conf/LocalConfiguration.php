@@ -12,12 +12,12 @@ return [
     'DB' => [
         'Connections' => [
             'Default' => [
-                'dbname' => 'usr_***REMOVED***_1',
+                'dbname' => 'usr_p638522_1',
                 'driver' => 'mysqli',
                 'host' => 'db1549.mydbserver.com',
                 'password' => 'u6.vCe6*uzgchr',
                 'port' => '3306',
-                'user' => '***REMOVED***',
+                'user' => 'p638522',
             ],
         ],
     ],

@@ -4,7 +4,7 @@ baseVariants:
     base: 'https://typo3-goat-header.ddev.sit'
     condition: 'applicationContext == "Development"'
   -
-    base: '***REMOVED***'
+    base: 'https://lab.pwmuc.de/'
     condition: 'applicationContext == "Production/Staging"'
 errorHandling:
   -

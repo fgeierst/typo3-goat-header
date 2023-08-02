@@ -5,7 +5,7 @@ definitions:
         mysql:
             image: mariadb:10.3
             variables:
-                MARIADB_ROOT_PASSWORD: ***REMOVED***
+                MARIADB_ROOT_PASSWORD: $MARIADB_ROOT_PASSWORD
     steps:
         - parallel: &testAndBuild
               - step:
@@ -39,17 +39,17 @@ definitions:
               deployment: staging
               image: sebastianhofer86/deployer:6
               script: &stagingDeployScript
-                  - export SSH_HOSTNAME=***REMOVED***
-                  - export SSH_USER=***REMOVED***
+                  - export SSH_HOSTNAME=$STAGING_SSH_HOSTNAME
+                  - export SSH_USER=$STAGING_SSH_USER
                   - export FILE_PERMISSION=664
                   - export DIRECTORY_PERMISSION=775
                   - export HTTP_USER=www-data
                   - export HTTP_GROUP=www-data
-                  - export DEPLOY_PATH=/home/www/***REMOVED***/html
+                  - export DEPLOY_PATH=$STAGING_DEPLOY_PATH
                   - export KEEP_RELEASES=3
                   - export PHP_CLI=php
                   - export TYPO3_CONTEXT=Production/Staging
-                  - export BASE_URL=***REMOVED***
+                  - export BASE_URL=$STAGING_BASE_URL
                   - dep -vvv pluswerk:deploy
         - step: &deployStagingManual
               name: Deploy to staging
