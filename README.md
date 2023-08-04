@@ -2,7 +2,7 @@
 
 Example implementation of a header and navigation component.
 
-![Screenshot of the opened navigation menu](screenshot.jpg)
+<img src="screenshot.webp" width="600" alt="Screenshot of the opened navigation menu" />
 
 - [Figma](https://www.figma.com/file/K0TmeMfaSVa7Uo7fBTUkJs/Navigation-Pattern?node-id=4:1173&mode=dev)
 
